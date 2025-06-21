@@ -1,0 +1,1 @@
+sass --watch "D:\Dropbox\Shahnewaz\need for fix\Binifox TF\binifox\assets\scss\main.scss":"D:\Dropbox\Shahnewaz\need for fix\Binifox TF\binifox\assets\css\style.css"
