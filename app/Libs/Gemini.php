@@ -13,7 +13,7 @@ class Gemini
     {
         $this->apiKey = $appSettings->gemini_api_key ?? '';
         $this->model = 'gemini-2.0-flash'; // or use env setting if needed
-        $this->apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/' . $this->model . ':generateContent';
+        $this->apiUrl = $appSettings->gemini_api_url . $this->model . ':generateContent';
     }
 
     private function callAPI($userPrompt, $systemPrompt = null)

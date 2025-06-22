@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Service extends Model
+
+class Testimonial extends Model
 {
     protected $fillable = [
         'lang',
         'unique_id',
-        'icon', // ✅ PASTIKAN BARIS INI ADA. INI KEMUNGKINAN BESAR ADALAH MASALAHNYA.
+        'name',
         'title',
-        'description',
+        'content',
+        'image',
         'is_active',
     ];
 
-    public $timestamps = true;
 
     public function getRouteKeyName()
     {
@@ -24,10 +25,9 @@ class Service extends Model
     }
     public function sibling()
     {
-        return $this->hasOne(Service::class, 'unique_id', 'unique_id')
+        return $this->hasOne(Testimonial::class, 'unique_id', 'unique_id')
             ->where('lang', '!=', $this->lang);
     }
-
     protected function isActive(): Attribute
     {
         return Attribute::make(

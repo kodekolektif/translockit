@@ -13,14 +13,14 @@ return new class extends SettingsMigration
         $this->migrator->add('appSettings.logo', 'logo.png');
         $this->migrator->add('appSettings.logo_dark', 'logo_dark.png');
 
-        $this->migrator->add('appSettings.gemini_api_key', '');
-        $this->migrator->add('appSettings.gemini_api_url', 'https://api.gemini.com/v1/translate');
+        $this->migrator->add('appSettings.gemini_api_key', 'AIzaSyCqrZTQHRQTycCskYvs9IboTI_GW_Q5gqw');
+        $this->migrator->add('appSettings.gemini_api_url', 'https://generativelanguage.googleapis.com/v1beta/models/');
 
         $this->migrator->add('appSettings.default_language', 'en');
         $this->migrator->add('appSettings.supported_languages', ['en', 'es']);
 
         $this->migrator->add('appSettings.openai_api_key', '');
-        $this->migrator->add('appSettings.openai_api_url', 'https://api.openai.com/v1/translate');
+        $this->migrator->add('appSettings.openai_api_url', '	https://api.openai.com/v1/chat/completions');
 
         $this->migrator->add('appSettings.default_target_language', 'es');
         $this->migrator->add('appSettings.translation_ai_service', 'gemini');
