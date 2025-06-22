@@ -3,8 +3,8 @@
         <div class="row mb-60">
             <div class="col-12">
                 <div class="sec-wrapper text-center">
-                    <h5>Features Services</h5>
-                    <h2 class="section-title text-white">Explore Our Services.</h2>
+                    <h5>{{ __('landing.Services') }}</h5>
+                    <h2 class="section-title text-white">{{ __('landing.explore our services') }}</h2>
                 </div>
             </div>
         </div>
