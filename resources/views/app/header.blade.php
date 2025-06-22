@@ -67,23 +67,19 @@
                         <nav id="mobile-menu">
                             <ul>
                                 <li>
-                                    <a class="active" href="index.html">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home Style 1</a></li>
-                                        <li><a href="index-2.html">Home Style 2</a></li>
-                                    </ul>
+                                    <a class="active" href="index.html">{{ __('landing.Home') }}</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">About</a>
+                                    <a href="about.html">{{ __('landing.About') }}</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services </a>
-                                    <ul class="sub-menu">
+                                    <a href="services.html">{{ __('landing.services') }}</a>
+                                    {{-- <ul class="sub-menu">
                                         <li><a href="services.html">Services</a></li>
                                         <li><a href="services-details.html">Services Details</a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="about.html">Pages </a>
                                     <ul class="sub-menu">
                                         <li><a href="pricing.html">Pricing</a></li>
@@ -94,9 +90,9 @@
                                         <li><a href="faq.html">Faq</a></li>
                                         <li><a href="error.html">404</a></li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li>
-                                    <a href="blog.html">News </a>
+                                    <a href="blog.html">{{ __('landing.news') }} </a>
                                     <ul class="sub-menu">
                                         <li><a href="blog.html">News</a></li>
                                         <li><a href="blog-details.html">News Details</a></li>

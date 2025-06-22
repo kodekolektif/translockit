@@ -4,7 +4,7 @@
     Theme Name: NAME
     Author: Theme_Pure
     Support: basictheme400@gmail.com
-    Description:  
+    Description:
     Version: 1.0
 
 -----------------------------------------------------------------------------------
@@ -1149,9 +1149,9 @@ p {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  -webkit-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
+  -webkit-filter: grayscale(50%);
+  -ms-filter: grayscale(50%);
+  -moz-filter: grayscale(50%);
   transform: scale(1);
 }
 

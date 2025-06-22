@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
@@ -13,22 +14,22 @@ class SetLocale
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         $locale = $request->route('locale');
 
-        if (in_array($locale, ['en', 'id'])) {
-            // Set Laravel locale
+        if (in_array($locale, ['en', 'es'])) {
             app()->setLocale($locale);
 
-            // Optional: Set PHP locale - map to full locale code
-            $phpLocale = [
+            $phpLocaleMap = [
                 'en' => 'en_US.UTF-8',
-                'id' => 'id_ID.UTF-8'
+                'es' => 'es_ES.UTF-8',
             ];
 
-            // ✅ THIS is the correct line
-            setlocale(LC_ALL, $phpLocale[$locale]);
+            if (isset($phpLocaleMap[$locale])) {
+                // 👇 THIS LINE MUST HAVE LC_ALL, not $request
+                \setlocale(LC_ALL, $phpLocaleMap[$locale]);
+            }
         }
 
         return $next($request);
