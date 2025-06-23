@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -10,14 +11,11 @@ class LandingController extends Controller
     {
         $locale = request()->segment(1);
 
-        $services = $this->getServices($locale);
-        $testimonials = $this->getTestimonials($locale);
+        $data['services']       = $this->getServices($locale);
+        $data['testimonials']   = $this->getTestimonials($locale);
+        $data['articles']       = $this->getArticle($locale);
 
-        return view('index', [
-            'locale' => $locale,
-            'services' => $services,
-            'testimonials' => $testimonials,
-        ]);
+        return view('index', $data);
     }
 
     public function getServices($lang)
@@ -37,5 +35,18 @@ class LandingController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
         return $testimonials;
+    }
+
+    public function getArticle($lang)
+    {
+        return Article::where('is_published',true)
+            ->where('lang',$lang)
+            ->orderBy('published_at','desc')
+            ->limit(6)
+            ->get();
+    }
+
+    public function getDetailArticle($lang,$slug){
+        dd($lang,$slug);
     }
 }

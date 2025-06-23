@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\ServiceResource\Pages;
+namespace App\Filament\Resources\ArticleResource\Pages;
 
-use App\Filament\Resources\ServiceResource;
-use App\Models\Service;
+use App\Filament\Resources\ArticleResource;
+use App\Models\Article;
+use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -11,45 +12,49 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class CreateService extends CreateRecord
+class CreateArticle extends CreateRecord
 {
-    protected static string $resource = ServiceResource::class;
+    protected static string $resource = ArticleResource::class;
 
-    /**
-     * Override the default creation logic to handle multiple records.
-     */
     protected function handleRecordCreation(array $data): Model
     {
+
         return DB::transaction(function () use ($data) {
             $uniqueId = Str::uuid()->toString();
 
-            $iconPath = $data['icon'] ?? null;
-            if (isset($data['icon']) && $data['icon'] instanceof TemporaryUploadedFile) {
-                // 1. Simpan file seperti biasa, ini akan mengembalikan 'service-icons/namafile.png'
-                $fullPath = $data['icon']->store('service-icons', 'public');
+            $thumbnailPath = $data['thumbnail'] ?? null;
+            if (isset($data['thumbnail']) && $data['thumbnail'] instanceof TemporaryUploadedFile) {
+                // 1. Simpan file seperti biasa, ini akan mengembalikan 'service-thumbnails/namafile.png'
+                $fullPath = $data['thumbnail']->store('thumbnails', 'public');
 
                 // 2. Ambil HANYA nama filenya saja dari path lengkap tersebut
-                $iconPath = basename($fullPath); // Hasilnya: 'namafile.png'
+                $thumbnailPath = basename($fullPath); // Hasilnya: 'namafile.png'
             }
 
             $primaryRecord = null;
 
             foreach (['en', 'es'] as $lang) {
                 // If the language data is not provided, skip to the next iteration
-                if (!isset($data['title'][$lang]) || !isset($data['description'][$lang])) {
+                if (!isset($data['title'][$lang]) || !isset($data['content'][$lang])) {
                     continue;
                 }
-                $service = Service::create([
+                $article = Article::create([
                     'lang'        => $lang,
                     'unique_id'   => $uniqueId,
-                    'icon'        => $iconPath,
-                    'title'       => $data['title'][$lang] ?? null,
-                    'description' => $data['description'][$lang] ?? null,
-                    'is_active'   => $data['is_active'] ?? true,
+                    'slug'        => Str::slug($data['title'][$lang] ?? '', '-'),
+                    'thumbnail'   => $thumbnailPath,
+                    'title'       => $data['title'][$lang],
+                    'content'     => $data['content'][$lang],
+                    'is_published'=> $data['is_published'] ?? false,
+                    'category'    => $data['category']??null,
+                    'tags'        => $data['tags'] ?? [],
+                    'views'       => 0, // Default value
+                    'likes'       => 0, // Default value
+                    'published_at'=> $data['is_published'] ? now() : null,
                 ]);
 
                 if (is_null($primaryRecord)) {
-                    $primaryRecord = $service;
+                    $primaryRecord = $article;
                 }
             }
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LandingController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -16,9 +18,11 @@ Route::prefix('{locale}')
     ->middleware(SetLocale::class) // Middleware untuk mengatur locale
     ->group(function () {
         // Halaman utama sekarang bisa diakses melalui /en atau /es
-        Route::get('/', [App\Http\Controllers\LandingController::class, 'index'])->name('landing');
+        Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+        Route::get('/article/{slug}',[LandingController::class,'getDetailArticle'])->name('article.detail');
 
         // Halaman lain
-        Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('about');
+        Route::get('/about', [AboutController::class, 'index'])->name('about');
         // ... tambahkan route lain di sini
 });

@@ -117,12 +117,12 @@ class EditService extends EditRecord
             'icon' => $recordModel->icon,
             'is_active' => $recordModel->is_active,
             'title' => [
-                'en' => $recordModel->title,
-                'es' => $sibling?->title,
+                'en' => $recordModel->title ?? '',
+                'es' => $sibling?->title ?? '',
             ],
             'description' => [
-                'en' => $recordModel->description,
-                'es' => $sibling?->description,
+                'en' => $recordModel->description ?? '',
+                'es' => $sibling?->description ?? '',
             ],
         ];
 
