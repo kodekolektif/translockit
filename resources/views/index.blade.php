@@ -6,11 +6,12 @@
 
     $settings = new \App\Settings\AppSettings();
     $favicon = $settings->favicon;
+    $APPtitle = $settings->title;
 
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $title??'Title this' }}</title>
+    <title>{{ $APPtitle?? $APPtitle }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
