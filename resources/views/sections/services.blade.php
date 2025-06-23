@@ -8,23 +8,23 @@
                 </div>
             </div>
         </div>
-        <div class="row text-center">
+        <div class="row justify-content-center text-center">
             @foreach ($services as $service)
-            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                <div class="mfbox ">
-                    <div class="mf-shape"></div>
-                    <div class="mfbox__icon mb-15">
-                        {{-- <i class="flaticon-technical-support"></i> --}}
-                        <img src="{{ Storage::url($service->icon) }}" alt="icon" class="img-fluid">
-                    </div>
-                    <div class="mfbox__text">
-                        <h3 class="mf-title">{{ $service->title }}</h3>
-                        <p>{{ $service->description }}</p>
-                    </div>
-                    <div class="mf-btn">
-                        <a class="squire-btn" href="services-details.html"><i class="fal fa-angle-right"></i></a>
-                    </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30 d-flex justify-content-center">
+            <div class="mfbox ">
+                <div class="mf-shape"></div>
+                <div class="mfbox__icon mb-15">
+                {{-- <i class="flaticon-technical-support"></i> --}}
+                <img src="{{ Storage::url($service->icon) }}" alt="icon" class="img-fluid">
                 </div>
+                <div class="mfbox__text">
+                <h3 class="mf-title">{{ $service->title }}</h3>
+                <p>{{ $service->description }}</p>
+                </div>
+                <div class="mf-btn">
+                <a class="squire-btn" href="services-details.html"><i class="fal fa-angle-right"></i></a>
+                </div>
+            </div>
             </div>
             @endforeach
         </div>
