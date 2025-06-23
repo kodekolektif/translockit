@@ -1,3 +1,10 @@
+@php
+
+$settings = new \App\Settings\AppSettings();
+$logo = $settings->logo;
+
+@endphp
+
 <footer data-background="assets/img/bg/footer-bg.jpg" class="footer-2 pt-95 position-relative">
     <div class="common-shape-wrapper wow slideInRight animated" data-wow-delay="0ms" data-wow-duration="1500ms">
         <div class="common-shape-inner wow slideInRight animated" data-wow-delay="0ms" data-wow-duration="1500ms">
@@ -9,7 +16,7 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="widget mb-30">
                         <div class="footer-logo mb-25">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" class="img-fluid"
+                            <a href="index.html"><img src="{{ Storage::url($logo) }}" class="img-fluid"
                                     alt="footer-logo"></a>
                         </div>
                         <p class="mb-20 pr-35">There are many vari of pass of lorem ipsum availab but the majority
@@ -68,15 +75,15 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="copyright">
-                            <span>Copyright ©2021 Themepure. All Rights Reserved</span>
+                            <span>Copyright ©{{ date('Y') }} {{ config('app.name') }}. {{ __('landing.All rights reserved.') }}</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="privacy-text text-md-end">
                             <ul>
                                 <li>
-                                    <a href="contact.html">Terms & Condition</a>
-                                    <a href="contact.html">Privacy Policy</a>
+                                    <a href="#">{{ __('landing.Terms & Conditions') }}</a>
+                                    <a href="#">{{ __('landing.Privacy Policy') }}</a>
                                 </li>
                             </ul>
                         </div>

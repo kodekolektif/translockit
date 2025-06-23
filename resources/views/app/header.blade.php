@@ -1,3 +1,9 @@
+@php
+
+$settings = new \App\Settings\AppSettings();
+$logo = $settings->logo;
+
+@endphp
 <header class="header-light">
     <div class="top-bar d-none d-md-block pt-15 pb-15">
         <div class="container">
@@ -57,7 +63,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-2 col-md-6 col-6">
                     <div class="logo logo-border">
-                        <a href="index.html"><img src="assets/img/logo/logo-dark.png" alt="logo"></a>
+                        <a href="index.html"><img src="{{ Storage::url($logo) }}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-10 col-md-6 col-6 d-flex justify-content-end">
@@ -65,30 +71,30 @@
                         <nav id="mobile-menu">
                             <ul>
                                 <li>
-                                    <a class="active" href="index.html">{{ __('landing.Home') }}</a>
+                                    <a class="active" href="#">{{ __('landing.Home') }}</a>
                                 </li>
                                 <li>
-                                    <a href="about.html">{{ __('landing.About Us') }}</a>
+                                    <a href="#">{{ __('landing.About Us') }}</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">{{ __('landing.Services') }}</a>
+                                    <a href="#">{{ __('landing.Services') }}</a>
                                 </li>
                                 {{-- <li>
-                                    <a href="services.html">{{ __('landing.Mobile Apps') }}</a>
+                                    <a href="#">{{ __('landing.Mobile Apps') }}</a>
                                 </li>
                                 <li>
-                                    <a href="services.html">{{ __('landing.Software') }}</a>
+                                    <a href="#">{{ __('landing.Software') }}</a>
                                 </li> --}}
                                 {{-- <li>
-                                    <a href="services.html">{{ __('landing.Our Partners') }}</a>
+                                    <a href="#">{{ __('landing.Our Partners') }}</a>
                                 </li> --}}
                                 {{-- <li>
-                                    <a href="services.html">{{ __('landing.We Are Hiring!') }}</a>
+                                    <a href="#">{{ __('landing.Our Partners') }}</a>We Are Hiring!') }}</a>
                                 </li> --}}
                                 <li>
-                                    <a href="blog.html">{{ __('landing.News') }} </a>
+                                    <a href="#">{{ __('landing.News') }} </a>
                                 </li>
-                                <li><a href="contact.html">{{ __('landing.Contact') }}</a></li>
+                                <li><a href="#">{{ __('landing.Contact') }}</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -123,7 +129,7 @@
         </div>
         <div class="sidebar__content">
             <div class="logo mb-40">
-                <a href="index.html">
+                <a href="#">
                     <img src="assets/img/logo/logo-dark.png" alt="logo">
                 </a>
             </div>

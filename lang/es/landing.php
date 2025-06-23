@@ -29,4 +29,15 @@ return [
     'Software' => 'Software',
     'Our Partners' => 'Nuestros Socios',
     'We Are Hiring!' => '¡Estamos contratando!',
+
+    'Terms & Conditions' => 'Términos y Condiciones',
+    'Privacy Policy' => 'Política de Privacidad',
+    'All rights reserved.' => 'Todos los derechos reservados.',
+
+    'thinking' => 'Pensando',
+    'knowledge is best investment' => 'El conocimiento es la mejor inversión',
+    'how can we help your business?' => '¿Cómo podemos ayudar a su negocio?',
+    'what are the advantages of our services?' => '¿Cuáles son las ventajas de nuestros servicios?',
+    'let\'s talk about your project' => 'Hablemos sobre su proyecto',
+    'contact us' => 'Contáctenos',
 ];

@@ -1,20 +1,19 @@
 <div class="faq-area pos-rel black-bg">
-    <div class="faq-bg" data-background="assets/img/bg/faq-1.jpg"></div>
+    <div class="faq-bg" data-background="{{ asset('assets/img/bg/bg-slider_TranslockIt_5.jpg') }}"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-6 offset-xl-6 col-lg-6 offset-lg-6">
                 <div class="faq-content pl-70 pt-120 pb-120">
                     <div class="sec-wrapper mb-30">
-                        <h5>Thinking</h5>
-                        <h2 class="section-title text-white">Knowledge is
-                            the best investment.</h2>
+                        <h5>{{ __('landing.thinking') }}</h5>
+                        <h2 class="section-title text-white">{{ __('landing.knowledge is best investment') }}</h2>
                     </div>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    How can we help your business?
+                                    {{ __('landing.how can we help your business?') }}
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
@@ -31,7 +30,7 @@
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    What are the advantages of Binifox?
+                                    {{ __('landing.what are the advantages of our services?') }}
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -48,7 +47,7 @@
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Let’s find an office near you?
+                                    {{ __('landing.let\'s talk about your project') }}
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
@@ -66,7 +65,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree1" aria-expanded="false"
                                     aria-controls="collapseThree1">
-                                    Binifox WordPress theme for business?
+                                    {{ __('landing.Translock IT for business?') }}
                                 </button>
                             </h2>
                             <div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1"

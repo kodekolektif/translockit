@@ -31,4 +31,16 @@ return [
     'Software' => 'Software',
     'Our Partners' => 'Our Partners',
     'We Are Hiring!' => 'We Are Hiring!',
+
+    'Terms & Conditions' => 'Terms & Conditions',
+    'Privacy Policy' => 'Privacy Policy',
+    'All rights reserved.' => 'All rights reserved.',
+
+    'thinking' => 'Thinking',
+    'knowledge is best investment' => 'Knowledge is the best investment',
+    'how can we help your business?' => 'How can we help your business?',
+    'what are the advantages of our services?' => 'What are the advantages of our services?',
+    'let\'s talk about your project' => 'Let\'s talk about your project',
+    'contact us' => 'Contact Us',
+
 ];
