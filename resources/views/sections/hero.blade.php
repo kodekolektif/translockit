@@ -11,19 +11,18 @@
                         <div class="col-12 position-relative">
                             <div class="slider-circle-shape slider-circle-shape-2"></div>
                             <div class="slider-text slider-text-2 z-index">
-                                <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">welcome to
-                                    Binifox Pro agency</span>
-                                <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">Plan Create
-                                    <br> Grow.
+                                <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">{{ __('landing.welcome to translock it') }}</span>
+                                <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">
+                                    {{ __('landing.moving forward technologies') }}
                                 </h2>
-                                <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
+                                {{-- <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
                                     data-delay="0.7s">
                                     <a href="about.html" class="tp-btn">Discover More</a>
                                     <a class="play-btn" data-fancybox=""
                                         href="https://www.youtube.com/watch?v=eXQgPCsd83c">
                                         <i class="fas fa-play"></i>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -39,19 +38,18 @@
                         <div class="col-12 position-relative">
                             <div class="slider-circle-shape slider-circle-shape-2"></div>
                             <div class="slider-text slider-text-2 z-index">
-                                <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">welcome to
-                                    Binifox Pro agency</span>
-                                <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">Smart Think
-                                    <br> So Easy.
+                                <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">{{ __('landing.welcome to translock it') }}</span>
+                                <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">
+                                    {{ __('landing.fueling business success together') }}
                                 </h2>
-                                <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
+                                {{-- <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
                                     data-delay="0.7s">
                                     <a href="about.html" class="tp-btn">Discover More</a>
                                     <a class="play-btn" data-fancybox=""
                                         href="https://www.youtube.com/watch?v=eXQgPCsd83c">
                                         <i class="fas fa-play"></i>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

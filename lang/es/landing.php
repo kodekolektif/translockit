@@ -3,6 +3,7 @@
 return [
     'Home' => 'Inicio',
     'About' => 'Acerca de',
+    'About Us' => 'Sobre nosotros',
     'Services' => 'Servicios',
     'Contact' => 'Contacto',
     'News' => 'Noticias',
@@ -14,4 +15,18 @@ return [
     'Forgot Password?' => '¿Olvidó su contraseña?',
     'Feature Services' => 'Servicios destacados',
     'explore our services' => 'Explora nuestros servicios',
+    'welcome to translock it' => 'Bienvenido a Translock IT',
+    'moving forward technologies' => 'Mover tecnologías hacia adelante',
+    'fueling business success together' => 'Impulsando el éxito empresarial juntos',
+    'top-notch technology consulting firm' => 'Firma de consultoría tecnológica de primer nivel',
+    'high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.' => 'Alta especialización en el desarrollo de servicios tecnológicos personalizados, Inteligencia Artificial (IA), soluciones integrales de software IT y aplicaciones móviles personalizadas.',
+    'Customized mobile applications.' => 'Aplicaciones móviles personalizadas.',
+    'Artificial Intelligence (AI).' => 'Inteligencia Artificial (IA).',
+    'Learn More' => 'Aprender más',
+
+    'Our Services' => 'Nuestros Servicios',
+    'Mobile Apps' => 'Aplicaciones Móviles',
+    'Software' => 'Software',
+    'Our Partners' => 'Nuestros Socios',
+    'We Are Hiring!' => '¡Estamos contratando!',
 ];
