@@ -1,11 +1,14 @@
 @php
 
 $settings = new \App\Settings\AppSettings();
-$logo = $settings->logo;
+$logodark = $settings->logo_dark;
+
+$company_settings = new \App\Settings\CompanySetting();
+
 
 @endphp
 
-<footer data-background="assets/img/bg/footer-bg.jpg" class="footer-2 pt-95 position-relative">
+<footer data-background="{{ asset('assets/img/bg/footer-bg.jpg') }}" class="footer-2 pt-95 position-relative">
     <div class="common-shape-wrapper wow slideInRight animated" data-wow-delay="0ms" data-wow-duration="1500ms">
         <div class="common-shape-inner wow slideInRight animated" data-wow-delay="0ms" data-wow-duration="1500ms">
         </div>
@@ -16,11 +19,10 @@ $logo = $settings->logo;
                 <div class="col-lg-4 col-sm-6">
                     <div class="widget mb-30">
                         <div class="footer-logo mb-25">
-                            <a href="index.html"><img src="{{ Storage::url($logo) }}" class="img-fluid"
+                            <a href="{{ url('/') }}"><img src="{{ Storage::url($logodark) }}" class="img-fluid"
                                     alt="footer-logo"></a>
                         </div>
-                        <p class="mb-20 pr-35">There are many vari of pass of lorem ipsum availab but the majority
-                            have suffered in some form by injected humour or words.</p>
+                        <p class="mb-20 pr-35">{{ $settings->description }}</p>
                         <div class="footer-social footer-social-2">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -33,11 +35,11 @@ $logo = $settings->logo;
                     <div class="widget mb-30">
                         <h4 class="widget-title mb-35">Links</h4>
                         <ul>
-                            <li><a href="service.html">Our Services</a></li>
-                            <li><a href="about.html">Meet Our Team</a></li>
-                            <li><a href="project.html">Our Portfolio</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="contact.html">Help</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Meet Our Team</a></li>
+                            <li><a href="#">Our Portfolio</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Help</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,12 +47,24 @@ $logo = $settings->logo;
                     <div class="widget widget-contact mb-30">
                         <h4 class="widget-title mb-35">Contact</h4>
                         <ul>
-                            <li class="pb-10"><a target="_blank"
-                                    href="https://www.google.com/maps/place/Dhaka/@23.7806207,90.3492859,12z/data=!3m1!4b1!4m5!3m4!1s0x3755b8b087026b81:0x8fa563bbdd5904c2!8m2!3d23.8104753!4d90.4119873">86
-                                    Road Broklyn Street, 600 <br>New York, USA</a></li>
-                            <li><i class="fal fa-envelope-open"></i><a
-                                    href="mailto:needhelp@company.com">needhelp@company.com</a></li>
-                            <li><i class="fal fa-phone-alt"></i><a href="tel:926668880000">92 666 888 0000</a></li>
+                            <li class="pb-10 d-flex">
+                                <div class="me-2">
+                                    <i class="fal fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <a target="_blank" href="{{ $company_settings->google_map_url }}">
+                                        {{ $company_settings->address }}
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="fal fa-envelope-open me-2"></i>
+                                <a href="mailto:{{ $company_settings->email }}">{{ $company_settings->email }}</a>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="fal fa-phone-alt me-2"></i>
+                                <a href="tel:{{ $company_settings->phone }}">{{ $company_settings->phone }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

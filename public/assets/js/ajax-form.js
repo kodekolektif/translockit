@@ -23,18 +23,19 @@ $(function() {
 		.done(function(response) {
 			// Make sure that the formMessages div has the 'success' class.
 			$(formMessages).removeClass('error');
-			$(formMessages).addClass('success');
+			$(formMessages).addClass('text-success');
 
 			// Set the message text.
-			$(formMessages).text(response);
-
+			$(formMessages).text(response.responseText || 'Your message has been sent successfully!');
 			// Clear the form.
 			$('#contact-form input,#contact-form textarea').val('');
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.
-			$(formMessages).removeClass('success');
-			$(formMessages).addClass('error');
+			$(formMessages).removeClass('text-success');
+			$(formMessages).addClass('text-danger');
+
+            console.log(data);
 
 			// Set the message text.
 			if (data.responseText !== '') {

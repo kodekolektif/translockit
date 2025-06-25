@@ -3,6 +3,8 @@
 $settings = new \App\Settings\AppSettings();
 $logo = $settings->logo;
 
+$company_settings = new \App\Settings\CompanySetting();
+
 @endphp
 <header class="header-light">
     <div class="top-bar d-none d-md-block pt-15 pb-15">
@@ -12,12 +14,12 @@ $logo = $settings->logo;
                     <div class="header-info">
                         <span class="header-address d-none d-lg-inline"><i class="fa fa-map-marker-alt"></i> <a
                                 target="_blank"
-                                href="https://www.google.com/maps/place/Dhaka/@23.7806207,90.3492859,12z/data=!3m1!4b1!4m5!3m4!1s0x3755b8b087026b81:0x8fa563bbdd5904c2!8m2!3d23.8104753!4d90.4119873">58
-                                Howard Street #2 San Francisco</a> </span>
-                        <span class="header-phone"><i class="fas fa-phone"></i> <a href="callto:+1-800-833-9780">+1
-                                800 833 9780</a></span>
+                                href="{{ $company_settings->google_map_url }}">
+                                {{ Str::limit($company_settings->address, 30) }}</a>
+                            </span>
+                        <span class="header-phone"><i class="fas fa-phone"></i> <a href="callto:{{ $company_settings->phone }}">{{ $company_settings->phone }}</a></span>
                         <span class="header-email d-none d-xl-inline"><i class="fas fa-envelope"></i> <a
-                                href="mailto:info@example.com">info@example.com</a></span>
+                                href="mailto:{{ $company_settings->email }}">{{ $company_settings->email }}</a></span>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-5 text-end d-flex justify-content-end align-items-center gap-3">
@@ -63,7 +65,7 @@ $logo = $settings->logo;
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-2 col-md-6 col-6">
                     <div class="logo logo-border">
-                        <a href="index.html"><img src="{{ Storage::url($logo) }}" alt="logo"></a>
+                        <a href="{{ url('/') }}"><img src="{{ Storage::url($logo) }}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-10 col-md-6 col-6 d-flex justify-content-end">
@@ -94,7 +96,7 @@ $logo = $settings->logo;
                                 <li>
                                     <a href="#">{{ __('landing.News') }} </a>
                                 </li>
-                                <li><a href="#">{{ __('landing.Contact') }}</a></li>
+                                <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -130,7 +132,7 @@ $logo = $settings->logo;
         <div class="sidebar__content">
             <div class="logo mb-40">
                 <a href="#">
-                    <img src="assets/img/logo/logo-dark.png" alt="logo">
+                    <img src="{{ Storage::url((new \App\Settings\AppSettings())->logo_dark) }}" alt="logo">
                 </a>
             </div>
             <div class="mobile-menu fix"></div>

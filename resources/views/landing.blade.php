@@ -1,64 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
+@extends('app.index')
 
-<head>
-    @php
-
-    $settings = new \App\Settings\AppSettings();
-    $favicon = $settings->favicon;
-    $APPtitle = $settings->title;
-
-    @endphp
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $APPtitle?? $APPtitle }}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($favicon) }}">
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/preloader.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/meanmenu.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/animate.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/swiper-bundle.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/backToTop.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/fontAwesome5Pro.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/flaticon.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/elegenticons.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/default.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/style.css">
-</head>
-
-<body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-      <![endif]-->
-
-    <!-- Add your site or application content here -->
-
-    <!-- pre loader area start -->
-    {{-- <div id="loading">
-        <div id="loading-center">
-            <div id="loading-center-absolute">
-                <div class="loading-icon text-center d-sm-flex align-items-center">
-                    <img class="loading-logo mr-10" src="{{ asset('assets/img/preloader/preloader-icon.png') }}" alt="">
-                    <img src="{{ asset('assets/img/preloader/preloader-logo.png') }}" alt="">
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- pre loader area end -->
-
-    <!-- header  -->
-    @include('app.header')
-    <!-- header end -->
-
-    <main>
-
-        <!-- slider area start -->
+@section('content')
+     <!-- slider area start -->
         @include('sections.hero')
         <!-- slider area end -->
 
@@ -208,73 +151,19 @@
         @include('sections.testimonials')
         <!-- review area end -->
 
+        @include('sections.brands')
+
         <!-- START PORTFOLIO DESIGN AREA -->
         @include('sections.project')
         <!-- / END PORTFOLIO DESIGN AREA -->
-
-        <!-- counter -->
-        {{-- <section class="cta-area pos-rel black-bg pt-120 pb-120" data-overlay="dark" data-opacity="7">
-            <div class="fact-bg slider-bg" data-background="assets/img/slider/slider2.jpg"></div>
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-xl-8 col-lg-10">
-                        <div class="single-couter counter-box mb-30 z-index d-none">
-                            <div class="fact-icon">
-                                <i class="flaticon-airplane"></i>
-                            </div>
-                        </div>
-                        <div class="sec-wrapper z-index">
-                            <h5>Get to Know Binifox</h5>
-                            <h2 class="section-title text-white">Do you have any question? Feel free to contact us.</h2>
-                            <div class="ab-btn mt-30">
-                                <a href="about.html" class="tp-btn">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-        <!-- counter -->
 
         <!-- blog area start -->
         @include('sections.article')
         <!-- blog area end -->
 
-    </main>
-
-    <!-- footer area start here -->
-    @include('app.footer')
-    <!-- footer area end here -->
+        <!-- counter -->
+        @include('sections.cta')
+        <!-- counter -->
 
 
-
-    <!-- back to top start -->
-    <div class="progress-wrap">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </div>
-    <!-- back to top end -->
-
-
-    <!-- JS here -->
-    <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
-    <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.fancybox.min.js') }}"></script>
-    <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/js/parallax.min.js') }}"></script>
-    <script src="{{ asset('assets/js/backToTop.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
-    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
-    <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/js/TweenMax.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.wavify.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-</body>
-
-</html>
+@endsection

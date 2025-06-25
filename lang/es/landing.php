@@ -40,4 +40,23 @@ return [
     'what are the advantages of our services?' => '¿Cuáles son las ventajas de nuestros servicios?',
     'let\'s talk about your project' => 'Hablemos sobre su proyecto',
     'contact us' => 'Contáctenos',
+
+    'cta' =>[
+        'Get to Know Translock IT' => 'Conozca Translock IT',
+        'contact' => '¿Tiene alguna pregunta? No dude en contactarnos.',
+        'Get in Touch' => 'Ponte en contacto',
+    ],
+    'contact' => [
+        'keep_in_touch' => 'Mantente en contacto',
+        'lets_work_together' => 'Trabajemos juntos',
+        'call_anytime' => 'Llama en cualquier momento',
+        'send_email' => 'Enviar correo electrónico',
+        'visit_office' => 'Visita nuestra oficina',
+        'your_name' => 'Tu nombre',
+        'email_address' => 'Dirección de correo electrónico',
+        'phone_number' => 'Número de teléfono',
+        'subject' => 'Asunto',
+        'write_message' => 'Escribe tu mensaje',
+    ],
+
 ];

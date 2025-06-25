@@ -12,6 +12,9 @@ Route::get('/', function () {
     return Redirect::to('/en');
 });
 
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.send');
+
+
 // Grup untuk semua halaman yang memiliki prefix bahasa
 Route::prefix('{locale}')
     ->where(['locale' => 'en|es']) // Hanya izinkan 'en' atau 'es'
@@ -22,7 +25,6 @@ Route::prefix('{locale}')
 
         Route::get('/article/{slug}',[LandingController::class,'getDetailArticle'])->name('article.detail');
 
-        // Halaman lain
-        Route::get('/about', [AboutController::class, 'index'])->name('about');
-        // ... tambahkan route lain di sini
+
+        Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 });
