@@ -11,25 +11,25 @@
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $APPtitle?? $APPtitle }}</title>
+    <title>{{ $APPtitle ?? '' }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($favicon) }}">
     <!-- CSS here -->
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/preloader.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/meanmenu.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/animate.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/swiper-bundle.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/backToTop.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/fontAwesome5Pro.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/flaticon.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/elegenticons.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/default.css">
-    <link rel="stylesheet" href="{{ asset('/') }}assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/backToTop.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/fontAwesome5Pro.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/elegenticons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body>
@@ -89,7 +89,7 @@
     <script src="{{ asset('assets/js/parallax.min.js') }}"></script>
     <script src="{{ asset('assets/js/backToTop.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/ajax-form.js') }}"></script>
+    <script src="{{ asset('assets/js/ajax-form.js') }}s"></script>
     <script src="{{ asset('assets/js/wow.min.js') }}"></script>
     <script src="{{ asset('assets/js/imagesloaded.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/js/TweenMax.min.js') }}"></script>

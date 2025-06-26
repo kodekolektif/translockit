@@ -24,7 +24,7 @@ $company_settings = new \App\Settings\CompanySetting();
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-5 text-end d-flex justify-content-end align-items-center gap-3">
                     <!-- Language Dropdown -->
-                    <div class="dropdown">
+                    <div class="dropdown" style="position: static !important;">
                         @php
                         $active_locale = request()->segment(1) ?? 'en'; // Default to 'en' if no segment is found
                         $flags = [
@@ -97,6 +97,7 @@ $company_settings = new \App\Settings\CompanySetting();
                                     <a href="#">{{ __('landing.News') }} </a>
                                 </li>
                                 <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
+
                             </ul>
                         </nav>
                     </div>

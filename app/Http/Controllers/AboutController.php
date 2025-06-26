@@ -13,7 +13,8 @@ class AboutController extends Controller
             ->get();
         return view('about', [
             'about' => $about,
-            'locale' => $locale
+            'locale' => $locale,
+            'title' => __('About Us'),
         ]);
     }
 }
