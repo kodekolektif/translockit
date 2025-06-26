@@ -21,10 +21,10 @@ Route::prefix('{locale}')
     ->middleware(SetLocale::class) // Middleware untuk mengatur locale
     ->group(function () {
         // Halaman utama sekarang bisa diakses melalui /en atau /es
-        Route::get('/', [LandingController::class, 'index'])->name('landing');
+        Route::get('/', [LandingController::class, 'index'])->name('home');
 
         Route::get('/article/{slug}',[LandingController::class,'getDetailArticle'])->name('article.detail');
 
-
+        Route::get('/about', [AboutController::class, 'index'])->name('about');
         Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
 });

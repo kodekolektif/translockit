@@ -58,5 +58,8 @@ return [
         'subject' => 'Asunto',
         'write_message' => 'Escribe tu mensaje',
     ],
+     'about' => [
+        'about_us' => 'Sobre nosotros',
+    ],
 
 ];

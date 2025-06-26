@@ -60,5 +60,8 @@ return [
         'subject' => 'Subject',
         'write_message' => 'Write your message',
     ],
+    'about' => [
+        'about_us' => 'About Us',
+    ],
 
 ];

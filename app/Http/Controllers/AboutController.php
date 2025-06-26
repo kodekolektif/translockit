@@ -8,6 +8,12 @@ class AboutController extends Controller
 {
     public function index($locale = null)
     {
-        return view('about');
+        $about = \App\Models\About::where('lang', $locale ?? app()->getLocale())
+            ->where('is_active', true)
+            ->get();
+        return view('about', [
+            'about' => $about,
+            'locale' => $locale
+        ]);
     }
 }

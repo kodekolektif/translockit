@@ -73,10 +73,10 @@ $company_settings = new \App\Settings\CompanySetting();
                         <nav id="mobile-menu">
                             <ul>
                                 <li>
-                                    <a class="active" href="#">{{ __('landing.Home') }}</a>
+                                    <a class="active" href="{{ url('/') }}">{{ __('landing.Home') }}</a>
                                 </li>
                                 <li>
-                                    <a href="#">{{ __('landing.About Us') }}</a>
+                                    <a href="{{ route('about', app()->getLocale()) }}">{{ __('landing.About Us') }}</a>
                                 </li>
                                 <li>
                                     <a href="#">{{ __('landing.Services') }}</a>
