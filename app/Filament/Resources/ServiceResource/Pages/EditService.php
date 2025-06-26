@@ -66,7 +66,7 @@ class EditService extends EditRecord
                             $descriptionEn = $get('description.en');
 
                             try {
-                                $translator = new \App\Libs\Gemini(app(\App\Settings\AppSettings::class));
+                                $translator = new \App\Libs\GeminiAI(app(\App\Settings\AppSettings::class));
                                 $titleEs = $translator->translate($titleEn, 'es');
                                 $descriptionEs = $translator->translate($descriptionEn, 'es');
                                 $set('title.es', $titleEs);

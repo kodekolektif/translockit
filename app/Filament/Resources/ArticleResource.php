@@ -28,7 +28,9 @@ class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -57,7 +59,7 @@ class ArticleResource extends Resource
                                 $content = $get('content.en');
 
                                 // Call your Gemini class
-                                $translator = new \App\Libs\Gemini(app(\App\Settings\AppSettings::class));
+                                $translator = new \App\Libs\GeminiAI(app(\App\Settings\AppSettings::class));
                                 $titleEs = $translator->translate($titleEn, 'es');
                                 $contentEs = $translator->translate($content, 'es');
 

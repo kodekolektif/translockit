@@ -83,10 +83,10 @@ $company_settings = new \App\Settings\CompanySetting();
                                 </li>
                                 {{-- <li>
                                     <a href="#">{{ __('landing.Mobile Apps') }}</a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="#">{{ __('landing.Software') }}</a>
-                                </li> --}}
+                                </li>
                                 {{-- <li>
                                     <a href="#">{{ __('landing.Our Partners') }}</a>
                                 </li> --}}

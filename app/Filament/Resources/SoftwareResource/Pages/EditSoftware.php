@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\AboutResource\Pages;
+namespace App\Filament\Resources\SoftwareResource\Pages;
 
-use App\Filament\Resources\AboutResource;
+use App\Filament\Resources\SoftwareResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Database\Eloquent\Model;
@@ -10,17 +10,29 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class EditAbout extends EditRecord
+class EditSoftware extends EditRecord
 {
-    protected static string $resource = AboutResource::class;
+    protected static string $resource = SoftwareResource::class;
 
-    protected function getHeaderActions(): array
+     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()->before(function ($action, Model $record) {
+                // Hapus record sibling (ES) sebelum record utama (EN) dihapus
+                $record->sibling()->delete();
+                // Hapus file ikon jika ada
+                if ($record->icon) {
+                    Storage::disk('public')->delete($record->icon);
+                }
+            }),
         ];
     }
 
+
+
+    /**
+     * PERBAIKAN 1: Memuat data dari kedua record (EN & ES) ke dalam form.
+     */
     public function mount(int | string $record): void
     {
         parent::mount($record);
@@ -29,12 +41,9 @@ class EditAbout extends EditRecord
         $sibling = $recordModel->sibling()->first();
 
         $formData = [
-            'image' => $recordModel->image,
+            'logo' => $recordModel->logo,
+            'name' => $recordModel->name,
             'is_active' => $recordModel->is_active,
-            'title' => [
-                'en' => $recordModel->title ?? '',
-                'es' => $sibling?->title ?? '',
-            ],
             'description' => [
                 'en' => $recordModel->description ?? '',
                 'es' => $sibling?->description ?? '',
@@ -51,32 +60,32 @@ class EditAbout extends EditRecord
     {
         return DB::transaction(function () use ($record, $data) {
             $sibling = $record->sibling()->first();
-            $imageFileName = $record->image; // Default ke nama file yang sudah ada
+            $logoFileName = $record->logo; // Default ke nama file yang sudah ada
 
             // ✅ LOGIKA BARU DI SINI
-            if (isset($data['image']) && $data['image'] instanceof TemporaryUploadedFile) {
-                if ($record->image) {
+            if (isset($data['logo']) && $data['logo'] instanceof TemporaryUploadedFile) {
+                if ($record->logo) {
                     // Hapus ikon lama menggunakan path lengkap
-                    Storage::disk('public')->delete('about-images/' . $record->image);
+                    Storage::disk('public')->delete('product/' . $record->logo);
                 }
-                $fullPath = $data['image']->store('about-images', 'public');
-                $imageFileName = basename($fullPath);
+                $fullPath = $data['logo']->store('product', 'public');
+                $logoFileName = basename($fullPath);
             }
 
             // Update record utama (EN)
             $record->update([
-                'image' => $imageFileName,
+                'logo' => $logoFileName,
                 'is_active' => $data['is_active'],
-                'title' => $data['title']['en'],
+                'name' => $data['name'],
                 'description' => $data['description']['en'],
             ]);
 
             // Update record sibling (ES)
             if ($sibling) {
                 $sibling->update([
-                    'image' => $imageFileName, // Gunakan path ikon yang sama
+                    'logo' => $logoFileName, // Gunakan path ikon yang sama
                     'is_active' => $data['is_active'], // Gunakan status aktif yang sama
-                    'title' => $data['title']['es'],
+                    'name' => $data['name'],
                     'description' => $data['description']['es'],
                 ]);
             }

@@ -2,14 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ServiceResource\Pages;
-use App\Filament\Resources\ServiceResource\RelationManagers;
+use App\Filament\Resources\SoftwareResource\Pages;
+use App\Filament\Resources\SoftwareResource\RelationManagers;
+use App\Models\Product;
 use App\Models\Service;
+use App\Services\Translation as TranslatorService;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -22,51 +23,46 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class ServiceResource extends Resource
+class SoftwareResource extends Resource
 {
-    protected static ?string $model = Service::class;
+    protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
-    protected static ?string $navigationGroup = 'Content Management';
-    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static ?string $navigationLabel = 'Software';
+  protected static ?string $navigationGroup = 'Content Management';
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                FileUpload::make('icon') // The name 'icon' MUST match your code
+                FileUpload::make('logo') // The name 'icon' MUST match your code
                     ->image() // Optional: for image previews and validation
                     ->disk('public') // Tell Filament to use the public disk
                     ->required() // Or ->nullable() if the icon is not required
                     ->columnSpanFull(),
+                TextInput::make('name')
+                    ->label('Name')
+                    ->required()
+                    ->columnSpanFull()
+                    ->maxLength(255),
 
                 Section::make('English (EN)')
                     ->collapsible()
                     ->schema([
-                        TextInput::make('title.en')
-                            ->label('Title (EN)')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('description.en')
-                            ->label('Description (EN)')
-                            ->maxLength(500),
+                        RichEditor::make('description.en')
+                            ->label('Description (EN)'),
                     ]),
                 Forms\Components\Actions::make([
                     Forms\Components\Actions\Action::make('Make Spanish Translation')
                         ->action(function (Forms\Get $get, Forms\Set $set) {
-                            $titleEn = $get('title.en');
                             $descriptionEn = $get('description.en');
 
                             // Call your Gemini class
-                            $translator = new \App\Libs\GeminiAI(app(\App\Settings\AppSettings::class));
-                            $titleEs = $translator->translate($titleEn, 'es');
+                            $translator = new TranslatorService();
                             $descriptionEs = $translator->translate($descriptionEn, 'es');
 
-                            // Set translated fields
-                            $set('title.es', $titleEs);
                             $set('description.es', $descriptionEs);
                         })
                         ->icon('heroicon-o-language'),
@@ -74,22 +70,16 @@ class ServiceResource extends Resource
                 Section::make('Spanish (ES)')
                     ->collapsible()
                     ->schema([
-                        TextInput::make('title.es')
-                            ->label('Title (ES)')
-                            ->required()
-                            ->maxLength(255),
-                        TextInput::make('description.es')
-                            ->label('Description (ES)')
-                            ->maxLength(500),
+                        RichEditor::make('description.es')
+                            ->label('Description (ES)'),
                     ]),
 
                 Toggle::make('is_active')
-                    ->label('Is Active')
-                    ->default(true),
+                        ->label('Is Active')
+                        ->default(true),
+
                 ]);
-
     }
-
 
     public static function table(Table $table): Table
     {
@@ -98,14 +88,14 @@ class ServiceResource extends Resource
                 $query->where('lang', 'en')->with('sibling');
             })
             ->columns([
-                ImageColumn::make('icon')
+                ImageColumn::make('logo')
                     ->disk('public')
-                    ->label('Icon'),
+                    ->label('Logo'),
 
-                TextColumn::make('title')
-                    ->label('Title')
+                TextColumn::make('name')
+                    ->label('Name')
                     ->limit(30)
-                    ->tooltip(fn (Model $record): string => $record->sibling?->title)
+                    ->tooltip(fn (Model $record): string => $record->sibling?->name)
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('description')
@@ -117,7 +107,7 @@ class ServiceResource extends Resource
                 ToggleColumn::make('is_active')
                     ->label('Active')
                     ->updateStateUsing(function (Model $record, $state): void {
-                        Service::where('unique_id', $record->unique_id)
+                        Product::where('unique_id', $record->unique_id)
                                ->update(['is_active' => $state]);
                     }),
 
@@ -150,9 +140,9 @@ class ServiceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListServices::route('/'),
-            'create' => Pages\CreateService::route('/create'),
-            'edit' => Pages\EditService::route('/{record}/edit'),
+            'index' => Pages\ListSoftware::route('/'),
+            'create' => Pages\CreateSoftware::route('/create'),
+            'edit' => Pages\EditSoftware::route('/{record}/edit'),
         ];
     }
 }

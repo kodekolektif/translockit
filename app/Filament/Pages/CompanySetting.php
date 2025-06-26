@@ -11,6 +11,8 @@ use Illuminate\Support\HtmlString;
 class CompanySetting extends SettingsPage
 {
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static ?string $navigationGroup = 'Settings';
+    protected static ?int $navigationSort = 99;
 
     protected static string $settings = \App\Settings\CompanySetting::class;
 

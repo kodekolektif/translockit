@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AboutResource\Pages;
 use App\Filament\Resources\AboutResource\RelationManagers;
 use App\Models\About;
+use App\Services\Translation as TranslationServices;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -16,6 +17,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +28,9 @@ class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
+    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -55,7 +59,7 @@ class AboutResource extends Resource
                             $descriptionEn = $get('description.en');
 
                             // Call your Gemini class
-                            $translator = new \App\Libs\Gemini(app(\App\Settings\AppSettings::class));
+                            $translator = new TranslationServices();
                             $titleEs = $translator->translate($titleEn, 'es');
                             $descriptionEs = $translator->translate($descriptionEn, 'es');
 
@@ -99,6 +103,13 @@ class AboutResource extends Resource
                     ->limit(50)
                     ->sortable()
                     ->searchable(),
+                 ToggleColumn::make('is_active')
+                    ->label('Active')
+                    ->updateStateUsing(function (Model $record, $state): void {
+                        About::where('unique_id', $record->unique_id)
+                               ->update(['is_active' => $state]);
+                    }),
+
             ])
             ->filters([
                 //

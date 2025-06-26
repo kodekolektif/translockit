@@ -3,7 +3,7 @@ namespace App\Libs;
 
 use App\Settings\AppSettings;
 
-class Gemini
+class GeminiAI
 {
     private $apiKey;
     private $model;

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\AboutResource\Pages;
+namespace App\Filament\Resources\SoftwareResource\Pages;
 
-use App\Filament\Resources\AboutResource;
-use App\Models\About;
+use App\Filament\Resources\SoftwareResource;
+use App\Models\Product;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
@@ -12,35 +12,36 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
-class CreateAbout extends CreateRecord
+
+class CreateSoftware extends CreateRecord
 {
-    protected static string $resource = AboutResource::class;
-    protected function handleRecordCreation(array $data): Model
+    protected static string $resource = SoftwareResource::class;
+
+     protected function handleRecordCreation(array $data): Model
     {
         return DB::transaction(function () use ($data) {
             $uniqueId = Str::uuid()->toString();
 
-            $imagePath = $data['image'] ?? null;
-            if (isset($data['image']) && $data['image'] instanceof TemporaryUploadedFile) {
-                // 1. Simpan file seperti biasa, ini akan mengembalikan 'about-images/namafile.png'
-                $fullPath = $data['image']->store('about-images', 'public');
+            $logoPath = $data['logo'] ?? null;
+            if (isset($data['logo']) && $data['logo'] instanceof TemporaryUploadedFile) {
+                // 1. Simpan file seperti biasa, ini akan mengembalikan 'product-logos/namafile.png'
+                $fullPath = $data['logo']->store('product', 'public');
 
                 // 2. Ambil HANYA nama filenya saja dari path lengkap tersebut
-                $imagePath = basename($fullPath); // Hasilnya: 'namafile.png'
+                $logoPath = basename($fullPath); // Hasilnya: 'namafile.png'
             }
+
+            $slug = Str::slug($data['name']['en'] ?? 'default-name', '-');
 
             $primaryRecord = null;
 
             foreach (['en', 'es'] as $lang) {
-                // If the language data is not provided, skip to the next iteration
-                if (!isset($data['title'][$lang]) || !isset($data['description'][$lang])) {
-                    continue;
-                }
-                $service = About::create([
+                $service = Product::create([
                     'lang'        => $lang,
                     'unique_id'   => $uniqueId,
-                    'image'        => $imagePath,
-                    'title'       => $data['title'][$lang] ?? null,
+                    'logo'        => $logoPath,
+                    'slug'        => $slug . ($lang === 'es' ? '-es' : ''), // Append '-es' for Spanish
+                    'name'       => $data['name'] ?? null,
                     'description' => $data['description'][$lang] ?? null,
                     'is_active'   => $data['is_active'] ?? true,
                 ]);
@@ -53,6 +54,7 @@ class CreateAbout extends CreateRecord
             return $primaryRecord;
         });
     }
+
     /**
      * ✅ ADD THIS METHOD TO REDIRECT TO THE TABLE
      *
@@ -70,7 +72,7 @@ class CreateAbout extends CreateRecord
     {
         return Notification::make()
             ->success()
-            ->title('About Created')
-            ->body('About entries for both English and Spanish have been created successfully.');
+            ->title('Created')
+            ->body('Product entries for both English and Spanish have been created successfully.');
     }
 }

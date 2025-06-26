@@ -19,7 +19,9 @@ class TestimonialsResource extends Resource
 {
     protected static ?string $model = Testimonial::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
+    protected static ?string $navigationGroup = 'Content Management';
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {
@@ -59,7 +61,7 @@ class TestimonialsResource extends Resource
                             $contentEn = $get('content.en');
 
                             // Call your Gemini class
-                            $translator = new \App\Libs\Gemini(app(\App\Settings\AppSettings::class));
+                            $translator = new \App\Libs\GeminiAI(app(\App\Settings\AppSettings::class));
                             $contentEs = $translator->translate($contentEn, 'es');
 
                             // Set translated fields
