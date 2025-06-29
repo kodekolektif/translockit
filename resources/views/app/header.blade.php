@@ -79,7 +79,7 @@ $company_settings = new \App\Settings\CompanySetting();
                                     <a href="{{ route('about', app()->getLocale()) }}">{{ __('landing.About Us') }}</a>
                                 </li>
                                 <li>
-                                    <a href="#">{{ __('landing.Services') }}</a>
+                                    <a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a>
                                 </li>
                                 {{-- <li>
                                     <a href="#">{{ __('landing.Mobile Apps') }}</a>

@@ -1690,7 +1690,7 @@ p {
 /*----------------------------------------*/
 .mfbox {
   background: #1c1e22;
-  padding: 60px 50px;
+  padding: 30px 50px;
   position: relative;
   border-radius: 8px;
   backface-visibility: hidden;

@@ -5,28 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Project extends Model
 {
-    protected $fillable = [
-        'lang',
-        'unique_id',
-        'icon', // ✅ PASTIKAN BARIS INI ADA. INI KEMUNGKINAN BESAR ADALAH MASALAHNYA.
-        'title',
-        'description',
-        'is_active',
-    ];
-
-    public $timestamps = true;
-
+    protected $guarded = [];
     public function getRouteKeyName()
     {
         return 'unique_id';
     }
     public function sibling()
     {
-        return $this->hasOne(Service::class, 'unique_id', 'unique_id')
+        return $this->hasOne(Project::class, 'unique_id', 'unique_id')
             ->where('lang', '!=', $this->lang);
     }
+
 
     protected function isActive(): Attribute
     {
@@ -36,8 +27,7 @@ class Service extends Model
         );
     }
 
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
+    public function service(){
+        return $this->belongsTo(Service::class, 'service_id', 'unique_id');
     }
 }

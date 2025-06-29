@@ -64,4 +64,17 @@ return [
         'about_us' => 'About Us',
     ],
 
+    'services' => [
+        'services' => 'Services',
+        'service_description' => 'Service Description',
+        'service_detail' => 'Service Detail',
+        'service_list' => 'Service List',
+    ],
+
+    'project' => [
+        'project' => 'Project',
+        'feature_project' => 'Feature Project',
+        'explore_our_project' => 'Explore Our Project',
+    ],
+
 ];

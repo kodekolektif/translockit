@@ -62,4 +62,16 @@ return [
         'about_us' => 'Sobre nosotros',
     ],
 
+    'services' => [
+        'services' => 'Servicios',
+        'service_description' => 'Descripción del servicio',
+        'service_detail' => 'Detalle del servicio',
+        'service_list' => 'Lista de servicios',
+    ],
+    'project' => [
+        'project' => 'Proyecto',
+        'feature_project' => 'Proyecto Destacado',
+        'explore_our_project' => 'Explora Nuestro Proyecto',
+    ],
+
 ];

@@ -15,6 +15,7 @@ class LandingController extends Controller
         $data['testimonials']   = $this->getTestimonials($locale);
         $data['articles']       = $this->getArticle($locale);
         $data['brands']         = $this->getBrands();
+        $data['projects']       = $this->getProject($locale);
 
         return view('landing', $data);
     }
@@ -50,6 +51,13 @@ class LandingController extends Controller
     public function getBrands()
     {
         return \App\Models\Brand::where('is_active', true)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
+    public function getProject($lang){
+        return \App\Models\Project::where('lang', $lang)
+            ->where('is_active', true)
             ->orderBy('created_at', 'desc')
             ->get();
     }
