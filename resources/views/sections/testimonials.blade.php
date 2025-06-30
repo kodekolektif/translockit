@@ -1,4 +1,11 @@
-<section class="review-area review-area-padding grey-bgs pt-150 pb-120 pos-rel pl-50 pr-50">
+@php
+$lang = app()->getLocale();
+$testimonials = \App\Models\Testimonial::where('is_active', true)
+    ->where('lang', $lang)
+    ->get();
+@endphp
+
+<section class="review-area review-area-padding grey-bgs pt-150 pb-120 pos-rel pl-50 pr-50 {{ $testimonials->isEmpty() ? 'd-none' : '' }}">
     <div class="wavify-wrapper">
         <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wavify-item"
             data-wavify-height="140" data-wavify-background="rgba(245,245,245,0.5)" data-wavify-amplitude="80"

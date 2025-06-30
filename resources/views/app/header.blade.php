@@ -81,18 +81,13 @@ $company_settings = new \App\Settings\CompanySetting();
                                 <li>
                                     <a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a>
                                 </li>
-                                {{-- <li>
-                                    <a href="#">{{ __('landing.Mobile Apps') }}</a>
-                                </li> --}}
                                 <li>
-                                    <a href="#">{{ __('landing.Software') }}</a>
+                                    <a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.Software') }}</a>
+                                     <ul class="sub-menu">
+                                        <li><a href="{{ route('mobile_app', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a></li>
+                                        <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.software_list') }}</a></li>
+                                    </ul>
                                 </li>
-                                {{-- <li>
-                                    <a href="#">{{ __('landing.Our Partners') }}</a>
-                                </li> --}}
-                                {{-- <li>
-                                    <a href="#">{{ __('landing.Our Partners') }}</a>We Are Hiring!') }}</a>
-                                </li> --}}
                                 <li>
                                     <a href="#">{{ __('landing.News') }} </a>
                                 </li>

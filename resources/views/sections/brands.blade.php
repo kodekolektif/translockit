@@ -1,4 +1,11 @@
-<div class="brand-area bg-grey pt-100 pb-100">
+@php
+$lang = app()->getLocale();
+$brands = \App\Models\Brand::where('is_active', true)
+->where('lang', $lang)
+->get();
+@endphp
+
+<div class="brand-area bg-grey pt-100 pb-100 {{ $brands->isEmpty() ? 'd-none' : '' }}">
     <div class="container">
         <div class="brand-active swiper-container">
             <div class="swiper-wrapper align-items-center">

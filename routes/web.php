@@ -28,4 +28,6 @@ Route::prefix('{locale}')
         Route::get('/about', [AboutController::class, 'index'])->name('about');
         Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
         Route::get('/services', [App\Http\Controllers\ServicesController::class, 'services'])->name('services');
+        Route::get('/mobile-app', [App\Http\Controllers\SoftwareController::class, 'mobileApp'])->name('mobile_app');
+        Route::get('/software', [App\Http\Controllers\SoftwareController::class, 'index'])->name('software');
 });

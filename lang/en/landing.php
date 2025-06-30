@@ -29,6 +29,9 @@ return [
     'Our Services' => 'Our Services',
     'Mobile Apps' => 'Mobile Apps',
     'Software' => 'Software',
+    'mobile_app' => 'Mobile App',
+    'software_list' => 'Software List',
+
     'Our Partners' => 'Our Partners',
     'We Are Hiring!' => 'We Are Hiring!',
 
@@ -76,5 +79,8 @@ return [
         'feature_project' => 'Feature Project',
         'explore_our_project' => 'Explore Our Project',
     ],
-
+    'mobile' => [
+        'offer' => 'WE OFFER FIRST-CLASS SERVICES',
+        'within' => 'Offering the Best Prices in These Areas:'
+    ],
 ];

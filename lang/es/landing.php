@@ -27,6 +27,8 @@ return [
     'Our Services' => 'Nuestros Servicios',
     'Mobile Apps' => 'Aplicaciones Móviles',
     'Software' => 'Software',
+    'mobile_app' => 'Aplicación Móvil',
+    'software_list' => 'Lista de Software',
     'Our Partners' => 'Nuestros Socios',
     'We Are Hiring!' => '¡Estamos contratando!',
 
@@ -73,5 +75,11 @@ return [
         'feature_project' => 'Proyecto Destacado',
         'explore_our_project' => 'Explora Nuestro Proyecto',
     ],
+
+    'mobile' => [
+        'offer' => 'OFRECEMOS SERVICIOS DE PRIMERA CLASE',
+        'within' => 'Ofreciendo los Mejores Precios en Estas Áreas:'
+    ],
+
 
 ];
