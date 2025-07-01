@@ -35,9 +35,9 @@
             <div class="col-lg-4 col-md-6 col-sm-6 grid-item {{ $project->service->unique_id }}">
                 <div class="tportfolio mb-30">
                     <div class="tportfolio__img">
-                        <a class="popup-image" href="{{ asset('assets/img/portfolio/bespoke.jpg') }}"
+                        <a class="popup-image" href="{{ Storage::url($project->image) }}"
                             data-fancybox="gallery">
-                            <img src="{{ asset('assets/img/portfolio/bespoke.jpg') }}" alt=""
+                            <img src="{{ Storage::url($project->image) }}" alt=""
                                 style="width:100%; height:370px; object-fit:cover;" />
                         </a>
                         <div class="tportfolio__text tportfolio__text-2">
