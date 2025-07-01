@@ -1,8 +1,6 @@
 @php
-$lang = app()->getLocale();
-$brands = \App\Models\Brand::where('is_active', true)
-->where('lang', $lang)
-->get();
+    $brands = \App\Models\Brand::where('is_active', true)
+    ->get();
 @endphp
 
 <div class="brand-area bg-grey pt-100 pb-100 {{ $brands->isEmpty() ? 'd-none' : '' }}">
