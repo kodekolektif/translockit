@@ -3384,7 +3384,7 @@ p {
   text-align: center;
 }
 .brand-wrapper img {
-  opacity: 0.3;
+  opacity: 1;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -3392,7 +3392,7 @@ p {
   transition: all 0.3s ease-out 0s;
 }
 .brand-wrapper img:hover {
-  opacity: 1;
+    opacity: 0.3;
 }
 
 .brand-border {

@@ -35,11 +35,11 @@ $company_settings = new \App\Settings\CompanySetting();
                     <div class="widget mb-30">
                         <h4 class="widget-title mb-35">Links</h4>
                         <ul>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Meet Our Team</a></li>
-                            <li><a href="#">Our Portfolio</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('landing.About Us') }}</a></li>
+                            <li><a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a></li>
+                            <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a></li>
+                            <li><a href="{{ route('article.list', app()->getLocale()) }}">{{ __('landing.News') }}</a></li>
+                            <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
                         </ul>
                     </div>
                 </div>
