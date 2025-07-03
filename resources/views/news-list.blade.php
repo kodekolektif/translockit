@@ -33,9 +33,10 @@
                 <div class="blog__wrapper pr-50">
                     @forelse ($articles as $article)
                         <div class="blog-wrap blog-item mb-50">
-                        <div class="blog-thumb">
-                            <img src="{{ Storage::url($article->thumbnail) }}" alt="blog" style="width:770px; height:450px; object-fit:cover;">
-                        </div>
+                            <div style="width: 100%; max-width: 770px; aspect-ratio: 16 / 9; overflow: hidden; margin: 0 auto;">
+                                <img src="{{ Storage::url($article->thumbnail) }}" alt="blog"
+                                     style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            </div>
                         <div class="blog-details blog-details-2">
                             <ul class="blog-meta">
                                 <li><a href="#"><i class="fal fa-clock"></i>{{ $article->published_at->diffForHumans() }}</a></li>
