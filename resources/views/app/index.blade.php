@@ -78,11 +78,8 @@
 
     <div id="cookie-banner" class="fixed-bottom bg-light border-top shadow p-3" style="display: none; z-index: 1050;">
         <div class="container text-muted small">
-            <div class="mb-3">
-                This page belongs to Translock IT, S.L.U., as the data controller, and uses Cookies, which are small text files stored on the Client's computer or mobile device to improve their experience and simplify their visits to the Platform. If you want to know the cookies we use and why, please consult our Cookie Policy under
-                <strong>"Read more"</strong>. Alternatively, click
-                <strong>"Accept and continue browsing"</strong> to accept all cookies, or go to
-                <strong>"Settings"</strong> to specify your preferences.
+            <div class="mb-3 " style="text-align: justify">
+                {!! __('landing.cookie') !!}
             </div>
             <div class="d-flex flex-wrap gap-2 justify-content-end">
                 <a href="/cookie-policy" class="btn btn-outline-secondary btn-sm">Read More</a>
