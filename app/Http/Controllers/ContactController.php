@@ -8,6 +8,7 @@ class ContactController extends Controller
 {
     public function index()
     {
+        $title = "Contact Us";
         $settings = new \App\Settings\CompanySetting();
         $phone = $settings->phone;
         $email = $settings->email;
@@ -15,6 +16,7 @@ class ContactController extends Controller
         $google_map_url = $settings->google_map_url;
         $embed_google_url = $settings->embed_google_url;
         return view('contact', compact(
+            'title',
             'phone',
             'email',
             'address',

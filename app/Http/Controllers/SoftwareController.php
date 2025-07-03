@@ -11,6 +11,7 @@ class SoftwareController extends Controller
 {
     public function index()
     {
+        $data['title'] = 'Software';
         $lang = app()->getLocale();
         $data['software_lists'] = Product::where(['is_active'=>true,'lang'=>$lang])->get();
         return view('software',$data);
