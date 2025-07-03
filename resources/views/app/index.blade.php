@@ -40,16 +40,16 @@
     <!-- Add your site or application content here -->
 
     <!-- pre loader area start -->
-    {{-- <div id="loading">
+    <div id="loading">
         <div id="loading-center">
             <div id="loading-center-absolute">
                 <div class="loading-icon text-center d-sm-flex align-items-center">
-                    <img class="loading-logo mr-10" src="{{ asset('assets/img/preloader/preloader-icon.png') }}" alt="">
-                    <img src="{{ asset('assets/img/preloader/preloader-logo.png') }}" alt="">
+                    <img class="loading-logo mr-10" src="{{ asset('assets/img/loading.png') }}" alt="">
+                    {{-- <img src="{{ Storage::url($settings->logo) }}" alt=""> --}}
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- pre loader area end -->
 
     <!-- header  -->
