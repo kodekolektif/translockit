@@ -62,9 +62,6 @@ class LandingController extends Controller
             ->get();
     }
 
-    public function getDetailArticle($lang,$slug){
-        dd($lang,$slug);
-    }
 
 
 }

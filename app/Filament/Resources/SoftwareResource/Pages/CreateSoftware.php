@@ -31,16 +31,17 @@ class CreateSoftware extends CreateRecord
                 $logoPath = basename($fullPath); // Hasilnya: 'namafile.png'
             }
 
-            $slug = Str::slug($data['name']['en'] ?? 'default-name', '-');
 
             $primaryRecord = null;
 
             foreach (['en', 'es'] as $lang) {
+                $slug = Str::slug($data['name'] ?? 'default-name', '-');
+
                 $service = Product::create([
                     'lang'        => $lang,
                     'unique_id'   => $uniqueId,
                     'logo'        => $logoPath,
-                    'slug'        => $slug . ($lang === 'es' ? '-es' : ''), // Append '-es' for Spanish
+                    'slug'        => $slug . ($lang === 'es' ? '-es' : '-en'), // Append '-es' for Spanish
                     'name'       => $data['name'] ?? null,
                     'description' => $data['description'][$lang] ?? null,
                     'is_active'   => $data['is_active'] ?? true,

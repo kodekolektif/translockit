@@ -68,7 +68,7 @@ return [
         'services' => 'Servicios',
         'service_description' => 'Descripción del servicio',
         'service_detail' => 'Detalle del servicio',
-        'service_list' => 'Lista de servicios',
+        'service_list' => 'Lista',
     ],
     'project' => [
         'project' => 'Proyecto',
@@ -80,6 +80,15 @@ return [
         'offer' => 'OFRECEMOS SERVICIOS DE PRIMERA CLASE',
         'within' => 'Ofreciendo los Mejores Precios en Estas Áreas:'
     ],
+    'faq' => [
+        'title' => 'FAQ',
+        'desc' => 'Preguntas Frecuentes'
+    ],
+    'articles' => 'artículos',
+    'read_more' => 'Leer más',
+    'recent_article' => 'Artículo reciente',
+    'categories' => 'Categorías',
+    'no_article'=>'No se encontró ningún artículo :(',
 
 
 ];

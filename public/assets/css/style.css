@@ -4117,4 +4117,68 @@ p {
   }
 }
 
+.plan-content.description {
+  /* padding: 20px; */
+  /* make justify */
+  text-align: justify;
+  margin-bottom: 0px;
+  margin-top: 1px;
+}
+.product-image{
+    width: 100%;
+    display: block; /* Ensures the image behaves as a block element */
+    max-width: 100%; /* Prevents overflow */
+    height: auto;
+}
+.row-product{
+    display: flex;
+    align-items: flex-start !important;
+}
+.blog-text {
+    /* font-family: 'Helvetica', sans-serif; */
+    line-height: 1.7;
+    color: #333;
+  }
+
+  .blog-text p {
+    margin-bottom: 1em;
+    font-size: 16px;
+    color: #444;
+  }
+
+  .blog-text h2 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-size: 28px;
+    color: #222;
+    /* font-weight: 600; */
+  }
+  .blog-text h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+  }
+
+  .blog-text h3 strong {
+    /* color: #007b5e; */
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .blog-tag .tags{
+    display:inline-block;
+    padding:2px 8px;
+    font-size:13px;
+    margin-bottom: 5px;
+    font-weight:600;
+    color:#fff;
+    background-color:var(--primary-color);
+    border-radius:6px;
+    text-decoration:none;
+  }
+
+
+
+
 /*# sourceMappingURL=style.css.map */

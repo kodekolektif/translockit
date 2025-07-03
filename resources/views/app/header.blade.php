@@ -46,12 +46,23 @@ $company_settings = new \App\Settings\CompanySetting();
                         <!-- Dropdown Menu -->
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                             @foreach ($languages as $code => $name)
-                            <li>
-                                <a class="dropdown-item {{ $code == $active_locale?'active':'' }}" href="/{{ $code }}">
-                                    {{ $flags[$code] ?? '' }} {{ $name }}
-                                </a>
-                            </li>
+                                @php
+                                    $segments = request()->segments();
+                                    $segments[0] = $code; // Replace first segment with selected locale
+                                    $newUrl = '/' . implode('/', $segments);
+                                    $query = request()->getQueryString();
+                                    if ($query) {
+                                        $newUrl .= '?' . $query;
+                                    }
+                                @endphp
+
+                                <li>
+                                    <a class="dropdown-item {{ $code == $active_locale ? 'active' : '' }}" href="{{ $newUrl }}">
+                                        {{ $flags[$code] ?? '' }} {{ $name }}
+                                    </a>
+                                </li>
                             @endforeach
+
                         </ul>
 
                     </div>
@@ -84,12 +95,12 @@ $company_settings = new \App\Settings\CompanySetting();
                                 <li>
                                     <a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.Software') }}</a>
                                      <ul class="sub-menu">
+                                         <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.software_list') }}</a></li>
                                         <li><a href="{{ route('mobile_app', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a></li>
-                                        <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.software_list') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">{{ __('landing.News') }} </a>
+                                    <a href="{{ route('article.list',app()->getLocale()) }}">{{ __('landing.News') }} </a>
                                 </li>
                                 <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
 

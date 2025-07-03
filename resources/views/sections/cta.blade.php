@@ -12,7 +12,7 @@
                     <h5>{{ __('landing.cta.Get to Know Translock IT') }}</h5>
                     <h2 class="section-title text-white">{{ __('landing.cta.contact') }}</h2>
                     <div class="ab-btn mt-30">
-                        <a href="about.html" class="tp-btn">{{ __('landing.cta.Get in Touch') }}</a>
+                        <a href="{{ route('contact',['locale'=>app()->getLocale()]) }}" class="tp-btn">{{ __('landing.cta.Get in Touch') }}</a>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LandingController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,8 @@ Route::prefix('{locale}')
         // Halaman utama sekarang bisa diakses melalui /en atau /es
         Route::get('/', [LandingController::class, 'index'])->name('home');
 
-        Route::get('/article/{slug}',[LandingController::class,'getDetailArticle'])->name('article.detail');
+        Route::get('/article', [ArticleController::class, 'index'])->name('article.list');
+        Route::get('/article/{slug}',[ArticleController::class,'getDetailArticle'])->name('article.detail');
 
         Route::get('/about', [AboutController::class, 'index'])->name('about');
         Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');

@@ -7,11 +7,11 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.mobile_app') }}</h2>
+                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.Article') }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('landing.software') }}
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('landing.Article') }}
                             </li>
                         </ol>
                     </nav>
@@ -21,7 +21,7 @@
     </div>
 </section>
 
-<section class="contact-area pt-120 pb-80 fix">
+<section class="contact-area pt-80 fix">
     <div class="container">
         @foreach ($mobile_apps as $i => $item)
         <div class="row align-items-center mb-4">
@@ -59,7 +59,7 @@
     </div>
 </section>
 
-<section class="portfolio-area pt-120">
+<section class="portfolio-area">
     <div class="container">
           <div class="row mb-60">
             <div class="col-12">

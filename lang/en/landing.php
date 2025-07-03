@@ -30,7 +30,7 @@ return [
     'Mobile Apps' => 'Mobile Apps',
     'Software' => 'Software',
     'mobile_app' => 'Mobile App',
-    'software_list' => 'Software List',
+    'software_list' => 'List',
 
     'Our Partners' => 'Our Partners',
     'We Are Hiring!' => 'We Are Hiring!',
@@ -83,4 +83,13 @@ return [
         'offer' => 'WE OFFER FIRST-CLASS SERVICES',
         'within' => 'Offering the Best Prices in These Areas:'
     ],
+    'faq' => [
+        'title' => 'FAQ',
+        'desc' => 'Frequently Asked Questions'
+    ],
+    'articles' => 'Articles',
+    'read_more' => 'Read More',
+    'recent_article' => 'Recent Article',
+    'category' => 'Categories',
+    'no_article'=>'No Article Found :(',
 ];

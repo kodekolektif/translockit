@@ -51,7 +51,8 @@ class CreateArticle extends CreateRecord
                     'views'       => 0, // Default value
                     'likes'       => 0, // Default value
                     'published_at'=> $data['is_published'] ? now() : null,
-                ]);
+                    'category_id' => $data['category_id']??null,
+                 ]);
 
                 if (is_null($primaryRecord)) {
                     $primaryRecord = $article;

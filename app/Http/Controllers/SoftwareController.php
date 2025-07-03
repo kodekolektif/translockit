@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\MobileApp;
 use App\Models\MobileList;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class SoftwareController extends Controller
 {
     public function index()
     {
-        return view('software');
+        $lang = app()->getLocale();
+        $data['software_lists'] = Product::where(['is_active'=>true,'lang'=>$lang])->get();
+        return view('software',$data);
     }
     public function mobileApp($lang)
     {

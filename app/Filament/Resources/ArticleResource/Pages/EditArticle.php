@@ -3,11 +3,13 @@
 namespace App\Filament\Resources\ArticleResource\Pages;
 
 use App\Filament\Resources\ArticleResource;
+use App\Models\ArticleCategory;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -81,6 +83,9 @@ class EditArticle extends EditRecord
                             RichEditor::make('content.es')
                                 ->label('Content (ES)'),
                         ]),
+                    Select::make('category_id')
+                        ->label('Category')
+                        ->options(ArticleCategory::where('lang','en')->get()->pluck('name','unique_id')),
                     TagsInput::make('tags')
                         ->label('Tags')
                         ->placeholder('Add tags')
@@ -113,6 +118,7 @@ class EditArticle extends EditRecord
                 'es' => $sibling->content
             ],
             'tags' => $recordModel->tags,
+            'category_id' => $recordModel->category_id,
             'is_published'=> $recordModel->is_published
 
         ];
@@ -145,6 +151,7 @@ class EditArticle extends EditRecord
                 'title'       => $data['title'],
                 'content'     => $data['content'],
                 'is_published'=> $data['is_published'] ?? false,
+                'category_id' => $data['category_id'] ?? null,
             ]);
 
             // Update record sibling (ES)
@@ -154,6 +161,7 @@ class EditArticle extends EditRecord
                     'title'       => $data['title'],
                     'content'     => $data['content'],
                     'is_published'=> $data['is_published'] ?? false,
+                    'category_id' => $data['category_id'] ?? null,
                 ]);
             }
 

@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="ab-btn">
-                        <a href="about.html" class="tp-btn">{{ __('landing.Learn More') }}</a>
+                        <a href="{{ route('about',['locale'=>app()->getLocale()]) }}" class="tp-btn">{{ __('landing.Learn More') }}</a>
                     </div>
                 </div>
             </div>

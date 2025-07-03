@@ -70,6 +70,10 @@ class EditSoftware extends EditRecord
                 }
                 $fullPath = $data['logo']->store('product', 'public');
                 $logoFileName = basename($fullPath);
+            } else if (isset($data['logo']) && is_string($data['logo'])) {
+                $logoFileName = $data['logo'];
+            } else {
+                $logoFileName = $record->logo; // Or an empty string, depending on your database schema
             }
 
             // Update record utama (EN)

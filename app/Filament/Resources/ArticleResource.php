@@ -5,10 +5,12 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -78,10 +80,12 @@ class ArticleResource extends Resource
                             RichEditor::make('content.es')
                                 ->label('Content (ES)'),
                         ]),
+                    Select::make('category_id')
+                        ->label('Category')
+                        ->options(ArticleCategory::where('lang','en')->get()->pluck('name','unique_id')),
                     TagsInput::make('tags')
                         ->label('Tags')
-                        ->placeholder('Add tags')
-                        ->columnSpanFull(),
+                        ->placeholder('Add tags'),
                     Toggle::make('is_published')
                         ->label('Published')
                         ->default(false)
@@ -99,7 +103,9 @@ class ArticleResource extends Resource
                 ImageColumn::make('thumbnail'),
                 TextColumn::make('title')
                     ->label('Article')
-                    ->description(fn (Article $record): string => Str::limit($record->content,100)),
+                    ->description(fn (Article $record): string => strip_tags(Str::limit($record->content,100))),
+                TextColumn::make('category.name')
+                ->label('Category'),
                 TextColumn::make('published_at')
                     ->dateTime()
                     ->label('Published Date'),
