@@ -183,7 +183,7 @@
                       </div>
                       <div class="sidebar__widget sidebar__widget-padding mb-75 wow fadeInUp grey-bg" data-wow-delay=".6s">
                          <div class="sidebar__widget-title mb-25">
-                               <h4>{{ __('landing.categories') }}</h4>
+                               <h4>{{ __('landing.category') }}</h4>
                          </div>
                          <div class="sidebar__widget-content">
                                <div class="cat-link">

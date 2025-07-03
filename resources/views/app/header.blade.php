@@ -168,11 +168,21 @@ $company_settings = new \App\Settings\CompanySetting();
                     <!-- Dropdown Menu -->
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                         @foreach ($languages as $code => $name)
-                        <li>
-                            <a class="dropdown-item {{ $code == $active_locale?'active':'' }}" href="/{{ $code }}">
-                                {{ $flags[$code] ?? '' }} {{ $name }}
-                            </a>
-                        </li>
+                            @php
+                                $segments = request()->segments();
+                                $segments[0] = $code; // Replace first segment with selected locale
+                                $newUrl = '/' . implode('/', $segments);
+                                $query = request()->getQueryString();
+                                if ($query) {
+                                    $newUrl .= '?' . $query;
+                                }
+                            @endphp
+
+                            <li>
+                                <a class="dropdown-item {{ $code == $active_locale ? 'active' : '' }}" href="{{ $newUrl }}">
+                                    {{ $flags[$code] ?? '' }} {{ $name }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
 
