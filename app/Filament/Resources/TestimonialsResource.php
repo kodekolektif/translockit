@@ -30,12 +30,12 @@ class TestimonialsResource extends Resource
                  Section::make('English (EN)')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\FileUpload::make('image.en')
-                            ->image()
-                            ->disk('public')
-                            ->nullable()
-                            ->columnSpanFull()
-                            ->label('Image'),
+                        // Forms\Components\FileUpload::make('image.en')
+                        //     ->image()
+                        //     ->disk('public')
+                        //     ->nullable()
+                        //     ->columnSpanFull()
+                        //     ->label('Image'),
                         Forms\Components\TextInput::make('name.en')
                             ->placeholder('John Doe')
                             ->required()
@@ -75,12 +75,12 @@ class TestimonialsResource extends Resource
                 Section::make('Spanish (ES)')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\FileUpload::make('image.es')
-                            ->image()
-                            ->disk('public')
-                            ->nullable()
-                            ->columnSpanFull()
-                            ->label('Image'),
+                        // Forms\Components\FileUpload::make('image.es')
+                        //     ->image()
+                        //     ->disk('public')
+                        //     ->nullable()
+                        //     ->columnSpanFull()
+                        //     ->label('Image'),
                         Forms\Components\TextInput::make('name.es')
                             ->placeholder('John Doe')
                             ->required()
@@ -110,9 +110,9 @@ class TestimonialsResource extends Resource
                 $query->where('lang', 'en')->with('sibling');
             })
             ->columns([
-                Tables\Columns\ImageColumn::make('image')
-                    ->disk('public')
-                    ->label('Image'),
+                // Tables\Columns\ImageColumn::make('image')
+                //     ->disk('public')
+                //     ->label('Image'),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Name')
                     ->searchable()

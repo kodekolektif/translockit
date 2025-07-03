@@ -41,9 +41,9 @@ $testimonials = \App\Models\Testimonial::where('is_active', true)
                             <p>{{ $testimonial->content }}</p>
                         </div>
                         <div class="tptestinimail__author d-sm-flex align-items-center">
-                            <div class="tptestinimail__author--img tptestinimail__author--img-2">
+                            {{-- <div class="tptestinimail__author--img tptestinimail__author--img-2">
                                 <img src="{{ Storage::url($testimonial->image) }}" alt="">
-                            </div>
+                            </div> --}}
                             <div class="tptestinimail__author--bio">
                                 <h4>{{ $testimonial->name }}</h4>
                                 <h6>{{ $testimonial->title }}</h6>

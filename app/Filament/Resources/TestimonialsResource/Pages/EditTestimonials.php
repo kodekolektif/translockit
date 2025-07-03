@@ -70,7 +70,7 @@ class EditTestimonials extends EditRecord
                             $contentEn = $get('content.en');
 
                             // Call your Gemini class
-                            $translator = new \App\Libs\Gemini(app(\App\Settings\AppSettings::class));
+                            $translator = new \App\Libs\GeminiAI(app(\App\Settings\AppSettings::class));
                             $contentEs = $translator->translate($contentEn, 'es');
 
                             // Set translated fields

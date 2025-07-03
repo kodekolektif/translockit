@@ -76,6 +76,22 @@
     </div>
     <!-- back to top end -->
 
+    <div id="cookie-banner" class="fixed-bottom bg-light border-top shadow p-3" style="display: none; z-index: 1050;">
+        <div class="container text-muted small">
+            <div class="mb-3">
+                This page belongs to Translock IT, S.L.U., as the data controller, and uses Cookies, which are small text files stored on the Client's computer or mobile device to improve their experience and simplify their visits to the Platform. If you want to know the cookies we use and why, please consult our Cookie Policy under
+                <strong>"Read more"</strong>. Alternatively, click
+                <strong>"Accept and continue browsing"</strong> to accept all cookies, or go to
+                <strong>"Settings"</strong> to specify your preferences.
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-end">
+                <a href="/cookie-policy" class="btn btn-outline-secondary btn-sm">Read More</a>
+                <button id="accept-cookies" class="btn btn-primary btn-sm">Accept</button>
+                <button id="cookie-settings" class="btn btn-outline-info btn-sm">Settings</button>
+                <button id="reject-cookies" class="btn btn-outline-danger btn-sm">Reject</button>
+            </div>
+        </div>
+    </div>
 
     <!-- JS here -->
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
@@ -95,6 +111,26 @@
     <script src="{{ asset('assets/js/TweenMax.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.wavify.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script>
+            $(function () {
+                if (!localStorage.getItem('cookieAccepted')) {
+                    $('#cookie-banner').slideDown();
+                }
+
+                $('#accept-cookies').on('click', function () {
+                    localStorage.setItem('cookieAccepted', 'true');
+                    $('#cookie-banner').slideUp();
+                });
+
+                $('#reject-cookies').on('click', function () {
+                    $('#cookie-banner').slideUp();
+                });
+
+                $('#cookie-settings').on('click', function () {
+                    alert("Settings clicked — you can open a modal or redirect to preferences page.");
+                });
+            });
+        </script>
 </body>
 
 </html>
