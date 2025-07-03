@@ -48,17 +48,15 @@ $company_settings = new \App\Settings\CompanySetting();
                         <h4 class="widget-title mb-35">Contact</h4>
                         <ul>
                             <li class="pb-10 d-flex">
-                                <div class="me-2">
+                                <div class="mt-2">
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div>
-                                    <a target="_blank" href="{{ $company_settings->google_map_url }}">
-                                        {{ $company_settings->address }}
-                                    </a>
+                                    <a target="_blank" href="{{ $company_settings->google_map_url }}">{{ $company_settings->address }}</a>
                                 </div>
                             </li>
                             <li class="d-flex align-items-center">
-                                <i class="fal fa-envelope-open me-2"></i>
+                                <i class="fal fa-envelope-open"></i>
                                 <a href="mailto:{{ $company_settings->email }}">{{ $company_settings->email }}</a>
                             </li>
                             <li class="d-flex align-items-center">
