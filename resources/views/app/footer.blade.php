@@ -48,7 +48,7 @@ $company_settings = new \App\Settings\CompanySetting();
                         <h4 class="widget-title mb-35">Contact</h4>
                         <ul>
                             <li class="pb-10 d-flex">
-                                <div class="mt-2">
+                                <div style="margin-top: 2px">
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div>
