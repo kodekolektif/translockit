@@ -30,12 +30,11 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ 'Cookie Policy' }}</h2>
+                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('policy.legal_notice') }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ 'Cookie Policy' }}
-                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('policy.legal_notice') }}</li>
                         </ol>
                     </nav>
                 </div>

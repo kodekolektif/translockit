@@ -93,6 +93,9 @@ return [
     'legal_notice' => 'Aviso Legal',
     'privacy_policy' => 'Política de Privacidad',
     'cookie_policy' => 'Política de Cookies',
+    'accept' => 'Aceptar',
+    'settings' => 'Configuraciones',
+    'reject' => 'Rechazar',
 
 
 ];

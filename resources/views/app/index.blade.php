@@ -82,11 +82,12 @@
                 {!! __('landing.cookie') !!}
             </div>
             <div class="d-flex flex-wrap gap-2 justify-content-end">
-                <a href="{{ route('cookie_policy', app()->getLocale()) }}" class="btn btn-outline-secondary btn-sm">Read
-                    More</a>
-                <button id="accept-cookies" class="btn btn-primary btn-sm">Accept</button>
-                <button id="cookie-settings" class="btn btn-outline-info btn-sm">Settings</button>
-                <button id="reject-cookies" class="btn btn-outline-danger btn-sm">Reject</button>
+                <a href="{{ route('cookie_policy', app()->getLocale()) }}" class="btn btn-outline-secondary btn-sm">
+                    {{ __('landing.read_more') }}
+                </a>
+                <button id="accept-cookies" class="btn btn-primary btn-sm">{{ __('landing.accept') }}</button>
+                <button id="cookie-settings" class="btn btn-outline-info btn-sm">{{ __('landing.settings') }}</button>
+                <button id="reject-cookies" class="btn btn-outline-danger btn-sm">{{ __('landing.reject') }}</button>
             </div>
         </div>
     </div>
@@ -99,7 +100,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Usted permite o rechaza el uso de las cookies para las siguientes finalidades:</p>
+                    <p>{{ __('policy.cookie_description') }}</p>
 
                     <!-- Necessary Cookies -->
                     <div class="accordion" id="cookieAccordion">
@@ -110,15 +111,13 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseNecessary" aria-expanded="true"
                                     aria-controls="collapseNecessary">
-                                    Necessary <span class="badge bg-warning ms-2">Siempre activado</span>
+                                    {{ __('policy.necessary') }} <span class="badge bg-warning ms-2">{{ __('policy.always_on') }}</span>
                                 </button>
                             </h2>
                             <div id="collapseNecessary" class="accordion-collapse collapse show"
                                 aria-labelledby="headingNecessary" data-bs-parent="#cookieAccordion">
                                 <div class="accordion-body small text-white">
-                                    Necessary cookies are absolutely essential for the website to function properly.
-                                    This category only includes cookies that ensure basic functionalities and security
-                                    features of the website. These cookies do not store any personal information.
+                                    {{ __('policy.necessary_cookies_description') }}
                                 </div>
                             </div>
                         </div>
@@ -126,7 +125,7 @@
                         <!-- Non-Necessary Cookies -->
                         <div class="accordion-item">
                             <h2 class="accordion-header d-flex justify-content-between align-items-center p-3">
-                                <span class="text-white" style="font-size: large">Non-Necessary</span>
+                                <span class="text-white" style="font-size: large">{{ __('policy.non_necessary') }}</span>
                                 <div class="form-check form-switch" style="display: flex; justify-content: end; align-items: center; margin-top: -5px;">
                                     <input class="form-check-input" type="checkbox" id="nonNecessaryToggle" style="width: 40px; height: 20px;">
                                 </div>
@@ -139,7 +138,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="saveCookies">Save and Accept</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="saveCookies">{{ __('policy.save_and_accept') }}</button>
                 </div>
             </div>
         </div>

@@ -20,15 +20,15 @@
                     </div>
                     <div class="latest-blog-content latest-blog-content-2">
                         <div class="latest-post-meta mb-15">
-                            <span><a href="#"><i class="far fa-eye"></i> 10 Reads </a></span>
-                            <span><a href="#"><i class="far fa-comments"></i> 23 Comments</a></span>
+                            <span><a href="#"><i class="far fa-clock"></i>{{ $article->published_at->diffForHumans() }}</a></span>
+                            {{-- <span><a href="#"><i class="far fa-comments"></i> 23 Comments</a></span> --}}
                         </div>
                         <h3 class="latest-blog-title">
                             <a href="{{ route('article.detail', ['locale' => app()->getLocale(), 'slug' => $article->slug]) }}">{{ $article->title }}</a>
                         </h3>
                         <div class="blog-btn-2">
                             <a href="{{ route('article.detail', ['locale' => app()->getLocale(), 'slug' => $article->slug]) }}" class="link-btn">
-                                read more
+                                {{ __('landing.read_more') }}
                                 <i class="fal fa-long-arrow-right"></i>
                                 <i class="fal fa-long-arrow-right"></i>
                             </a>

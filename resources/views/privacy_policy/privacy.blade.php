@@ -30,12 +30,11 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ 'Cookie Policy' }}</h2>
+                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('policy.privacy_policy') }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ 'Cookie Policy' }}
-                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('policy.privacy_policy') }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -46,23 +45,14 @@
 <section class="portfolio-area pt-120 pb-70">
     <div class="container ">
         <div class="plan-content description">
-            <h2>PRIVACY POLICY</h2>
-            <p>This document regulates the rules regarding the Privacy Policy on which the Company Translock IT SLU
-                (hereinafter <b>“Translock“</b> ) as Data Controller, will carry out the processing of the personal data
-                of its customers (buyers or not of its services) and suppliers or third parties, provided by those
-                during their access to the website <a href="www.translockit.com"
-                    class="text-primary">www.translockit.com</a> in their registration process or provided by any other
-                means valid in law valid in law.</p>
-            <p>If you expressly agree to the transfer of your data to Translock, whatever means you do so, provided that
-                your consent is express, you will be deemed to be giving it in a free, informed, specific and
-                unambiguous way to Translock to process your personal data, in accordance with the General Data
-                Protection Regulation of the Parliament and of the Council 679/2016, of April 27 (hereinafter “GDPR”)
-                and Organic Law 3/2018, of December 5, On Data Protection and Guarantee of Digital Rights.</p>
+            <h2>{{ __('policy.privacy.1') }}</h2>
+            <p>{!! __('policy.privacy.11') !!}</p>
+            <p>{!! __('policy.privacy.12') !!}</p>
 
-            <h2>Controller's Data</h2>
+            <h2>{!! __('policy.privacy.2') !!}</h2>
             <table style="width:100%; border-collapse:collapse;">
                 <tr>
-                    <td style="font-weight:bold; color:#555; padding:6px 8px;">Controller</td>
+                    <td style="font-weight:bold; color:#555; padding:6px 8px;">{{ __('policy.privacy.2A') }}</td>
                     <td style="padding:6px 8px;">:</td>
                     <td style="padding:6px 8px;">Translock IT SLU</td>
                 </tr>
@@ -72,90 +62,75 @@
                     <td style="padding:6px 8px;">B88074703</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; color:#555; padding:6px 8px;">Website</td>
+                    <td style="font-weight:bold; color:#555; padding:6px 8px;">{{ __('policy.privacy.2B') }}</td>
                     <td style="padding:6px 8px;">:</td>
                     <td style="padding:6px 8px;"><a href="https://www.translockit.com"
                             target="_blank">www.translockit.com</a></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; color:#555; padding:6px 8px;">Email</td>
+                    <td style="font-weight:bold; color:#555; padding:6px 8px;">{{ __('policy.privacy.2E') }}</td>
                     <td style="padding:6px 8px;">:</td>
                     <td style="padding:6px 8px;">sales@translockit.local</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; color:#555; padding:6px 8px;">Social Address</td>
+                    <td style="font-weight:bold; color:#555; padding:6px 8px;">{{ __('policy.privacy.2C') }}</td>
                     <td style="padding:6px 8px;">:</td>
-                    <td style="padding:6px 8px;">Calle Joaquin Montes Jovellar, 4 – 28002 Madrid</td>
+                    <td style="padding:6px 8px;">{{ __('policy.privacy.2C1') }}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; color:#555; padding:6px 8px;">Registration Data</td>
+                    <td style="font-weight:bold; color:#555; padding:6px 8px;">{{ __('policy.privacy.2D') }}</td>
                     <td style="padding:6px 8px;">:</td>
-                    <td style="padding:6px 8px;">Registered in the Commercial Register of Madrid, volume 37683, folio
-                        101, section 8, sheet M 671389</td>
+                    <td style="padding:6px 8px;">{{ __('policy.privacy.2D1') }}</td>
                 </tr>
             </table>
-            <p>
-                Translock may collect on its website the data of its customers, suppliers and other third parties
-                (hereinafter collectively referred to as “the User” or “the Users”) when they access it and register or
-                request their services through the contact link.
-            </p>
-            <p>The User must enter all the data that the Platform requires at all times (especially those marked with an
-                asterisk), because if not, he/she will not be able to complete his registration as a User or the use of
-                certain functionalities or services available through that.</p>
-            <p>Data from Users will also be collected where by other means the Data Subjects have provided it to
-                Translock, within the normal development of a commercial or professional activity.</p>
-            <p>In addition, the User shall ensure that the Personal Data provided is true and accurate and shall notify
-                through the appropriate conduit any changes or modifications thereto.</p>
-            <p>In the event that the User provides data of third parties, he/she shall assume responsibility for having
-                previously informed him/her and having his/her consent to it, in accordance with Article 14 of the GDPR.
-            </p>
+            <p class="mt-3">
+                {{ __('policy.privacy.21') }}</p>
+            </p>{{ __('policy.privacy.22') }}</p>
+            <p>{{ __('policy.privacy.23') }}</p>
+            <p>{{ __('policy.privacy.24') }}</p>
+            <p>{{ __('policy.privacy.25') }}</p>
 
-            <h2>Category of data collected</h2>
-            <p>Translock may collect and process the following personal data of the User:</p>
-            <p>Identifying data of the user or their legal representatives; First and last name; NIF Contact details;
-                Telephone number; Email and postal address; Company the User works for; Credit or debit card number;
-                Bank account.</p>
+            <h2>{{ __('policy.privacy.3') }}</h2>
+            <p>{{ __('policy.privacy.31') }}</p>
+            <p>{{ __('policy.privacy.32') }}</p>
 
-            <h2>Recipients of the data</h2>
-            <p>Those Interested Parties who perform services for Translock, related to the service that Translock
-                provides to the User, or vice versa, will have access to the User’s data. Translock will maintain the
-                corresponding custom processing contracts with each of the suppliers providing services to it, with the
-                aim of ensuring that these providers will process your data in accordance with the provisions of current
-                legislation. </p>
-            <p>Personal data may also be transferred to the competent authorities provided there is a legal obligation.
-            </p>
-            <p>Likewise, they may be communicated to financial institutions through which the management of collections
-                and payments is articulated.</p>
-            <p>They may also be transferred to third parties related to Translock’s activity, in order to send the User
-                commercial information that might be of interest to him, always connected to the Translock business and
-                provided that the User has expressly accepted it.</p>
+            <h2>{{ __('policy.privacy.4') }}</h2>
+            <p>{{ __('policy.privacy.41') }}</p>
+            <p>{{ __('policy.privacy.42') }}</p>
+            <p>{{ __('policy.privacy.43') }}</p>
+            <p>{{ __('policy.privacy.44') }}</p>
 
-            <h2>Purpose of the treatment</h2>
-            <p>Translock will process personal data for the purposes set out below, depending on the reason for which
-                they were provided to it:</p>
+            <h2>{{ __('policy.privacy.5') }}</h2>
+            <p>{{ __('policy.privacy.51') }}</p>
+            <p>{{ __('policy.privacy.52') }}</p>
+            <p>{{ __('policy.privacy.53') }}</p>
+            <p>{{ __('policy.privacy.54') }}</p>
+            <p>{{ __('policy.privacy.55') }}</p>
+            <p>{{ __('policy.privacy.56') }}</p>
+            <p>{{ __('policy.privacy.57') }}</p>
+            <p>{{ __('policy.privacy.58') }}</p>
+
+            <h2>{{ __('policy.privacy.5') }}</h2>
+            <p>{{ __('policy.privacy.51') }}</p>
+            <p>{{ __('policy.privacy.52') }}</p>
+            <p>{{ __('policy.privacy.53') }}</p>
+            <p>{{ __('policy.privacy.54') }}</p>
             <ul>
-                <li>Carry out the provision of the contracted services, the maintenance of the contractual relationship
-                    and the monitoring of the same.</li>
-                <li>Contact, process, manage and respond to the request, request, incident or query of the User (whether
-                    via email, contact form or telephone).</li>
-                <li>Manage, where appropriate, the User’s participation in the customer’s private area.</li>
-                <li>Manage, where appropriate, the sending of commercial communications about products and services
-                    marketed by Translock by electronic and/or conventional means.</li>
-                <li>Make, where appropriate, a User profile to offer you Translock-related products and services in
-                    accordance with your interests.</li>
+                <li>{{ __('policy.privacy.55') }}</li>
+                <li>{{ __('policy.privacy.56') }}</li>
+                <li>{{ __('policy.privacy.57') }}</li>
             </ul>
-            <p>Assess and manage, where appropriate, the User-provided curriculum for selection processes that fit your
-                professional profile and carry out the necessary actions for the selection and recruitment of staff.</p>
+            <p>{{ __('policy.privacy.58') }}</p>
 
 
 
-            <h2>Clients:</h2>
+            <h3>{{ __('policy.privacy.6') }}</h3>
             <ul>
-                <li>Budgeting Billing</li>
-                <li>Sending commercial communications</li>
-                <li>Updates of service conditions</li>
-                <li>Regular communication within the contracted service provision</li>
-                <li>Perform a professional profile for the offer of services</li>
+                <li>{{ __('policy.privacy.61') }}</li>
+                <li>{{ __('policy.privacy.62') }}</li>
+                <li>{{ __('policy.privacy.63') }}</li>
+                <li>{{ __('policy.privacy.64') }}</li>
+                <li>{{ __('policy.privacy.65') }}</li>
             </ul>
 
             <h2>Providers</h2>
