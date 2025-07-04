@@ -82,7 +82,7 @@
                 {!! __('landing.cookie') !!}
             </div>
             <div class="d-flex flex-wrap gap-2 justify-content-end">
-                <a href="/cookie-policy" class="btn btn-outline-secondary btn-sm">Read More</a>
+                <a href="{{ route('cookie_policy', app()->getLocale()) }}" class="btn btn-outline-secondary btn-sm">Read More</a>
                 <button id="accept-cookies" class="btn btn-primary btn-sm">Accept</button>
                 <button id="cookie-settings" class="btn btn-outline-info btn-sm">Settings</button>
                 <button id="reject-cookies" class="btn btn-outline-danger btn-sm">Reject</button>

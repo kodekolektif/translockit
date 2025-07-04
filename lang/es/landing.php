@@ -90,7 +90,9 @@ return [
     'categories' => 'Categorías',
     'no_article'=>'No se encontró ningún artículo :(',
     'cookie' => 'Esta página pertenece a Translock IT, S.L.U., como Responsable de los datos tratados y utiliza Cookies, esto es, pequeños archivos de texto que se guardan en el ordenador o dispositivos móviles del Cliente, con el objetivo de mejorar su experiencia y simplificar sus visitas a la Plataforma. Si quiere conocer las cookies que utilizamos y para qué lo hacemos, consulte nuestra política de Cookies en <b>Read more</b> o, si no, pulse <b>Accept and continue browsing</b> para aceptarlas todas, o entre en <b>Settings</b> para especificar sus preferencias.',
-
+    'legal_notice' => 'Aviso Legal',
+    'privacy_policy' => 'Política de Privacidad',
+    'cookie_policy' => 'Política de Cookies',
 
 
 ];

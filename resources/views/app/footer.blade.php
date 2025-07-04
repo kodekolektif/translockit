@@ -94,8 +94,9 @@ $company_settings = new \App\Settings\CompanySetting();
                         <div class="privacy-text text-md-end">
                             <ul>
                                 <li>
-                                    <a href="#">{{ __('landing.Terms & Conditions') }}</a>
-                                    <a href="#">{{ __('landing.Privacy Policy') }}</a>
+                                    <a href="{{ route('legal_notice', app()->getLocale()) }}">{{ __('landing.legal_notice') }}</a>
+                                    <a href="{{ route('cookie_policy', app()->getLocale()) }}">{{ __('landing.cookie_policy') }}</a>
+                                    <a href="{{ route('privacy_policy', app()->getLocale()) }}">{{ __('landing.privacy_policy') }}</a>
                                 </li>
                             </ul>
                         </div>

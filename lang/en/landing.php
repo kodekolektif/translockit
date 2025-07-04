@@ -93,5 +93,7 @@ return [
     'category' => 'Categories',
     'no_article'=>'No Article Found :(',
     'cookie' => 'This page belongs to Translock IT, S.L.U., as the Data Controller, and uses cookies—small text files stored on the Client\'s computer or mobile device—to enhance their experience and simplify their visits to the Platform. If you would like to know which cookies we use and why, please consult our Cookie Policy under <b>Read more</b>. Alternatively, click <b>Accept and continue browsing</b> to accept all cookies, or go to <b>Settings</b> to specify your preferences.',
-
+    'legal_notice' => 'Legal Notice',
+    'privacy_policy' => 'Privacy Policy',
+    'cookie_policy' => 'Cookie Policy',
 ];

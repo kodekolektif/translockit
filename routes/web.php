@@ -32,4 +32,8 @@ Route::prefix('{locale}')
         Route::get('/services', [App\Http\Controllers\ServicesController::class, 'services'])->name('services');
         Route::get('/mobile-app', [App\Http\Controllers\SoftwareController::class, 'mobileApp'])->name('mobile_app');
         Route::get('/software', [App\Http\Controllers\SoftwareController::class, 'index'])->name('software');
+
+        Route::get('/cookies-policy', [App\Http\Controllers\PrivacyPolicyController::class, 'cookie'])->name('cookie_policy');
+        Route::get('/legal-notice', [App\Http\Controllers\PrivacyPolicyController::class, 'legal'])->name('legal_notice');
+        Route::get('/privacy-policy', [App\Http\Controllers\PrivacyPolicyController::class, 'privacy'])->name('privacy_policy');
 });
