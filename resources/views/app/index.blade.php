@@ -82,13 +82,69 @@
                 {!! __('landing.cookie') !!}
             </div>
             <div class="d-flex flex-wrap gap-2 justify-content-end">
-                <a href="{{ route('cookie_policy', app()->getLocale()) }}" class="btn btn-outline-secondary btn-sm">Read More</a>
+                <a href="{{ route('cookie_policy', app()->getLocale()) }}" class="btn btn-outline-secondary btn-sm">Read
+                    More</a>
                 <button id="accept-cookies" class="btn btn-primary btn-sm">Accept</button>
                 <button id="cookie-settings" class="btn btn-outline-info btn-sm">Settings</button>
                 <button id="reject-cookies" class="btn btn-outline-danger btn-sm">Reject</button>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="cookieSettingsModal" tabindex="-1" aria-labelledby="cookieSettingsLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cookieSettingsLabel">Use of Cookies:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Usted permite o rechaza el uso de las cookies para las siguientes finalidades:</p>
+
+                    <!-- Necessary Cookies -->
+                    <div class="accordion" id="cookieAccordion">
+
+                        <!-- Necessary Cookies -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingNecessary">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseNecessary" aria-expanded="true"
+                                    aria-controls="collapseNecessary">
+                                    Necessary <span class="badge bg-warning ms-2">Siempre activado</span>
+                                </button>
+                            </h2>
+                            <div id="collapseNecessary" class="accordion-collapse collapse show"
+                                aria-labelledby="headingNecessary" data-bs-parent="#cookieAccordion">
+                                <div class="accordion-body small text-white">
+                                    Necessary cookies are absolutely essential for the website to function properly.
+                                    This category only includes cookies that ensure basic functionalities and security
+                                    features of the website. These cookies do not store any personal information.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Non-Necessary Cookies -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header d-flex justify-content-between align-items-center p-3">
+                                <span class="text-white" style="font-size: large">Non-Necessary</span>
+                                <div class="form-check form-switch" style="display: flex; justify-content: end; align-items: center; margin-top: -5px;">
+                                    <input class="form-check-input" type="checkbox" id="nonNecessaryToggle" style="width: 40px; height: 20px;">
+                                </div>
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="saveCookies">Save and Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- JS here -->
     <script src="{{ asset('assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
@@ -108,8 +164,8 @@
     <script src="{{ asset('assets/js/TweenMax.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.wavify.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-        <script>
-            $(function () {
+    <script>
+        $(function () {
                 if (!localStorage.getItem('cookieAccepted')) {
                     $('#cookie-banner').slideDown();
                 }
@@ -122,12 +178,24 @@
                 $('#reject-cookies').on('click', function () {
                     $('#cookie-banner').slideUp();
                 });
-
-                $('#cookie-settings').on('click', function () {
-                    alert("Settings clicked — you can open a modal or redirect to preferences page.");
+                $('#saveCookies').on('click', function () {
+                    // Here you can save the cookie preferences to localStorage or send them to your server
+                    var nonNecessaryEnabled = document.getElementById('nonNecessaryToggle').checked;
+                    localStorage.setItem('nonNecessaryCookies', nonNecessaryEnabled);
+                    localStorage.setItem('cookieAccepted', 'true');
+                    $('#cookie-banner').slideUp();
                 });
+
+                // $('#cookie-settings').on('click', function () {
+                //     alert("Settings clicked — you can open a modal or redirect to preferences page.");
+                // });
+                document.getElementById('cookie-settings').addEventListener('click', function () {
+                    var myModal = new bootstrap.Modal(document.getElementById('cookieSettingsModal'));
+                    myModal.show();
+                });
+
             });
-        </script>
+    </script>
 </body>
 
 </html>
