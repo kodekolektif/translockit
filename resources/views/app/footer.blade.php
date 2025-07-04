@@ -23,12 +23,12 @@ $company_settings = new \App\Settings\CompanySetting();
                                     alt="footer-logo"></a>
                         </div>
                         <p class="mb-20 pr-35">{{ $settings->description }}</p>
-                        <div class="footer-social footer-social-2">
+                        {{-- <div class="footer-social footer-social-2">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-pinterest-p"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-6">
