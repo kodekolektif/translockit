@@ -28,39 +28,39 @@
 </section>
 <section class="contact-area fix">
     {{-- <h3 class="service-title">Some of our products and softwares are:</h3> --}}
-<div class="container">
-    @foreach ($software_lists as $i => $item)
+    <div class="container">
+        @foreach ($software_lists as $i => $item)
         <div class="row align-items-center mb-4 row-product pt-50 pb-50">
             @if ($i % 2 == 0)
-                {{-- Gambar di kiri desktop, atas di mobile --}}
-                <div class="col-12 col-lg-5 order-1 order-lg-1">
-                    <img src="{{ Storage::url($item->logo) }}" alt="image" class="product-image w-100">
+            {{-- Gambar di kiri desktop, atas di mobile --}}
+            <div class="col-12 col-lg-5 order-1 order-lg-1">
+                <img src="{{ Storage::url($item->logo) }}" alt="image" class="product-image w-100">
+            </div>
+            <div class="col-12 col-lg-7 order-2 order-lg-2">
+                <div class="plan-content description mt-3 mt-lg-0">
+                    <h3 class="service-title">{{ $item->name }}</h3>
+                    {!! $item->description !!}
                 </div>
-                <div class="col-12 col-lg-7 order-2 order-lg-2">
-                    <div class="plan-content description mt-3 mt-lg-0">
-                        <h3 class="service-title">{{ $item->name }}</h3>
-                        {!! $item->description !!}
-                    </div>
-                </div>
+            </div>
             @else
-                {{-- Gambar di kanan desktop, tetap atas di mobile --}}
-                <div class="col-12 col-lg-5 order-1 order-lg-2">
-                    <img src="{{ Storage::url($item->logo) }}" alt="image" class="product-image w-100">
+            {{-- Gambar di kanan desktop, tetap atas di mobile --}}
+            <div class="col-12 col-lg-5 order-1 order-lg-2">
+                <img src="{{ Storage::url($item->logo) }}" alt="image" class="product-image w-100">
+            </div>
+            <div class="col-12 col-lg-7 order-2 order-lg-1">
+                <div class="plan-content description mt-3 mt-lg-0">
+                    <h3 class="service-title">{{ $item->name }}</h3>
+                    {!! $item->description !!}
                 </div>
-                <div class="col-12 col-lg-7 order-2 order-lg-1">
-                    <div class="plan-content description mt-3 mt-lg-0">
-                        <h3 class="service-title">{{ $item->name }}</h3>
-                        {!! $item->description !!}
-                    </div>
-                </div>
+            </div>
             @endif
         </div>
 
         @if (!$loop->last)
-            <hr>
+        <hr>
         @endif
-    @endforeach
-</div>
+        @endforeach
+    </div>
 
 </section>
 
