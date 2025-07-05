@@ -25,6 +25,7 @@ class LandingController extends Controller
         // Fetch services based on the language
         $services = \App\Models\Service::where('lang', $lang)
         ->where('is_active', true)
+        ->latest()
         ->get();
         return $services;
 
