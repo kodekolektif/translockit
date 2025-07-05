@@ -39,12 +39,12 @@ class EditTestimonials extends EditRecord
                  Section::make('English (EN)')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\FileUpload::make('image.en')
-                            ->image()
-                            ->disk('public')
-                            ->nullable()
-                            ->columnSpanFull()
-                            ->label('Image'),
+                        // Forms\Components\FileUpload::make('image.en')
+                        //     ->image()
+                        //     ->disk('public')
+                        //     ->nullable()
+                        //     ->columnSpanFull()
+                        //     ->label('Image'),
                         Forms\Components\TextInput::make('name.en')
                             ->placeholder('John Doe')
                             ->required()
@@ -84,12 +84,12 @@ class EditTestimonials extends EditRecord
                 Section::make('Spanish (ES)')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\FileUpload::make('image.es')
-                            ->image()
-                            ->disk('public')
-                            ->nullable()
-                            ->columnSpanFull()
-                            ->label('Image'),
+                        // Forms\Components\FileUpload::make('image.es')
+                        //     ->image()
+                        //     ->disk('public')
+                        //     ->nullable()
+                        //     ->columnSpanFull()
+                        //     ->label('Image'),
                         Forms\Components\TextInput::make('name.es')
                             ->placeholder('John Doe')
                             ->required()
@@ -132,10 +132,10 @@ class EditTestimonials extends EditRecord
                 'en' => $recordModel->content,
                 'es' => $sibling?->content,
             ],
-            'image' => [
-                'en' => $recordModel->image,
-                'es' => $sibling?->image,
-            ],
+            // 'image' => [
+            //     'en' => $recordModel->image,
+            //     'es' => $sibling?->image,
+            // ],
         ];
 
         $this->form->fill($formData);

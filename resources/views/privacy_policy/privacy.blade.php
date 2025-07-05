@@ -133,66 +133,43 @@
                 <li>{{ __('policy.privacy.65') }}</li>
             </ul>
 
-            <h2>Providers</h2>
+            <h2>{{ __('policy.privacy.7') }}</h2>
             <ul>
-                <li>Budgeting</li>
-                <li>Billing</li>
-                <li>Sending commercial communications</li>
-                <li>Updates of service conditions</li>
-                <li>Regular communication within the contracted service provision</li>
+                <li>{{ __('policy.privacy.71') }}</li>
+                <li>{{ __('policy.privacy.72') }}</li>
+                <li>{{ __('policy.privacy.73') }}</li>
+                <li>{{ __('policy.privacy.74') }}</li>
+                <li>{{ __('policy.privacy.75') }}</li>
             </ul>
-            <h2>Social Media Contacts</h2>
+            <h2>{{ __('policy.privacy.8') }}</h2>
             <ul>
-                <li>Creating a followers community</li>
-                <li>Handling friend requests</li>
-                <li>Sending business information</li>
-                <li>Make a professional profile for the service offering</li>
-                <li>Service Conditions updates</li>
-            </ul>
-
-            <h2>Job applicants</h2>
-            <ul>
-                <li>Valuation of the data included in the curriculum to analyse the suitability to the needs of
-                    Translock</li>
-                <li>Sending relevant information related to the job sought in the organization</li>
-                <li>In case the User expressly accepts it, the data may be transferred to collaborating or related
-                    companies in order to help the User to get a job.</li>
+                <li>{{ __('policy.privacy.81') }}</li>
+                <li>{{ __('policy.privacy.82') }}</li>
+                <li>{{ __('policy.privacy.83') }}</li>
+                <li>{{ __('policy.privacy.84') }}</li>
+                <li>{{ __('policy.privacy.85') }}</li>
             </ul>
 
-            <h2>Information collected by the mobile applications</h2>
-            <p>Our Services can be provided through the Mobile Application. We may collect and use technical data and
-                related information, including but not limited to, technical information about your device, system and
-                application software, and peripherals, that is gathered periodically to facilitate the provision of
-                software updates, product support and other services to you (if any) related to such Mobile
-                Applications.</p>
-            <p>When you use our Mobile Application, it may automatically collect and store some or all of the following
-                information from your mobile device (Mobile Device Information), in addition to the Device Information,
-                including without limitation: The manufacturer and model of your mobile device; Your mobile operating
-                system; Information about how you interact with the Mobile Application and any of our web sites to which
-                the Mobile Application links, such as how many times you use a specific part of the Mobile Application
-                over a given time period; the amount of time you spend using the Mobile Application; how often you use
-                the Mobile Application; actions you take in the Mobile Application and how you engage with the Mobile.
-                This information allow us to personalize the services and content available through the Mobile
-                Application</p>
+            <h2>{{ __('policy.privacy.9') }}</h2>
+            <ul>
+                <li>{{ __('policy.privacy.91') }}</li>
+                <li>{{ __('policy.privacy.92') }}</li>
+                <li>{{ __('policy.privacy.93') }}</li>
+            </ul>
 
-            <h2>Legitimation for the collection and processing of data</h2>
-            <p>The legal basis for the collection and processing of User data are, on the one hand, the mandatory
-                obligation to be able to provide the contracted services and on the other, the consent expressly granted
-                by the User for their collection and processing.</p>
+            <h2>{{ __('policy.privacy.10') }}</h2>
+            <p>{{ __('policy.privacy.101') }}</p>
+            <p>{{ __('policy.privacy.102') }}</p>
 
-            <h2>Duration of the treatment and conservation of the data</h2>
-            <p>The data for the management of the relationship with the customer, for the billing and for the collection
-                of the services will be kept while the contract is in force. Once this relationship is terminated, if
-                applicable, the data may be kept for the time required by the applicable legislation and until they
-                prescribe any responsibilities arising from the contract.</p>
-            <p>Data for the management of queries and requests will be kept for the time necessary to respond to them,
-                with a maximum period of one year.</p>
-            <p>The data for the sending of commercial communications and commercial profiling of our products or
-                services will be kept for as long as the commercial relationship with the User is maintained and does
-                not withdraw their consent to this.</p>
-            <p>Resume data for selection processes will be retained for two years.</p>
-            <p>For information purposes, the legal time limits for the retention of information in relation to different
-                matters are set out below</p>
+            <h2>{{ __('policy.privacy.11') }}</h2>
+            <p>{{ __('policy.privacy.111') }}</p>
+
+            <h2>{{ __('policy.privacy.12') }}</h2>
+            <p>{{ __('policy.privacy.121') }}</p>
+            <p>{{ __('policy.privacy.122') }}</p>
+            <p>{{ __('policy.privacy.123') }}</p>
+            <p>{{ __('policy.privacy.124') }}</p>
+            <p>{{ __('policy.privacy.125') }}</p>
 
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover rounded-3 overflow-hidden">

@@ -59,5 +59,37 @@ return [
         "63" => "Actualizaciones de condiciones de servicios",
         "64" => "Comunicación regular dentro de la prestación del servicio contratado",
         "65" => "Realizar un perfil profesional para la oferta de servicios",
+
+        "7"=> "Proveedores",
+        "71"=> "Presupuestos",
+        "72"=> "Facturación",
+        "73"=> "Envío de comunicaciones comerciales",
+        "74"=> "Actualizaciones de las condiciones del servicio",
+        "75"=> "Comunicación regular dentro de la prestación del servicio contratado",
+
+        "8"=> "Contactos en Redes Sociales",
+        "81"=> "Creación de una comunidad de seguidores",
+        "82"=> "Gestión de solicitudes de amistad",
+        "83"=> "Envío de información comercial",
+        "84"=> "Crear un perfil profesional para la oferta de servicios",
+        "85"=> "Actualizaciones de las condiciones del servicio",
+
+        "9"=> "Candidatos a Empleos",
+        "91"=> "Valoración de los datos incluidos en el currículum para analizar la idoneidad a las necesidades de Translock",
+        "92"=> "Envío de información relevante relacionada con el puesto de trabajo solicitado en la organización",
+        "93"=> "En caso de que el Usuario lo acepte expresamente, los datos podrán ser cedidos a empresas colaboradoras o relacionadas con el fin de ayudar al Usuario a conseguir un empleo",
+        "10"=> "Información recopilada por las aplicaciones móviles",
+        "101"=> "Nuestros Servicios pueden ser proporcionados a través de la Aplicación Móvil. Podemos recopilar y utilizar datos técnicos e información relacionada, incluyendo, entre otros, información técnica sobre su dispositivo, sistema y software de aplicación, y periféricos, que se recopila periódicamente para facilitar la provisión de actualizaciones de software, soporte de productos y otros servicios (si los hay) relacionados con dichas Aplicaciones Móviles.",
+        "102"=> "Cuando utiliza nuestra Aplicación Móvil, esta puede recopilar y almacenar automáticamente parte o toda la siguiente información de su dispositivo móvil (Información del Dispositivo Móvil), además de la Información del Dispositivo, incluyendo sin limitación=> El fabricante y modelo de su dispositivo móvil; Su sistema operativo móvil; Información sobre cómo interactúa con la Aplicación Móvil y cualquiera de nuestros sitios web a los que se vincula la Aplicación Móvil, como por ejemplo, cuántas veces utiliza una parte específica de la Aplicación Móvil durante un período de tiempo determinado; la cantidad de tiempo que pasa utilizando la Aplicación Móvil; la frecuencia con la que utiliza la Aplicación Móvil; las acciones que realiza en la Aplicación Móvil y cómo interactúa con el Móvil. Esta información nos permite personalizar los servicios y el contenido disponibles a través de la Aplicación Móvil",
+
+        "11"=> "Legitimación para la recogida y tratamiento de datos",
+        "111"=> "La base legal para la recogida y el tratamiento de los datos del Usuario son, por un lado, la obligación imperativa de poder prestar los servicios contratados y, por otro, el consentimiento expresamente otorgado por el Usuario para su recogida y tratamiento.",
+
+        "12"=> "Duración del tratamiento y conservación de los datos",
+        "121"=> "Los datos para la gestión de la relación con el cliente, para la facturación y para el cobro de los servicios se conservarán mientras el contrato esté vigente. Una vez finalizada esta relación, si procede, los datos podrán conservarse durante el tiempo exigido por la legislación aplicable y hasta que prescriban las responsabilidades derivadas del contrato.",
+        "122"=> "Los datos para la gestión de consultas y solicitudes se conservarán durante el tiempo necesario para responder a las mismas, con un plazo máximo de un año.",
+        "123"=> "Los datos para el envío de comunicaciones comerciales y la elaboración de perfiles comerciales de nuestros productos o servicios se conservarán mientras se mantenga la relación comercial con el Usuario y este no retire su consentimiento para ello.",
+        "124"=> "Los datos del currículum para los procesos de selección se conservarán durante dos años.",
+        "125"=> "A título informativo, a continuación se exponen los plazos legales de conservación de la información en relación con diferentes materias."
     ],
 ];

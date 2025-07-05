@@ -146,6 +146,10 @@ class EditService extends EditRecord
                 }
                 $fullPath = $data['icon']->store('service-icons', 'public');
                 $iconFileName = basename($fullPath);
+            } else if (isset($data['icon']) && is_string($data['icon'])) {
+                $iconFileName = $data['icon'];
+            } else {
+                $iconFileName = $record->logo; // Or an empty string, depending on your database schema
             }
 
             // Update record utama (EN)

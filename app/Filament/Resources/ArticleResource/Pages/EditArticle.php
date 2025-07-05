@@ -148,8 +148,8 @@ class EditArticle extends EditRecord
             // Update record utama (EN)
             $record->update(attributes: [
                 'thumbnail'   => $thumbnailFileName,
-                'title'       => $data['title'],
-                'content'     => $data['content'],
+                'title'       => $data['title']['en'],
+                'content'     => $data['content']['en'],
                 'is_published'=> $data['is_published'] ?? false,
                 'category_id' => $data['category_id'] ?? null,
             ]);
@@ -158,8 +158,8 @@ class EditArticle extends EditRecord
             if ($sibling) {
                 $sibling->update([
                     'thumbnail'   => $thumbnailFileName,
-                    'title'       => $data['title'],
-                    'content'     => $data['content'],
+                    'title'       => $data['title']['es'],
+                    'content'     => $data['content']['es'],
                     'is_published'=> $data['is_published'] ?? false,
                     'category_id' => $data['category_id'] ?? null,
                 ]);

@@ -61,6 +61,10 @@ class EditAbout extends EditRecord
                 }
                 $fullPath = $data['image']->store('about-images', 'public');
                 $imageFileName = basename($fullPath);
+            } else if (isset($data['image']) && is_string($data['image'])) {
+                $imageFileName = $data['image'];
+            } else {
+                $imageFileName = $record->image; // Or an empty string, depending on your database schema
             }
 
             // Update record utama (EN)

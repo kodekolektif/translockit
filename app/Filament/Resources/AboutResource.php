@@ -98,7 +98,7 @@ class AboutResource extends Resource
                     ->disk('public')
                     ->label('image'),
                 TextColumn::make('title')
-                    ->description(fn (About $record): string => Str::limit($record->description, 100, '...'))
+                    ->description(fn (About $record): string => strip_tags(Str::limit($record->description, 100)))
                     ->label('Title')
                     ->limit(50)
                     ->sortable()

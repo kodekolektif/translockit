@@ -23,6 +23,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class SoftwareResource extends Resource
 {
@@ -95,14 +96,9 @@ class SoftwareResource extends Resource
                 TextColumn::make('name')
                     ->label('Name')
                     ->limit(30)
-                    ->tooltip(fn (Model $record): string => $record->sibling?->name)
+                    ->description(fn (Model $record): string => strip_tags(Str::limit($record->sibling->description, 100)))
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('description')
-                    ->label('Description')
-                    ->limit(50)
-                    ->tooltip(fn (Model $record): string => $record->sibling?->description)
-                    ->sortable(),
 
                 ToggleColumn::make('is_active')
                     ->label('Active')
