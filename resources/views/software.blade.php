@@ -5,6 +5,17 @@
     p {
         margin-bottom: 15px !important;
     }
+
+    .image-wrapper {
+        max-width: 600px;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 </style>
 <section class="page__title p-relative d-flex align-items-center grey-bg-2" data-overlay="dark" data-opacity="7">
     <div class="page__title-bg" data-background="{{ asset('assets/img/bg/bg-slider_TranslockIt_5.jpg') }}"></div>
@@ -33,7 +44,7 @@
         <div class="row align-items-center mb-4 row-product pt-50 pb-50">
             @if ($i % 2 == 0)
             {{-- Gambar di kiri desktop, atas di mobile --}}
-            <div class="col-12 col-lg-5 order-1 order-lg-1">
+            <div class="col-12 col-lg-5 order-1 order-lg-1 image-wrapper">
                 <img src="{{ Storage::url($item->logo) }}" alt="image" class="product-image w-100">
             </div>
             <div class="col-12 col-lg-7 order-2 order-lg-2">
@@ -44,7 +55,7 @@
             </div>
             @else
             {{-- Gambar di kanan desktop, tetap atas di mobile --}}
-            <div class="col-12 col-lg-5 order-1 order-lg-2">
+            <div class="col-12 col-lg-5 order-1 order-lg-2 image-wrapper">
                 <img src="{{ Storage::url($item->logo) }}" alt="image" class="product-image w-100">
             </div>
             <div class="col-12 col-lg-7 order-2 order-lg-1">

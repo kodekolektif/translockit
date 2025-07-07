@@ -19,8 +19,11 @@ $company_settings = new \App\Settings\CompanySetting();
                 <div class="col-lg-4 col-sm-6">
                     <div class="widget mb-30">
                         <div class="footer-logo mb-25">
-                            <a href="{{ url('/') }}"><img src="{{ Storage::url($logodark) }}" class="img-fluid"
-                                    alt="footer-logo"></a>
+                            <a href="{{ url('/') }}">
+                                <img src="{{ Storage::url($logodark) }}" class="img-fluid" alt="footer-logo"
+                                    style="filter: brightness(0) invert(1);">
+                            </a>
+
                         </div>
                         <p class="mb-20 pr-35">{{ $settings->description }}</p>
                         {{-- <div class="footer-social footer-social-2">
@@ -36,10 +39,14 @@ $company_settings = new \App\Settings\CompanySetting();
                         <h4 class="widget-title mb-35">Links</h4>
                         <ul>
                             <li><a href="{{ route('about', app()->getLocale()) }}">{{ __('landing.About Us') }}</a></li>
-                            <li><a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a></li>
-                            <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a></li>
-                            <li><a href="{{ route('article.list', app()->getLocale()) }}">{{ __('landing.News') }}</a></li>
-                            <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
+                            <li><a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a>
+                            </li>
+                            <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a>
+                            </li>
+                            <li><a href="{{ route('article.list', app()->getLocale()) }}">{{ __('landing.News') }}</a>
+                            </li>
+                            <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -47,22 +54,29 @@ $company_settings = new \App\Settings\CompanySetting();
                     <div class="widget widget-contact mb-30">
                         <h4 class="widget-title mb-35">Contact</h4>
                         <ul>
+                            @if ($company_settings->address)
                             <li class="pb-10 d-flex">
                                 <div style="margin-top: 2px">
                                     <i class="fal fa-map-marker-alt"></i>
                                 </div>
                                 <div>
-                                    <a target="_blank" href="{{ $company_settings->google_map_url }}">{{ $company_settings->address }}</a>
+                                    <a target="_blank" href="{{ $company_settings->google_map_url }}">{{
+                                        $company_settings->address }}</a>
                                 </div>
                             </li>
+                            @endif
+                            @if ($company_settings->email)
                             <li class="d-flex align-items-center">
                                 <i class="fal fa-envelope-open"></i>
                                 <a href="mailto:{{ $company_settings->email }}">{{ $company_settings->email }}</a>
                             </li>
+                            @endif
+                            @if ($company_settings->phone)
                             <li class="d-flex align-items-center">
                                 <i class="fal fa-phone-alt me-2"></i>
                                 <a href="tel:{{ $company_settings->phone }}">{{ $company_settings->phone }}</a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -87,16 +101,20 @@ $company_settings = new \App\Settings\CompanySetting();
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="copyright">
-                            <span>Copyright ©{{ date('Y') }} {{ config('app.name') }}. {{ __('landing.All rights reserved.') }}</span>
+                            <span>Copyright ©{{ date('Y') }} {{ config('app.name') }}. {{ __('landing.All rights
+                                reserved.') }}</span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="privacy-text text-md-end">
                             <ul>
                                 <li>
-                                    <a href="{{ route('legal_notice', app()->getLocale()) }}">{{ __('landing.legal_notice') }}</a>
-                                    <a href="{{ route('cookie_policy', app()->getLocale()) }}">{{ __('landing.cookie_policy') }}</a>
-                                    <a href="{{ route('privacy_policy', app()->getLocale()) }}">{{ __('landing.privacy_policy') }}</a>
+                                    <a href="{{ route('legal_notice', app()->getLocale()) }}">{{
+                                        __('landing.legal_notice') }}</a>
+                                    <a href="{{ route('cookie_policy', app()->getLocale()) }}">{{
+                                        __('landing.cookie_policy') }}</a>
+                                    <a href="{{ route('privacy_policy', app()->getLocale()) }}">{{
+                                        __('landing.privacy_policy') }}</a>
                                 </li>
                             </ul>
                         </div>

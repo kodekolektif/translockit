@@ -76,8 +76,8 @@ return [
 
     'project' => [
         'project' => 'Project',
-        'feature_project' => 'Feature Project',
-        'explore_our_project' => 'Explore Our Project',
+        'feature_project' => 'Feature Services',
+        'explore_our_project' => 'Explore Our Services',
     ],
     'mobile' => [
         'offer' => 'WE OFFER FIRST-CLASS SERVICES',

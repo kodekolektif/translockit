@@ -21,28 +21,28 @@ class CompanySetting extends SettingsPage
         return $form
             ->schema([
                 Forms\Components\TextInput::make('phone')
-                    ->label(__('Phone'))
-                    ->required(),
+                    ->label(__('Phone')),
+                    // ->required(),
                 Forms\Components\TextInput::make('email')
                     ->label(__('Email'))
                     ->required(),
                 Forms\Components\TextInput::make('address')
                     ->columnSpanFull()
-                    ->label(__('Address'))
-                    ->required(),
+                    ->label(__('Address')),
+                    // ->required(),
                 Forms\Components\TextInput::make('google_map_url')
                     ->url()
                     ->columnSpanFull()
-                    ->label(__('Google Map URL'))
-                    ->required(),
+                    ->label(__('Google Map URL')),
+                    // ->required(),
                Forms\Components\TextInput::make('embed_google_url')
                     ->url()
                     ->columnSpanFull()
                     ->label(__('Embed Google Map URL'))
                     ->helperText(new HtmlString(
                         'Generate HTML Code hire <a href="https://www.embed-map.com/" target="_blank" rel="noopener noreferrer" style="color: blue;">embed-map.com</a> and copy the url from the src attribute.'
-                    ))
-                    ->required(),
+                    )),
+                    // ->required(),
         ]);
     }
 }

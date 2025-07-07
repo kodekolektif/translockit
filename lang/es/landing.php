@@ -72,8 +72,8 @@ return [
     ],
     'project' => [
         'project' => 'Proyecto',
-        'feature_project' => 'Proyecto Destacado',
-        'explore_our_project' => 'Explora Nuestro Proyecto',
+        'feature_project' => 'Servicios Destacados',
+        'explore_our_project' => 'Explorar Nuestros Servicios',
     ],
 
     'mobile' => [

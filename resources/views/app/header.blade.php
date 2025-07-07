@@ -12,14 +12,20 @@ $company_settings = new \App\Settings\CompanySetting();
             <div class="row d-flex align-items-center">
                 <div class="col-xl-8 col-lg-8 col-md-7">
                     <div class="header-info">
-                        <span class="header-address d-none d-lg-inline"><i class="fa fa-map-marker-alt"></i> <a
+                        @if ($company_settings->address)
+                            <span class="header-address d-none d-lg-inline"><i class="fa fa-map-marker-alt"></i> <a
                                 target="_blank"
-                                href="{{ $company_settings->google_map_url }}">
+                                href="{{ $company_settings->google_map_url??'#' }}">
                                 {{ Str::limit($company_settings->address, 30) }}</a>
                             </span>
-                        <span class="header-phone"><i class="fas fa-phone"></i> <a href="callto:{{ $company_settings->phone }}">{{ $company_settings->phone }}</a></span>
-                        <span class="header-email d-none d-xl-inline"><i class="fas fa-envelope"></i> <a
-                                href="mailto:{{ $company_settings->email }}">{{ $company_settings->email }}</a></span>
+                        @endif
+                        @if ($company_settings->phone)
+                            <span class="header-phone"><i class="fas fa-phone"></i> <a href="callto:{{ $company_settings->phone }}">{{ $company_settings->phone }}</a></span>
+                        @endif
+                        @if ($company_settings->email)
+                            <span class="header-email d-none d-xl-inline"><i class="fas fa-envelope"></i> <a
+                                    href="mailto:{{ $company_settings->email }}">{{ $company_settings->email }}</a></span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-5 text-end d-flex justify-content-end align-items-center gap-3">
