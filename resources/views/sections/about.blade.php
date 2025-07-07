@@ -5,8 +5,8 @@
                 <div class="ab-box pl-50 mb-30">
                     <div class="sec-wrapper">
                         <h5>{{ __('landing.About Us') }}</h5>
-                        <h2 class="section-title">{{ __('landing.top-notch technology consulting firm') }}</h2>
-                        <p>{{ __('high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.') }}</p>
+                        <h2 class="section-title">{{ __('landing.top_notch') }}</h2>
+                        <p>{{ __('landing.high_specialization') }}</p>
                     </div>
                     <div class="abs-item-box mt-40 mb-30">
                         <div class="row">
