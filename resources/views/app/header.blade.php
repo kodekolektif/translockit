@@ -28,8 +28,8 @@ $company_settings = new \App\Settings\CompanySetting();
                         @php
                         $active_locale = request()->segment(1) ?? 'en'; // Default to 'en' if no segment is found
                         $flags = [
-                        'en' => '🇺🇸',
-                        'es' => '🇪🇸',
+                            'en' => '🇬🇧',
+                            'es' => '🇪🇸',
                         ];
                         $languages = [
                         'en' => 'English',
@@ -150,9 +150,9 @@ $company_settings = new \App\Settings\CompanySetting();
                     @php
                     $active_locale = request()->segment(1) ?? 'en'; // Default to 'en' if no segment is found
                     $flags = [
-                    'en' => '🇺🇸',
-                    'es' => '🇪🇸',
-                    ];
+                            'en' => '🇬🇧',
+                            'es' => '🇪🇸',
+                        ];
                     $languages = [
                     'en' => 'English',
                     'es' => 'Spain',
