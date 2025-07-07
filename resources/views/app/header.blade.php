@@ -33,7 +33,7 @@ $company_settings = new \App\Settings\CompanySetting();
                         ];
                         $languages = [
                         'en' => 'English',
-                        'es' => 'Spain',
+                        'es' => 'Spanish',
                         ];
                         @endphp
 
@@ -155,7 +155,7 @@ $company_settings = new \App\Settings\CompanySetting();
                         ];
                     $languages = [
                     'en' => 'English',
-                    'es' => 'Spain',
+                    'es' => 'Spanish',
                     ];
                     @endphp
 

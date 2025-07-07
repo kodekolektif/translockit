@@ -27,8 +27,8 @@ return [
     'Our Services' => 'Nuestros Servicios',
     'Mobile Apps' => 'Aplicaciones Móviles',
     'Software' => 'Software',
-    'mobile_app' => 'Aplicación Móvil',
-    'software_list' => 'Lista de Software',
+    'mobile_app' => 'Aplicaciones Móviles',
+    'software_list' => 'Productos',
     'Our Partners' => 'Nuestros Socios',
     'We Are Hiring!' => '¡Estamos contratando!',
 
@@ -96,6 +96,8 @@ return [
     'accept' => 'Aceptar',
     'settings' => 'Configuraciones',
     'reject' => 'Rechazar',
+    'partner_desc' => 'Algunos de nuestros clientes, empresas y socios',
+
 
 
 ];

@@ -29,8 +29,8 @@ return [
     'Our Services' => 'Our Services',
     'Mobile Apps' => 'Mobile Apps',
     'Software' => 'Software',
-    'mobile_app' => 'Mobile App',
-    'software_list' => 'List',
+    'mobile_app' => 'Mobile Apps',
+    'software_list' => 'Products',
 
     'Our Partners' => 'Our Partners',
     'We Are Hiring!' => 'We Are Hiring!',
@@ -99,4 +99,5 @@ return [
     'accept' => 'Accept',
     'settings' => 'Settings',
     'reject' => 'Reject',
+    'partner_desc' => 'Some of our clients, companies and partners',
 ];
