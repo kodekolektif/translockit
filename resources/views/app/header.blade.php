@@ -34,8 +34,8 @@ $company_settings = new \App\Settings\CompanySetting();
                         @php
                         $active_locale = request()->segment(1) ?? 'en'; // Default to 'en' if no segment is found
                         $flags = [
-                            'en' => '🇬🇧',
-                            'es' => '🇪🇸',
+                            'en' => asset('flag/en.svg'),
+                            'es' => asset('flag/es.svg'),
                         ];
                         $languages = [
                         'en' => 'English',
@@ -46,7 +46,7 @@ $company_settings = new \App\Settings\CompanySetting();
                         <!-- Language Dropdown Button -->
                         <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
                             id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ $flags[$active_locale] ?? '' }} {{ strtoupper($active_locale) }}
+                            <img src="{{ $flags[$active_locale] ?? '' }}" alt="flag" style="max-width: 18px"> {{ strtoupper($active_locale) }}
                         </button>
 
                         <!-- Dropdown Menu -->
@@ -64,7 +64,7 @@ $company_settings = new \App\Settings\CompanySetting();
 
                                 <li>
                                     <a class="dropdown-item {{ $code == $active_locale ? 'active' : '' }}" href="{{ $newUrl }}">
-                                        {{ $flags[$code] ?? '' }} {{ $name }}
+                                        <img src="{{ $flags[$code] ?? '' }}" alt="flag" style="max-width: 18px"> {{ $name }}
                                     </a>
                                 </li>
                             @endforeach
@@ -155,9 +155,9 @@ $company_settings = new \App\Settings\CompanySetting();
                 <div class="dropdown">
                     @php
                     $active_locale = request()->segment(1) ?? 'en'; // Default to 'en' if no segment is found
-                    $flags = [
-                            'en' => '🇬🇧',
-                            'es' => '🇪🇸',
+                     $flags = [
+                            'en' => asset('flag/en.svg'),
+                            'es' => asset('flag/es.svg'),
                         ];
                     $languages = [
                     'en' => 'English',
@@ -168,7 +168,7 @@ $company_settings = new \App\Settings\CompanySetting();
                     <!-- Language Dropdown Button -->
                     <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">
-                        {{ $flags[$active_locale] ?? '' }} {{ strtoupper($active_locale) }}
+                       <img src=" {{ $flags[$active_locale] ?? '' }}" alt="flag" style="max-width: 18px"> {{ strtoupper($active_locale) }}
                     </button>
 
                     <!-- Dropdown Menu -->
@@ -186,7 +186,7 @@ $company_settings = new \App\Settings\CompanySetting();
 
                             <li>
                                 <a class="dropdown-item {{ $code == $active_locale ? 'active' : '' }}" href="{{ $newUrl }}">
-                                    {{ $flags[$code] ?? '' }} {{ $name }}
+                                   <img src=" {{ $flags[$code] ?? '' }}" alt="flag" style="max-width: 18px"> {{ $name }}
                                 </a>
                             </li>
                         @endforeach
