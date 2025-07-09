@@ -7,11 +7,11 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.Article') }}</h2>
+                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.mobile_app') }}</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('landing.Article') }}
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('landing.mobile_app') }}
                             </li>
                         </ol>
                     </nav>
