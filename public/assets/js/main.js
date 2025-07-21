@@ -14,11 +14,11 @@
 11. Product Slider 2 Js
 12. Product Slider 3 Js
 13. Product Slider 4 Js
-14. Sale Slider Js 
-15. Sale Slider 2 Js 
+14. Sale Slider Js
+15. Sale Slider 2 Js
 16. Client Slider Js
 17. Blog Slider Js
-18. Product Offer SLider Js 
+18. Product Offer SLider Js
 19. Masonary Js
 20. WoW Js
 21. Cart Plus Minus Js
@@ -160,25 +160,25 @@
 		animated_swiper(sliderActive1, sliderInit1);
 	}
 
-	// team 
+	// team
 	if (jQuery(".team-active").length > 0) {
 	let teamswiper = new Swiper('.team-active', {
 		slidesPerView: 4,
 		spaceBetween: 20,
 		loop: false,
-	  
+
 		// If we need pagination
 		pagination: {
 		  el: '.swiper-pagination',
 		  clickable: true,
 		},
-	  
+
 		// Navigation arrows
 		navigation: {
 		  nextEl: '.swiper-button-next',
 		  prevEl: '.swiper-button-prev',
 		},
-	  
+
 		// And if we need scrollbar
 		scrollbar: {
 		  el: '.swiper-scrollbar',
@@ -253,8 +253,8 @@
 			a11y: false
 		})
 	}
-	  
-  
+
+
 
 	$('.testimonial__slider ').owlCarousel({
 		loop:true,
@@ -301,19 +301,19 @@
 			autoplay: {
 					delay: 5000,
 				},
-		  
+
 			// If we need pagination
 			pagination: {
 			  el: '.swiper-pagination',
 			  clickable: true,
 			},
-		  
+
 			// Navigation arrows
 			navigation: {
 			  nextEl: '.swiper-button-next',
 			  prevEl: '.swiper-button-prev',
 			},
-		  
+
 			// And if we need scrollbar
 			scrollbar: {
 			  el: '.swiper-scrollbar',
@@ -329,31 +329,41 @@
 				  slidesPerView: 5,
 				},
 			  }
-	
+
 		  });
 		}
 
-	
+
 	////////////////////////////////////////////////////
     // 19. Masonary Js
-	$('.row-portfolio').imagesLoaded( function() {
-		// init Isotope
-		var $grid = $('.row-portfolio').isotope({
-			itemSelector: '.grid-item',
-			percentPosition: true,
-			masonry: {
-				// use outer width of grid-sizer for columnWidth
-				columnWidth: '.grid-item'
-			}
-		});
-
-		// filter items on button click
-		$('.portfolio-filter').on('click', 'button', function () {
-			var filterValue = $(this).attr('data-filter');
-			$grid.isotope({ filter: filterValue });
-		});
-
+	$('.row-portfolio').imagesLoaded(function () {
+	// init Isotope
+	var $grid = $('.row-portfolio').isotope({
+		itemSelector: '.grid-item',
+		percentPosition: true,
+		masonry: {
+			columnWidth: '.grid-item'
+		}
 	});
+
+	// ✅ Get default filter from active button
+	var defaultFilter = $('.portfolio-filter button.active').attr('data-filter') || '*';
+
+	// ✅ Apply default filter AFTER isotope is initialized
+	$grid.isotope({ filter: defaultFilter });
+
+	// filter items on button click
+	$('.portfolio-filter').on('click', 'button', function () {
+		var filterValue = $(this).attr('data-filter');
+		$grid.isotope({ filter: filterValue });
+
+		// update active class
+		$(this).addClass('active').siblings().removeClass('active');
+	});
+});
+
+
+
 	//for menu active class
 	$('.portfolio-filter button').on('click', function(event) {
 		$(this).siblings('.active').removeClass('active');
@@ -417,13 +427,13 @@
 		delay: 10,
 		time: 1000
 	});
-	
+
 
 	if ($('.scene').length > 0 ) {
 		$('.scene').parallax({
 			scalarX: 10.0,
 			scalarY: 15.0,
-		}); 
+		});
 	};
 
 	////////////////////////////////////////////////////
