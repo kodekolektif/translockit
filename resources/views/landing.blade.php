@@ -154,7 +154,7 @@
         @include('sections.brands')
 
         <!-- START PORTFOLIO DESIGN AREA -->
-        @include('sections.project')
+        {{-- @include('sections.project') --}}
         <!-- / END PORTFOLIO DESIGN AREA -->
 
         <!-- blog area start -->
