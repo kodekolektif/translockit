@@ -67,6 +67,9 @@ a {
 .m-img img {
   max-width: 100%;
 }
+.text-blue {
+   color: var(--primary-color) !important
+}
 
 a,
 .btn,

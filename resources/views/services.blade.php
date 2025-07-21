@@ -23,14 +23,14 @@
 
 <div class="main-services grey-bg pt-120 pb-90" data-background="{{ asset('assets/img/pattern/pt1.png') }}" >
     <div class="container">
-        <div class="row mb-60">
+        {{-- <div class="row mb-60">
             <div class="col-12">
                 <div class="sec-wrapper text-center">
                     <h5>{{ __('landing.Services')  }}</h5>
                     <h2 class="section-title">{{ __('landing.explore our services') }}</h2>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row text-center">
             @foreach ($services as $service)
            <a href="{{ route('services', [app()->getLocale(), 'category' => $service->unique_id]) }}#project" class="col-xl-3 col-lg-3 col-md-6 mb-30 d-flex">
