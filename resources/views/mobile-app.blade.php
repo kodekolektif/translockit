@@ -61,19 +61,26 @@
 
 <section class="portfolio-area">
     <div class="container">
-          <div class="row mb-60">
+        <div class="row mb-60">
             <div class="col-12">
                 <div class="sec-wrapper text-center">
-                    <h5>{{ __('landing.mobile.offer')  }}</h5>
+                    <h5>{{ __('landing.mobile.offer') }}</h5>
                     <h2 class="section-title">{{ __('landing.mobile.within') }}</h2>
                 </div>
             </div>
         </div>
         <div id="portfolio-grid" class="row row-portfolio">
             @foreach ($mobile_list as $item)
-            <div class="col-lg-4 col-md-6 col-sm-6 grid-item cat2 cat4">
-                {{-- add border --}}
-                <div class="tportfolio mb-30" >
+            <div class="col-lg-4 col-md-6 col-sm-6 grid-item cat2 cat4 gap-3 p-4">
+                <div class="card" style="width: 18rem; border: 0;">
+                    <img src="{{ Storage::url($item->logo) }}" class="card-img-top" alt="img-{{ $item->name }}">
+                    <div class="card-body">
+                        <h4 class="card-text text-center">{{ $item->title }}</h4>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col-lg-4 col-md-6 col-sm-6 grid-item cat2 cat4">
+                <div class="tportfolio mb-30">
                     <div class="tportfolio__img">
                         <a class="popup-image" href="{{ Storage::url($item->logo) }}" data-fancybox="gallery">
                             <img src="{{ Storage::url($item->logo) }}" alt="" />
@@ -85,14 +92,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             @endforeach
 
         </div>
     </div>
 </section>
 
-@include('sections.testimonials')
-@include('sections.brands')
+
 
 @endsection

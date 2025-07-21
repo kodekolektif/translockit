@@ -59,4 +59,7 @@
     </div>
 </section>
 <!-- page title area end -->
+
+@include('sections.brands')
+@include('sections.testimonials')
 @endsection
