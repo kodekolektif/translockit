@@ -21,7 +21,7 @@
     </div>
 </section>
 
-<div class="main-services grey-bg pt-120 pb-90" data-background="{{ asset('assets/img/pattern/pt1.png') }}">
+<div class="main-services grey-bg pt-120 pb-90" data-background="{{ asset('assets/img/pattern/pt1.png') }}" >
     <div class="container">
         <div class="row mb-60">
             <div class="col-12">
@@ -33,8 +33,8 @@
         </div>
         <div class="row text-center">
             @foreach ($services as $service)
-            <div class="col-xl-3 col-lg-3 col-md-6 mb-30 d-flex">
-                <div class="mfbox mfbox-white w-100 d-flex flex-column justify-content-between">
+           <a href="{{ route('services', [app()->getLocale(), 'category' => $service->unique_id]) }}#project" class="col-xl-3 col-lg-3 col-md-6 mb-30 d-flex">
+                <div class="mfbox w-100 d-flex flex-column justify-content-between">
                     <div>
                         <div class="mf-shape"></div>
                         <div class="mfbox__icon mb-15 text-center">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
             @endforeach
         </div>
     </div>
@@ -56,9 +56,12 @@
         margin-left: 20px;
         color: #686777;
     }
+    #project {
+        scroll-margin-top: 100px; /* sesuaikan dengan tinggi header-mu */
+    }
 </style>
 
-<section class="portfolio-area pt-120 pb-70">
+<section class="portfolio-area pt-120 pb-70" id="project">
     <div class="container">
         <div class="row mb-40 d-none">
             <div class="col-12">
@@ -72,9 +75,9 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="text-lg-end">
                     <div class="portfolio-filter">
-                        <button class="active" data-filter="*" style="font-size: 18px">Show all</button>
+                        <button class="{{ request()->has('category')?'':'active' }}" data-filter="*" style="font-size: 18px">Show all</button>
                         @foreach ($services as $service)
-                        <button style="font-size: 18px" data-filter=".{{ $service->unique_id }}">
+                        <button class="{{ request()->category == $service->unique_id ? 'active':''   }}"  style="font-size: 18px" data-filter=".{{ $service->unique_id }}">
                             {{ $service->title }}
                         </button>
                         @endforeach

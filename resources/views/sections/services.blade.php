@@ -10,7 +10,7 @@
         </div>
         <div class="row justify-content-center text-center">
             @foreach ($services as $service)
-            <div class="col-xl-3 col-lg-3 col-md-6 mb-30 d-flex">
+            <a href="{{ route('services', [app()->getLocale(), 'category' => $service->unique_id]) }}#project" class="col-xl-3 col-lg-3 col-md-6 mb-30 d-flex">
                 <div class="mfbox w-100 d-flex flex-column justify-content-between">
                     <div>
                         <div class="mf-shape"></div>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
             @endforeach
         </div>
     </div>
