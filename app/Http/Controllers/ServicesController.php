@@ -13,7 +13,6 @@ class ServicesController extends Controller
         $data['description'] = 'Explore the services we offer to our clients.';
         $data['services'] = Service::where('is_active',true)
         ->where('lang', $lang)
-        ->latest()
         ->get();
         $data['projects'] = $this->getProject($lang);
         // Logic to handle services
