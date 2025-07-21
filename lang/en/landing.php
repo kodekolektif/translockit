@@ -37,7 +37,7 @@ return [
 
     'Terms & Conditions' => 'Terms & Conditions',
     'Privacy Policy' => 'Privacy Policy',
-    'All rights reserved.' => 'All rights reserved.',
+    'all_rights_reserved.' => 'All rights reserved.',
 
     'thinking' => 'Thinking',
     'knowledge is best investment' => 'Knowledge is the best investment',

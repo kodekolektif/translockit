@@ -34,7 +34,7 @@ return [
 
     'Terms & Conditions' => 'Términos y Condiciones',
     'Privacy Policy' => 'Política de Privacidad',
-    'All rights reserved.' => 'Todos los derechos reservados.',
+    'all_rights_reserved' => 'Todos los derechos reservados.',
 
     'thinking' => 'Pensando',
     'knowledge is best investment' => 'El conocimiento es la mejor inversión',

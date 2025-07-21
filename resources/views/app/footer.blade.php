@@ -101,8 +101,7 @@ $company_settings = new \App\Settings\CompanySetting();
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <div class="copyright">
-                            <span>Copyright ©{{ date('Y') }} {{ config('app.name') }}. {{ __('landing.All rights
-                                reserved.') }}</span>
+                            <span>Copyright ©{{ date('Y') }} {{ config('app.name') }}. {{ __('landing.all_rights_reserved') }}</span>
                         </div>
                     </div>
                     <div class="col-md-6">
