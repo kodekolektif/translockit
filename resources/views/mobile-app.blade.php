@@ -72,7 +72,7 @@
         <div id="portfolio-grid" class="row row-portfolio">
             @foreach ($mobile_list as $item)
             <div class="col-lg-4 col-md-6 col-sm-6 grid-item cat2 cat4 gap-3 p-4">
-                <div class="card" style="width: 18rem; border: 0;">
+                <div class="card" style="border: 0;">
                     <img src="{{ Storage::url($item->logo) }}" class="card-img-top" alt="img-{{ $item->name }}">
                     <div class="card-body">
                         <h4 class="card-text text-center">{{ $item->title }}</h4>
