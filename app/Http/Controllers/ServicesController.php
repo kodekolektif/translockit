@@ -22,7 +22,6 @@ class ServicesController extends Controller
     public function getProject($lang){
         return \App\Models\Project::where('lang', $lang)
             ->where('is_active', true)
-            ->orderBy('created_at', 'desc')
             ->get();
     }
 
