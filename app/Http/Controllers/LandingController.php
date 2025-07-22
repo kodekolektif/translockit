@@ -11,7 +11,7 @@ class LandingController extends Controller
     {
         $locale = request()->segment(1);
 
-        $data['services']       = $this->getServices($locale);
+        $data['services']       = $this->getProject($locale);
         // $data['testimonials']   = $this->getTestimonials($locale);
         $data['articles']       = $this->getArticle($locale);
         // $data['brands']         = $this->getBrands();
