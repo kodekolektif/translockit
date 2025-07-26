@@ -13,7 +13,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ $APPtitle ?? ''}} {{ isset($title) ? ' - '.$title:'' }}</title>
     <meta name="description" content="{{ $description??$settings->description }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($favicon) }}">
     <!-- CSS here -->
