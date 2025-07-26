@@ -8,6 +8,8 @@ use App\Services\Translation as TranslatorService;
 use App\Models\Project;
 use App\Models\Service;
 use Filament\Forms;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -39,16 +41,18 @@ class ProjectResource extends Resource
                     ->label('Image')
                     ->columnSpanFull(),
 
-                Forms\Components\Select::make('service_id')
-                    ->label('Service')
-                    ->options(
-                        \App\Models\Service::where(['is_active' => 1])
-                        ->groupBy('unique_id')
-                        ->pluck('title', 'unique_id')
-                    )
-                    ->required()
-                    ->searchable()
-                    ->columnSpanFull(),
+                // Forms\Components\Select::make('service_id')
+                //     ->label('Service')
+                //     ->options(
+                //         \App\Models\Service::where(['is_active' => 1])
+                //         ->groupBy('unique_id')
+                //         ->pluck('title', 'unique_id')
+                //     )
+                //     ->required()
+                //     ->searchable()
+                //     ->columnSpanFull(),
+                Hidden::make('service_id')
+                ->default(0), // Gunakan default() untuk mengatur nilai awal/default
 
 
                  Forms\Components\Section::make('English (EN)')
@@ -115,27 +119,47 @@ class ProjectResource extends Resource
                     ->description(fn (Model $record): string => strip_tags(Str::limit($record->description ?? '', 100)))
                     ->searchable(),
 
-                TextColumn::make('service.title')
-                    ->label('Service'),
-
-                ToggleColumn::make('is_active')
-                    ->label('Active')
-                    ->updateStateUsing(function (Model $record, $state): void {
-                        $record->where('unique_id', $record->unique_id)
-                               ->update(['is_active' => $state]);
-                    }),
-
                 TextColumn::make('updated_at')
                     ->label('Last Updated')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
+                TextColumn::make('order')
+                ->label('Number of View')
+
+
             ])
+
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
+
+                Action::make('increment')
+                ->label('+')
+                ->button()
+                ->color('success') // green styling
+               ->action(function ($record) {
+                    $modelClass = get_class($record);
+
+                    $modelClass::where('unique_id', $record->unique_id)->increment('order');
+
+                    // Optional: refresh page or table
+                }),
+
+                Action::make('decrement')
+                    ->label('-')
+                    ->button() // pastikan ini disetel agar tampil sebagai <button>
+                    ->color('danger') // red styling
+                    ->action(function ($record) {
+                        $modelClass = get_class($record);
+
+                        $modelClass::where('unique_id', $record->unique_id)->decrement('order');
+
+                        // Optional: refresh page or table
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

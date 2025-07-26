@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\OrderController;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -37,3 +38,6 @@ Route::prefix('{locale}')
         Route::get('/legal-notice', [App\Http\Controllers\PrivacyPolicyController::class, 'legal'])->name('legal_notice');
         Route::get('/privacy-policy', [App\Http\Controllers\PrivacyPolicyController::class, 'privacy'])->name('privacy_policy');
 });
+
+Route::post('/admin/order/{id}/increment', [OrderController::class, 'increment'])->name('admin.order.increment');
+Route::post('/admin/order/{id}/decrement', [OrderController::class, 'decrement'])->name('admin.order.decrement');

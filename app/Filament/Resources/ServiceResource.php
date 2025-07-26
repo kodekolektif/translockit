@@ -33,6 +33,8 @@ class ServiceResource extends Resource
     protected static ?string $navigationGroup = 'Content Management';
     protected static ?int $navigationSort = 4;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form
