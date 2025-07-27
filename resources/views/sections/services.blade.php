@@ -32,7 +32,7 @@
                                 style="width:100%; height:370px; object-fit:cover;" />
                             <div class="tportfolio__text tportfolio__text-2">
                                 <h3 class="tportfolio-title">
-                                    <a href="#">{{ $service->name }}</a>
+                                   {{ $service->name }}
                                 </h3>
                             </div>
                         </div>
