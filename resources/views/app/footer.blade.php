@@ -25,7 +25,7 @@ $company_settings = new \App\Settings\CompanySetting();
                             </a>
 
                         </div>
-                        <p class="mb-20 pr-35">{{ $settings->description }}</p>
+                        <p class="mb-20 pr-35">{{ __('landing.footer_descriptoon') }}</p>
                         {{-- <div class="footer-social footer-social-2">
                             <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                             <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -52,7 +52,7 @@ $company_settings = new \App\Settings\CompanySetting();
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget widget-contact mb-30">
-                        <h4 class="widget-title mb-35">Contact</h4>
+                        <h4 class="widget-title mb-35">{{ __('landing.Contact') }}</h4>
                         <ul>
                             @if ($company_settings->address)
                             <li class="pb-10 d-flex">
@@ -82,8 +82,8 @@ $company_settings = new \App\Settings\CompanySetting();
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widget mb-30">
-                        <h4 class="widget-title mb-30">Newsletter</h4>
-                        <p class="mb-20">Subscribe to Our Newsletter for Daily News and Updates</p>
+                        <h4 class="widget-title mb-30">{{ __('landing.newsletter') }}</h4>
+                        <p class="mb-20">{{ __('landing.newsletter_text') }}</p>
                         <div class="widget-newsletter">
                             <form action="#">
                                 <input type="email" placeholder="Email Address">

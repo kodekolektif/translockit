@@ -7,7 +7,7 @@ $company_settings = new \App\Settings\CompanySetting();
 
 @endphp
 <header class="header-light">
-    <div class="top-bar d-none d-md-block pt-15 pb-15">
+    {{-- <div class="top-bar d-none d-md-block pt-15 pb-15">
         <div class="container">
             <div class="row d-flex align-items-center">
                 <div class="col-xl-8 col-lg-8 col-md-7">
@@ -29,6 +29,90 @@ $company_settings = new \App\Settings\CompanySetting();
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-5 text-end d-flex justify-content-end align-items-center gap-3">
+                    <!-- Language Dropdown -->
+                    <div class="dropdown" style="position: static !important;">
+                        @php
+                        $active_locale = request()->segment(1) ?? 'en';
+                        $flags = [
+                            'en' => asset('flag/en.svg'),
+                            'es' => asset('flag/es.svg'),
+                        ];
+                        $languages = [
+                        'en' => 'English',
+                        'es' => 'Spanish',
+                        ];
+                        @endphp
+
+
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
+                            id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ $flags[$active_locale] ?? '' }}" alt="flag" style="max-width: 18px"> {{ strtoupper($active_locale) }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            @foreach ($languages as $code => $name)
+                                @php
+                                    $segments = request()->segments();
+                                    $segments[0] = $code;
+                                    $newUrl = '/' . implode('/', $segments);
+                                    $query = request()->getQueryString();
+                                    if ($query) {
+                                        $newUrl .= '?' . $query;
+                                    }
+                                @endphp
+
+                                <li>
+                                    <a class="dropdown-item {{ $code == $active_locale ? 'active' : '' }}" href="{{ $newUrl }}">
+                                        <img src="{{ $flags[$code] ?? '' }}" alt="flag" style="max-width: 18px"> {{ $name }}
+                                    </a>
+                                </li>
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> --}}
+    <div id="header-sticky" class="header-area header-pad-2 sticky-2" style="z-index: 999; position: relative;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-3 col-lg-2 col-md-6 col-6">
+                    <div class="logo logo-border">
+                        <a href="{{ route('home', app()->getLocale()) }}"><img src="{{ Storage::url($logo) }}" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-10 col-md-6 col-6 d-flex justify-content-end">
+                    <div class="main-menu text-center ">
+                        <nav id="mobile-menu">
+                            <ul>
+                                <li>
+                                    <a class="active" href="{{ route('home', app()->getLocale()) }}">{{ __('landing.Home') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('about', app()->getLocale()) }}">{{ __('landing.About Us') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.Software') }}</a>
+                                     <ul class="sub-menu">
+                                         <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.software_list') }}</a></li>
+                                        <li><a href="{{ route('mobile_app', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{{ route('article.list',app()->getLocale()) }}">{{ __('landing.News') }} </a>
+                                </li>
+                                <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header-right-info d-flex align-items-center justify-content-end">
+                            <div class="col-xl-4 col-lg-4 col-md-5 text-end d-flex justify-content-end align-items-center gap-3">
                     <!-- Language Dropdown -->
                     <div class="dropdown" style="position: static !important;">
                         @php
@@ -74,46 +158,6 @@ $company_settings = new \App\Settings\CompanySetting();
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-    <div id="header-sticky" class="header-area header-pad-2 sticky-2">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-3 col-lg-2 col-md-6 col-6">
-                    <div class="logo logo-border">
-                        <a href="{{ url('/') }}"><img src="{{ Storage::url($logo) }}" alt="logo"></a>
-                    </div>
-                </div>
-                <div class="col-xl-9 col-lg-10 col-md-6 col-6 d-flex justify-content-end">
-                    <div class="main-menu text-center ">
-                        <nav id="mobile-menu">
-                            <ul>
-                                <li>
-                                    <a class="active" href="{{ url('/') }}">{{ __('landing.Home') }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('about', app()->getLocale()) }}">{{ __('landing.About Us') }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('services', app()->getLocale()) }}">{{ __('landing.Services') }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.Software') }}</a>
-                                     <ul class="sub-menu">
-                                         <li><a href="{{ route('software', app()->getLocale()) }}">{{ __('landing.software_list') }}</a></li>
-                                        <li><a href="{{ route('mobile_app', app()->getLocale()) }}">{{ __('landing.mobile_app') }}</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="{{ route('article.list',app()->getLocale()) }}">{{ __('landing.News') }} </a>
-                                </li>
-                                <li><a href="{{ route('contact', app()->getLocale()) }}">{{ __('landing.Contact') }}</a></li>
-
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="header-right-info d-flex align-items-center justify-content-end">
                         {{-- <div class="header-search">
                             <button class="search-toggle" type="button"><i class="fa fa-search"></i></button>
                         </div> --}}
@@ -166,10 +210,10 @@ $company_settings = new \App\Settings\CompanySetting();
                     @endphp
 
                     <!-- Language Dropdown Button -->
-                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown"
+                    {{-- <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown"
                         data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%;">
                        <img src=" {{ $flags[$active_locale] ?? '' }}" alt="flag" style="max-width: 18px"> {{ strtoupper($active_locale) }}
-                    </button>
+                    </button> --}}
 
                     <!-- Dropdown Menu -->
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">

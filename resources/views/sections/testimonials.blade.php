@@ -26,8 +26,8 @@ $testimonials = \App\Models\Testimonial::where('is_active', true)
         <div class="row mb-40 pt-150 z-index">
             <div class="col-12">
                 <div class="sec-wrapper text-center">
-                    <h5>Testimonials</h5>
-                    <h2 class="section-title">Feedback from our clients.</h2>
+                    <h5>{{ __('landing.testimonial') }}</h5>
+                    <h2 class="section-title">{{ __('landing.testimonial_text') }}</h2>
                 </div>
             </div>
         </div>

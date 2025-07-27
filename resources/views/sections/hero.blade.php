@@ -1,4 +1,4 @@
-<div class="slider-area  fix">
+<div class="slider-area  fix" style="margin-top: -120px">
     <div class="slider-active swiper-container">
         <div class="swiper-wrapper">
             <div class="slider-list slider-height-2 swiper-slide d-flex align-items-center pt-70">
@@ -13,7 +13,7 @@
                             <div class="slider-text slider-text-2 z-index">
                                 <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">{{ __('landing.welcome to translock it') }}</span>
                                 <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">
-                                    {{ __('landing.moving forward technologies') }}
+                                    {!! __('landing.moving forward technologies') !!}
                                 </h2>
                                 {{-- <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
                                     data-delay="0.7s">
@@ -40,7 +40,7 @@
                             <div class="slider-text slider-text-2 z-index">
                                 <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">{{ __('landing.welcome to translock it') }}</span>
                                 <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">
-                                    {{ __('landing.fueling business success together') }}
+                                    {!! __('landing.fueling business success together') !!}
                                 </h2>
                                 {{-- <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
                                     data-delay="0.7s">
