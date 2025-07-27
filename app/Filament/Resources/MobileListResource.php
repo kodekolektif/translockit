@@ -23,9 +23,9 @@ class MobileListResource extends Resource
 {
     protected static ?string $model = MobileList::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
     protected static ?string $navigationGroup = 'Content Management';
-    protected static ?int $navigationSort = 10;
+    protected static ?int $navigationSort = 8;
 
     public static function form(Form $form): Form
     {

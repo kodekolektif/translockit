@@ -24,7 +24,7 @@ class MobileAppResource extends Resource
 {
     protected static ?string $model = MobileApp::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-device-phone-mobile';
     protected static ?string $navigationTitle = 'MobileApp';
 
     protected static ?string $navigationGroup = 'Content Management';
