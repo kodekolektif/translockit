@@ -26,8 +26,7 @@
             <div class="swiper-wrapper align-items-center">
                 @foreach ($brands as $i => $brand)
                     <div class="brand-wrapper swiper-slide wow fadeInUp"
-                         data-wow-delay="{{ min(($i + 1) * 0.1, 0.5) }}s"
-                         data-swiper-autoplay="10000">
+                         data-wow-delay="{{ min(($i + 1) * 0.1, 0.5) }}s">
                         <a href="#">
                             <img src="{{ $brand->logo_url }}"
                                  class="img-fluid"

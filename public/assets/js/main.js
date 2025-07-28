@@ -110,7 +110,7 @@
 			effect: 'fade',
 
 			autoplay: {
-				delay: 5000,
+				delay: 500,
 			},
 
 			// If we need pagination
@@ -296,10 +296,12 @@
 		let brand = new Swiper('.brand-active', {
 			slidesPerView: 2,
 			spaceBetween: 30,
+            disableOnInteraction: false, // biar tetap autoplay meskipun user swipe
+            speed: 300,
 			// direction: 'vertical',
 			loop: true,
 			autoplay: {
-					delay: 5000,
+					delay: 500,
 				},
 
 			// If we need pagination

@@ -52,8 +52,8 @@ return [
     'latest_news' => 'ultimas noticias & articulos',
 
     'cta' =>[
-        'Get to Know Translock IT' => 'Conozca Translock IT',
-        'contact' => '¿Tiene alguna pregunta? No dude en contactarnos.',
+        'Get to Know Translock IT' => 'Conoce Translock IT',
+        'contact' => '¿Tienes alguna pregunta? No dudes en contactarnos',
         'Get in Touch' => 'Ponte en contacto',
     ],
     'contact' => [
