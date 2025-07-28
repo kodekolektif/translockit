@@ -110,7 +110,7 @@
 			effect: 'fade',
 
 			autoplay: {
-				delay: 500,
+				delay: 5000,
 			},
 
 			// If we need pagination
