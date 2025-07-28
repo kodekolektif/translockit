@@ -1,4 +1,4 @@
-<div class="slider-area  fix" style="margin-top: -120px">
+<div class="slider-area  fix" style="margin-top: -100px">
     <div class="slider-active swiper-container">
         <div class="swiper-wrapper">
             <div class="slider-list slider-height-2 swiper-slide d-flex align-items-center pt-70">

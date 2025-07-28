@@ -3,8 +3,8 @@
         <div class="row mb-60">
             <div class="col-12">
                 <div class="sec-wrapper">
-                    <h5>Features News</h5>
-                    <h2 class="section-title">Latest news & articles.</h2>
+                    <h5>{{ __('landing.feature_news') }}</h5>
+                    <h2 class="section-title">{{ __('landing.latest_news') }}</h2>
                 </div>
             </div>
         </div>

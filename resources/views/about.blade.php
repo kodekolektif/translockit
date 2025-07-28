@@ -33,9 +33,11 @@
                 <img src="{{ Storage::url($item->image) }}" alt="image" class="product-image w-100">
             </div>
             <div class="col-12 col-lg-7 order-2 order-lg-2">
-                <div class="plan-content description mt-3 mt-lg-0">
+                <div class="plan-content mt-3 mt-lg-0">
                     <h3 class="service-title">{{ $item->title }}</h3>
-                    {!! $item->description !!}
+                    <div class="description">
+                        {!! $item->description !!}
+                    </div>
                 </div>
             </div>
             @else
@@ -44,9 +46,11 @@
                 <img src="{{ Storage::url($item->image) }}" alt="image" class="product-image w-100">
             </div>
             <div class="col-12 col-lg-7 order-2 order-lg-1">
-                <div class="plan-content description mt-3 mt-lg-0">
+                <div class="plan-content mt-3 mt-lg-0">
                     <h3 class="service-title">{{ $item->title }}</h3>
-                    {!! $item->description !!}
+                      <div class="description">
+                        {!! $item->description !!}
+                    </div>
                 </div>
             </div>
             @endif

@@ -17,8 +17,8 @@ return [
     'explore our services' => 'Explora nuestros servicios',
     'moving forward technologies' => 'Moving Forward <br> Technologies',
     'fueling business success together' => 'Fueling business  <br>  success together',
-    'top_notch' => 'Una firma de consultoría tecnológica de primer nivel',
-    'high_specialization' => 'Una alta especialización en el desarrollo de servicios tecnológicos personalizados, Inteligencia Artificial (IA), soluciones integrales de software IT y aplicaciones móviles personalizadas.',
+    'top_notch' => 'consultoría tecnológica de primer nivel',
+    'high_specialization' => 'Con alta especialización en el desarrollo de servicios tecnológicos personalizados, Inteligencia Artificial (IA), soluciones integrales de software IT y aplicaciones móviles personalizadas.',
     'Customized mobile applications.' => 'Aplicaciones móviles personalizadas.',
     'Artificial Intelligence (AI).' => 'Inteligencia Artificial (IA).',
     'Learn More' => 'DESCUBRIR MÁS',
@@ -48,16 +48,19 @@ return [
     'let\'s talk about your project' => 'Hablemos sobre su proyecto',
     'contact us' => 'Contáctenos',
 
+    'feature_news' => 'Articulos',
+    'latest_news' => 'ultimas noticias & articulos',
+
     'cta' =>[
         'Get to Know Translock IT' => 'Conozca Translock IT',
         'contact' => '¿Tiene alguna pregunta? No dude en contactarnos.',
         'Get in Touch' => 'Ponte en contacto',
     ],
     'contact' => [
-        'keep_in_touch' => 'Mantente en contacto',
+        'keep_in_touch' => 'contacta con nosotros',
         'lets_work_together' => 'Trabajemos juntos',
         'call_anytime' => 'Llama en cualquier momento',
-        'send_email' => 'Enviar correo electrónico',
+        'send_email' => 'Envíanos un correo electrónico',
         'visit_office' => 'Visita nuestra oficina',
         'your_name' => 'Tu nombre',
         'email_address' => 'Dirección de correo electrónico',

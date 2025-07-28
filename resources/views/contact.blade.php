@@ -37,7 +37,7 @@
                         {{ __('landing.contact.lets_work_together') }}
                     </h2>
                 </div>
-                <div class="contact-info mr-50 mr-xs-0  mr-md-0">
+                <div class="contact-info mr-50 mr-xs-0  mr-md-0" style="margin-bottom: 30px !important">
                     @if ($phone)
                     <div class="single-contact-info d-flex align-items-center">
                         <div class="contact-info-icon">

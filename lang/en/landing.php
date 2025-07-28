@@ -20,7 +20,7 @@ return [
     'moving forward technologies' => 'Moving Forward <br> Technologies',
     'fueling business success together' => 'Fueling business  <br>  success together',
     'top_notch' => 'A Top-notch technology consulting firm',
-    'high_specialization' => 'A high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.',
+    'high_specialization' => 'With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.',
     'Customized mobile applications.' => 'Customized mobile applications.',
     'Artificial Intelligence (AI).' => 'Artificial Intelligence (AI).',
     'Learn More' => 'Learn More',
@@ -51,6 +51,9 @@ return [
     'let\'s talk about your project' => 'Let\'s talk about your project',
     'contact us' => 'Contact Us',
 
+    'feature_news' => 'Features News',
+    'latest_news' => 'Latest news & articles',
+
     'cta' => [
         'Get to Know Translock IT' => 'Get to Know Translock IT',
         'contact' => 'Do you have any question? Feel free to contact us.',
@@ -60,7 +63,7 @@ return [
         'keep_in_touch' => 'Keep in Touch',
         'lets_work_together' => 'Let\'s Work Together',
         'call_anytime' => 'Call Anytime',
-        'send_email' => 'Send Email',
+        'send_email' => 'Send Us An Email',
         'visit_office' => 'Visit Our Office',
         'your_name' => 'Your Name',
         'email_address' => 'Email Address',

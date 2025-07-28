@@ -27,8 +27,10 @@
         margin-left: 20px;
         color: #686777;
     }
+
     #project {
-        scroll-margin-top: 100px; /* sesuaikan dengan tinggi header-mu */
+        scroll-margin-top: 100px;
+        /* sesuaikan dengan tinggi header-mu */
     }
 </style>
 
@@ -47,20 +49,19 @@
             @foreach ($projects as $project)
             <div class="col-lg-12 col-md-12 col-sm-12 grid-item {{ $project->service->unique_id }}">
                 <div class="tportfolio mb-30 row">
-                    <div class="tportfolio__img col-lg-4 col-md-4 col-sm-12">
-                            <a class="popup-image" href="{{ Storage::url($project->image) }}"
-                                data-fancybox="gallery">
-                                <img src="{{ Storage::url($project->image) }}" alt=""
-                                    style="width:100%; height:370px; object-fit:cover;" />
-                            </a>
+                    <div class="tportfolio__img col-lg-4 col-md-4 col-sm-12" style="margin-bottom: 30px !important">
+                        <a class="popup-image" href="{{ Storage::url($project->image) }}" data-fancybox="gallery">
+                            <img src="{{ Storage::url($project->image) }}" alt=""
+                                style="width:100%; height:370px; object-fit:cover;" />
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                        <h3>{{ $project->name }}</h3>
+                        {{-- <h5 style="color:#60b5ff">{{ $project->service->title }}</h5> --}}
+                        <div style="text-align: justify; font-size: 16px; color:#000;" class="portfolio_description">
+                            {!! $project->description !!}
                         </div>
-                        <div class="col-md-6 col-lg-6 col-sm-12">
-                            <h3>{{ $project->name }}</h3>
-                            {{-- <h5 style="color:#60b5ff">{{ $project->service->title }}</h5> --}}
-                           <div style="text-align: justify; font-size: 16px; color:#000;" class="portfolio_description">
-                             {!! $project->description !!}
-                           </div>
-                        </div>
+                    </div>
                 </div>
             </div>
             @endforeach

@@ -3424,18 +3424,18 @@ p {
 }
 .page__title-content h2 {
   text-transform: uppercase;
-  font-size: 70px;
+  font-size: 60px;
   color: #ffffff;
   font-weight: 600;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .page__title-content h2 {
-    font-size: 60px;
+    font-size: 50px;
   }
 }
 @media (max-width: 575px) {
   .page__title-content h2 {
-    font-size: 40px;
+    font-size: 30px;
   }
 }
 .page__title-content .breadcrumb {
@@ -4125,7 +4125,7 @@ p {
   }
 }
 
-.plan-content.description {
+.plan-content .description {
   /* padding: 20px; */
   /* make justify */
   text-align: justify;
