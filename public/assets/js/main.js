@@ -301,7 +301,7 @@
 			// direction: 'vertical',
 			loop: true,
 			autoplay: {
-					delay: 800,
+					delay: 500,
 				},
 
 			// If we need pagination
