@@ -297,11 +297,11 @@
 			slidesPerView: 2,
 			spaceBetween: 30,
             disableOnInteraction: false, // biar tetap autoplay meskipun user swipe
-            speed: 1000,
+            speed: 2000,
 			// direction: 'vertical',
 			loop: true,
 			autoplay: {
-					delay: 1000,
+					delay: 2000,
 				},
 
 			// If we need pagination

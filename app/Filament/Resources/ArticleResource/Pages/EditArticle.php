@@ -132,17 +132,25 @@ class EditArticle extends EditRecord
     protected function handleRecordUpdate(Model $record, array $data): Model
     {
         return DB::transaction(function () use ($record, $data) {
-            $sibling = $record->sibling()->first();
-            $thumbnailFileName = $record->thumbnail; // Default ke nama file yang sudah ada
+             $sibling = $record->sibling()->first();
 
-            // ✅ LOGIKA BARU DI SINI
+            // Start with the existing logo filename from the record
+            $thumbnailFileName = $record->thumbnail;
+
+            // ✅ MODIFIED LOGIC HERE
+            // Check if a NEW logo file was actually uploaded
             if (isset($data['thumbnail']) && $data['thumbnail'] instanceof TemporaryUploadedFile) {
-                if ($record->thumbnail) {
-                    // Hapus ikon lama menggunakan path lengkap
-                    Storage::disk('public')->delete('thumbnails/' . $record->thumbnail);
+                // A new file was uploaded, process it
+                if ($record->logo) {
+                    // Delete the old logo using its full path
+                    Storage::disk('public')->delete( $record->thumbnail);
                 }
-                $fullPath = $data['thumbnail']->store('thumbnails', 'public');
+                $fullPath = $data['thumbnail']->store('public');
                 $thumbnailFileName = basename($fullPath);
+            } else if (isset($data['thumbnail']) && is_string($data['thumbnail'])) {
+                $thumbnailFileName = $data['thumbnail'];
+            } else {
+                $thumbnailFileName = null; // Or an empty string, depending on your database schema
             }
 
             // Update record utama (EN)

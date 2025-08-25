@@ -55,21 +55,29 @@ class EditProject extends EditRecord
     {
         return DB::transaction(function () use ($record, $data) {
             $sibling = $record->sibling()->first();
-            $imageFileName = $record->image; // Default ke nama file yang sudah ada
 
-            // ✅ LOGIKA BARU DI SINI
+            // Start with the existing logo filename from the record
+            $logoFileName = $record->image;
+
+            // ✅ MODIFIED LOGIC HERE
+            // Check if a NEW logo file was actually uploaded
             if (isset($data['image']) && $data['image'] instanceof TemporaryUploadedFile) {
-                if ($record->image) {
-                    // Hapus ikon lama menggunakan path lengkap
-                    Storage::disk('public')->delete('project/' . $record->image);
+                // A new file was uploaded, process it
+                if ($record->logo) {
+                    // Delete the old logo using its full path
+                    Storage::disk('public')->delete( $record->image);
                 }
-                $fullPath = $data['image']->store('project', 'public');
-                $imageFileName = basename($fullPath);
+                $fullPath = $data['image']->store('mobile-list', 'public');
+                $logoFileName = basename($fullPath);
+            } else if (isset($data['image']) && is_string($data['image'])) {
+                $logoFileName = $data['image'];
+            } else {
+                $logoFileName = null; // Or an empty string, depending on your database schema
             }
 
             // Update record utama (EN)
             $record->update([
-                'image' => $imageFileName,
+                'image' => $logoFileName,
                 'is_active' => $data['is_active'],
                 'name' => $data['name']['en'],
                 'description' => $data['description']['en'],
@@ -78,7 +86,7 @@ class EditProject extends EditRecord
             // Update record sibling (ES)
             if ($sibling) {
                 $sibling->update([
-                    'image' => $imageFileName, // Gunakan path ikon yang sama
+                    'image' => $logoFileName, // Gunakan path ikon yang sama
                     'is_active' => $data['is_active'], // Gunakan status aktif yang sama
                     'name' => $data['name']['es'],
                     'description' => $data['description']['es'],

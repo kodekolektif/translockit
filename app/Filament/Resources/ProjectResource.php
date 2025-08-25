@@ -8,6 +8,7 @@ use App\Services\Translation as TranslatorService;
 use App\Models\Project;
 use App\Models\Service;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Form;
@@ -34,11 +35,16 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('image') // The name 'icon' MUST match your code
+                // Forms\Components\FileUpload::make('image') // The name 'icon' MUST match your code
+                //     ->image() // Optional: for image previews and validation
+                //     ->disk('public') // Tell Filament to use the public disk
+                //     ->required() // Or ->nullable() if the icon is not required
+                //     ->label('Image')
+                //     ->columnSpanFull(),
+                FileUpload::make('image') // The name 'logo' MUST match your code
                     ->image() // Optional: for image previews and validation
                     ->disk('public') // Tell Filament to use the public disk
-                    ->required() // Or ->nullable() if the icon is not required
-                    ->label('Image')
+                    ->required() // Or ->nullable() if the image is not required
                     ->columnSpanFull(),
 
                 // Forms\Components\Select::make('service_id')
