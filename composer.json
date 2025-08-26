@@ -13,6 +13,7 @@
         "filament/spatie-laravel-settings-plugin": "^3.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "predis/predis": "^3.2",
         "spatie/laravel-settings": "^3.4"
     },
     "require-dev": {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ServicesController extends Controller
 {
@@ -11,19 +12,23 @@ class ServicesController extends Controller
     {
         $data['title'] = 'Our Services';
         $data['description'] = 'Explore the services we offer to our clients.';
-        $data['services'] = Service::where('is_active',true)
-        ->where('lang', $lang)
-        ->get();
+        $data['services'] =  Cache::remember('get_service_'.$lang, now()->addDay(), function () use ($lang) {
+            return Service::where('is_active',true)
+            ->where('lang', $lang)
+            ->get();
+        });
         $data['projects'] = $this->getProject($lang);
         // Logic to handle services
         return view('services', $data);
     }
 
     public function getProject($lang){
-        return \App\Models\Project::where('lang', $lang)
-            ->where('is_active', true)
-            ->orderBy('order','asc')
-            ->get();
+        return Cache::remember('get_project_'.$lang, now()->addDay(), function () use ($lang) {
+            return \App\Models\Project::where('lang', $lang)
+                ->where('is_active', true)
+                ->orderBy('order', 'asc')
+                ->get();
+        });
     }
 
 

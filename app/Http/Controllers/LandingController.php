@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class LandingController extends Controller
 {
@@ -22,44 +23,50 @@ class LandingController extends Controller
 
     public function getServices($lang)
     {
-        // Fetch services based on the language
-        $services = \App\Models\Service::where('lang', $lang)
-        ->where('is_active', true)
-        ->get();
-        return $services;
+        return Cache::remember('get_service_'.$lang, now()->addDay(), function () use ($lang) {
+            return \App\Models\Service::where('lang', $lang)
+            ->where('is_active', true)
+            ->get();
+        });
 
     }
     public function getTestimonials($lang)
     {
-        // Fetch testimonials based on the language
-        $testimonials = \App\Models\Testimonial::where('is_active', true)
-        ->where('lang', $lang)
-        ->orderBy('created_at', 'desc')
-        ->get();
-        return $testimonials;
+        return Cache::remember('get_testimonial_'.$lang, now()->addDay(), function () use ($lang) {
+            return \App\Models\Testimonial::where('is_active', true)
+            ->where('lang', $lang)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        });
     }
 
     public function getArticle($lang)
     {
-        return Article::where('is_published',true)
-            ->where('lang',$lang)
-            ->orderBy('published_at','desc')
-            ->limit(6)
-            ->get();
+        return Cache::remember('get_article_'.$lang, now()->addDay(), function () use ($lang) {
+            return Article::where('is_published',true)
+                ->where('lang',$lang)
+                ->orderBy('published_at','desc')
+                ->limit(6)
+                ->get();
+        });
     }
 
     public function getBrands()
     {
-        return \App\Models\Brand::where('is_active', true)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        return Cache::remember('get_brands', now()->addDay(), function () {
+            return \App\Models\Brand::where('is_active', true)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        });
     }
 
     public function getProject($lang){
-        return \App\Models\Project::where('lang', $lang)
-            ->where('is_active', true)
-            ->orderBy('order', 'asc')
-            ->get();
+        return Cache::remember('get_project_'.$lang, now()->addDay(), function () use ($lang) {
+            return \App\Models\Project::where('lang', $lang)
+                ->where('is_active', true)
+                ->orderBy('order', 'asc')
+                ->get();
+        });
     }
 
 

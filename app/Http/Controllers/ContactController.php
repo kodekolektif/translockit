@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ContactController extends Controller
 {
     public function index()
     {
         $title = "Contact Us";
-        $settings = new \App\Settings\CompanySetting();
+        $settings = Cache::remember('company_settings', now()->addDay(), function () {
+            return new \App\Settings\CompanySetting();
+        });
         $phone = $settings->phone;
         $email = $settings->email;
         $address = $settings->address;
