@@ -40,16 +40,19 @@
     <!-- Add your site or application content here -->
 
     <!-- pre loader area start -->
-    <div id="loading">
-        <div id="loading-center">
-            <div id="loading-center-absolute">
-                <div class="loading-icon text-center d-sm-flex align-items-center">
-                    <img class="loading-logo mr-10" src="{{ asset('assets/img/loading.png') }}" alt="">
-                    {{-- <img src="{{ Storage::url($settings->logo) }}" alt=""> --}}
+    @if (empty($hideloading) || $hideloading === false)
+        <div id="loading">
+            <div id="loading-center">
+                <div id="loading-center-absolute">
+                    <div class="loading-icon text-center d-sm-flex align-items-center">
+                        <img class="loading-logo mr-10" src="{{ asset('assets/img/loading.png') }}" alt="">
+                        {{-- <img src="{{ Storage::url($settings->logo) }}" alt=""> --}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
     <!-- pre loader area end -->
 
     <!-- header  -->

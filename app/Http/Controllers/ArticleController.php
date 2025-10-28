@@ -83,6 +83,7 @@ class ArticleController extends Controller
         $data['categories'] = Cache::remember("article_categories_$lang", now()->addDay(), function () use ($lang) {
             return ArticleCategory::where('lang', $lang)->get();
         });
+        $data['hideloading'] = true;
 
         return view('news-detail', $data);
     }
