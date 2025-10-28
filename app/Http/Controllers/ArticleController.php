@@ -7,6 +7,8 @@ use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
+
 
 class ArticleController extends Controller
 {
@@ -52,7 +54,7 @@ class ArticleController extends Controller
 
         // ⚠️ articles list (search/filter) → sebaiknya tidak dicache
         $data['articles'] = $query->orderBy('published_at', 'desc')->paginate(10);
-$seo['tags'] = "it company";
+        $seo['tags'] = "it company";
         $seo['description'] = "With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.";
         $seo['image'] = asset('assets/img/about/About-TranslockIt_1.jpg');
         $data['seo'] = $seo;
@@ -89,12 +91,49 @@ $seo['tags'] = "it company";
         });
         $data['hideloading'] = true;
 
+        if ($article->thumbnail) {
+            $originalPath = $article->thumbnail; // e.g. "thumbnails/foo.jpg"
+            $disk = Storage::disk('public');
+
+            // Ensure original image exists
+            if ($disk->exists($originalPath)) {
+                // Define optimized OG image name (same dir + -og suffix)
+                $ext = pathinfo($originalPath, PATHINFO_EXTENSION);
+                $name = pathinfo($originalPath, PATHINFO_FILENAME);
+                $ogPath = "thumbnails/{$name}-og.{$ext}";
+
+                // ✅ If OG version already exists, just use it
+                if (!$disk->exists($ogPath)) {
+                    // Read image binary
+                    $imgContent = $disk->get($originalPath);
+
+                    // Create image from binary
+                    $img = Image::read($imgContent)
+                        ->scaleDown(width: 1200)  // shrink proportionally
+                        ->cover(1200, 630)        // crop to OG ratio
+                        ->toJpeg(quality: 75);    // compress
+
+                    // Save optimized OG image
+                    $disk->put($ogPath, (string) $img);
+                }
+
+                // ✅ Set SEO image URL
+                $seo['image'] = $disk->url($ogPath);
+            } else {
+                // File missing
+                $seo['image'] = asset('images/default-seo.jpg');
+            }
+        } else {
+            // No thumbnail defined
+            $seo['image'] = asset('images/default-seo.jpg');
+        }
+
+
         $seo['tags']  = is_array($article->tags)
     ? implode(', ', $article->tags)
     : (string) $article->tags;
 
         $seo['description'] = str(strip_tags($article->content))->limit(200);
-        $seo['image'] = Storage::url($article->thumbnail);
         $data['seo'] = $seo;
 
         return view('news-detail', $data);
