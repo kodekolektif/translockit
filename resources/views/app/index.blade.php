@@ -29,6 +29,19 @@
     <meta name="og:site_name" content="Translockit" />
     <meta name="og:type" content="website" />
 
+    <meta property="og:title" content="{{ $seo['title'] ?? 'Translockit' }}" />
+    <meta property="og:description" content="{{ $seo['description'] ?? '' }}" />
+    <meta property="og:image" content="{{ $seo['image'] }}" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:site_name" content="Translockit" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Card tags (optional, but good practice) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ $seo['title'] ?? 'Translockit' }}" />
+    <meta name="twitter:description" content="{{ $seo['description'] ?? '' }}" />
+    <meta name="twitter:image" content="{{ $seo['image'] }}" />
+
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
