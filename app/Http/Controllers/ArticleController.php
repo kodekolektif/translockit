@@ -85,6 +85,11 @@ class ArticleController extends Controller
         });
         $data['hideloading'] = true;
 
+        $seo['tags'] = $article->tags->implode(', ');
+        $seo['description'] = str(strip_tags($article->content))->limit(200);
+        $seo['image'] = $article->thumbnail;
+        $data['seo'] = $seo;
+
         return view('news-detail', $data);
     }
 

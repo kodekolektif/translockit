@@ -16,6 +16,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($favicon) }}">
+
+   <meta name="keywords"
+        content="{{ ($seo?->tags ? $seo->tags . ', ' : '') . 'translock it, translock it consulting, software solutions, mobile applications, transportation solutions, cyber security, employee transportation software, school transportation software, freight transport system, car rental software, ai for accident claims, fleet consultancy, app development, cloud migration, cybersecurity logistics, logistics technology consulting, transport management software, fleet management solutions, mobility technology, logistics digital transformation, transport it consulting, logistics tech europe, transport software indonesia, fleet management indonesia, school bus management indonesia, custom mobile apps transportation, ai logistics solutions, cloud migration logistics, cybersecurity fleet management, car rental solution provider' }}" />
+
+    <meta name="author" content="{{ env('APP_URL') }}" />
+    <meta name="og:title" content="{{ $APPtitle ?? ''}} {{ isset($title) ? ' - '.$title:'' }}" />
+    <meta name="og:description"
+        content="{{ $seo->description??'' }}" />
+    <meta name="og:image" content="{{ isset($seo)? Storage::url($seo->image) : asset('/assets/img/about/About-TranslockIt_1.jpg') }}" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta name="og:site_name" content="Translockit" />
+    <meta name="og:type" content="website" />
+
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
