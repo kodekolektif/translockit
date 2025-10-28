@@ -110,16 +110,16 @@ class EditArticle extends EditRecord
         $formData = [
             'thumbnail' => $recordModel->thumbnail,
             'title' => [
-                'en' => $recordModel->title,
-                'es' => $sibling->title
+                'en' => $recordModel->title ?? '',
+                'es' => $sibling->title ?? ''
             ],
             'content'=> [
-                'en' => $recordModel->content,
-                'es' => $sibling->content
+                'en' => $recordModel->content ?? '',
+                'es' => $sibling->content ?? ''
             ],
             'tags' => $recordModel->tags,
-            'category_id' => $recordModel->category_id,
-            'is_published'=> $recordModel->is_published
+            'category_id' => $recordModel->category_id ?? '',
+            'is_published'=> $recordModel->is_published ?? ''
 
         ];
 
