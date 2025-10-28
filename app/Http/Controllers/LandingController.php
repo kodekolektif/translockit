@@ -17,6 +17,10 @@ class LandingController extends Controller
         $data['articles']       = $this->getArticle($locale);
         // $data['brands']         = $this->getBrands();
         $data['projects']       = $this->getProject($locale);
+        $seo['tags'] = "it company";
+        $seo['description'] = "With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.";
+        $seo['image'] = asset('assets/img/about/About-TranslockIt_1.jpg');
+        $data['seo'] = $seo;
 
         return view('landing', $data);
     }

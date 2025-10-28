@@ -18,6 +18,10 @@ class ServicesController extends Controller
             ->get();
         });
         $data['projects'] = $this->getProject($lang);
+        $seo['tags'] = "it company";
+        $seo['description'] = "With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.";
+        $seo['image'] = asset('assets/img/about/About-TranslockIt_1.jpg');
+        $data['seo'] = $seo;
         // Logic to handle services
         return view('services', $data);
     }

@@ -9,23 +9,22 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $title = "Contact Us";
+        $data['title'] = "Contact Us";
         $settings = Cache::remember('company_settings', now()->addDay(), function () {
             return new \App\Settings\CompanySetting();
         });
-        $phone = $settings->phone;
-        $email = $settings->email;
-        $address = $settings->address;
-        $google_map_url = $settings->google_map_url;
-        $embed_google_url = $settings->embed_google_url;
-        return view('contact', compact(
-            'title',
-            'phone',
-            'email',
-            'address',
-            'google_map_url',
-            'embed_google_url'
-        ));
+        $data['phone'] = $settings->phone;
+        $data['email'] = $settings->email;
+        $data['address'] = $settings->address;
+        $data['google_map_url'] = $settings->google_map_url;
+        $data['embed_google_url'] = $settings->embed_google_url;
+
+        $seo['tags'] = "it company";
+        $seo['description'] = "With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.";
+        $seo['image'] = asset('assets/img/about/About-TranslockIt_1.jpg');
+        $data['seo'] = $seo;
+
+        return view('contact',$data);
     }
 
     public function store(Request $request)

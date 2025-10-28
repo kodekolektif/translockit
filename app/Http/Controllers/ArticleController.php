@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -51,7 +52,10 @@ class ArticleController extends Controller
 
         // ⚠️ articles list (search/filter) → sebaiknya tidak dicache
         $data['articles'] = $query->orderBy('published_at', 'desc')->paginate(10);
-
+$seo['tags'] = "it company";
+        $seo['description'] = "With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.";
+        $seo['image'] = asset('assets/img/about/About-TranslockIt_1.jpg');
+        $data['seo'] = $seo;
         return view("news-list",$data);
     }
 
@@ -85,9 +89,12 @@ class ArticleController extends Controller
         });
         $data['hideloading'] = true;
 
-        $seo['tags'] = $article->tags->implode(', ');
+        $seo['tags']  = is_array($article->tags)
+    ? implode(', ', $article->tags)
+    : (string) $article->tags;
+
         $seo['description'] = str(strip_tags($article->content))->limit(200);
-        $seo['image'] = $article->thumbnail;
+        $seo['image'] = Storage::url($article->thumbnail);
         $data['seo'] = $seo;
 
         return view('news-detail', $data);
