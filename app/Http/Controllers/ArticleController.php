@@ -130,9 +130,9 @@ class ArticleController extends Controller
 
 
         $seo['tags']  = is_array($article->tags)
-    ? implode(', ', $article->tags)
-    : (string) $article->tags;
-
+        ? implode(', ', $article->tags)
+        : (string) $article->tags;
+        $seo['title'] = $article->title;
         $seo['description'] = str(strip_tags($article->content))->limit(200);
         $data['seo'] = $seo;
 
