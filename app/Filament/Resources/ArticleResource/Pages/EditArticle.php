@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ArticleResource\Pages;
 
 use App\Filament\Resources\ArticleResource;
 use App\Models\ArticleCategory;
+use App\Models\Author;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -86,6 +87,9 @@ class EditArticle extends EditRecord
                     Select::make('category_id')
                         ->label('Category')
                         ->options(ArticleCategory::where('lang','en')->get()->pluck('name','unique_id')),
+                    Select::make('author_id')
+                        ->label('Author')
+                        ->options(Author::where('lang','en')->get()->pluck('name','unique_id')),
                     TagsInput::make('tags')
                         ->label('Tags')
                         ->placeholder('Add tags')
@@ -160,6 +164,7 @@ class EditArticle extends EditRecord
                 'content'     => $data['content']['en'],
                 'is_published'=> $data['is_published'] ?? false,
                 'category_id' => $data['category_id'] ?? null,
+                'author_id'   => $data['author_id'] ?? 1,
             ]);
 
             // Update record sibling (ES)
@@ -170,6 +175,7 @@ class EditArticle extends EditRecord
                     'content'     => $data['content']['es'],
                     'is_published'=> $data['is_published'] ?? false,
                     'category_id' => $data['category_id'] ?? null,
+                    'author_id'   => $data['author_id'] ?? 1,
                 ]);
             }
 

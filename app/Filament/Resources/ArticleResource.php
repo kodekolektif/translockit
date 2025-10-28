@@ -6,6 +6,7 @@ use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\Author;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
@@ -31,13 +32,12 @@ class ArticleResource extends Resource
     protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
-    protected static ?string $navigationGroup = 'Content Management';
+   protected static ?string $navigationGroup = 'Content Management';
     protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
         return $form
-
             ->schema([
                     FileUpload::make('thumbnail') // The name 'icon' MUST match your code
                         ->label('Thumbnail Image') // Optional: label for the field
@@ -83,6 +83,10 @@ class ArticleResource extends Resource
                     Select::make('category_id')
                         ->label('Category')
                         ->options(ArticleCategory::where('lang','en')->get()->pluck('name','unique_id')),
+                    Select::make('author_id')
+                        ->label('Author')
+                        ->options(Author::where('lang','en')->get()->pluck('name','unique_id')),
+
                     TagsInput::make('tags')
                         ->label('Tags')
                         ->placeholder('Add tags'),
@@ -106,6 +110,8 @@ class ArticleResource extends Resource
                     ->description(fn (Article $record): string => strip_tags(Str::limit($record->content,100))),
                 TextColumn::make('category.name')
                 ->label('Category'),
+                TextColumn::make('author.name')
+                ->label('Author'),
                 TextColumn::make('published_at')
                     ->dateTime()
                     ->label('Published Date'),

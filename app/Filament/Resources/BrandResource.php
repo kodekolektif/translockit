@@ -20,7 +20,7 @@ class BrandResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-swatch';
     protected static ?string $navigationGroup = 'Content Management';
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {

@@ -31,6 +31,9 @@ class Article extends Model
     public function category() {
         return $this->belongsTo(ArticleCategory::class, 'category_id', 'unique_id');
     }
+    public function author() {
+        return $this->belongsTo(Author::class, 'author_id', 'unique_id');
+    }
     public function getLocalizedCategory()
     {
         return $this->category()->where('lang', app()->getLocale())->first();

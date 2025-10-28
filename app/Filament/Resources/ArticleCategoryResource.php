@@ -20,7 +20,8 @@ class ArticleCategoryResource extends Resource
     protected static ?string $model = ArticleCategory::class;
 
     protected static ?string $navigationGroup = 'Content Management';
-    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationLabel = 'Category';
+    protected static ?int $navigationSort = 4;
     public static function form(Form $form): Form
     {
         return $form
