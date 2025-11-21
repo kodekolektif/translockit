@@ -15,7 +15,6 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
-        const currentArticleSlug = '{{ $article->slug }}';
         let readArticles = JSON.parse(localStorage.getItem('read_articles')) || [];
 
         $.ajax({
