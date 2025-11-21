@@ -7,7 +7,7 @@ return [
     'About Us' => 'About Us',
     'Services' => 'Services',
     'Contact' => 'Contact',
-    'News' => 'News',
+    'News' => 'Articles',
     'Contact Us' => 'Contact Us',
     'Privacy Policy' => 'Privacy Policy',
     'Terms of Service' => 'Terms of Service',

@@ -6,7 +6,7 @@ return [
     'About Us' => 'Sobre nosotros',
     'Services' => 'Servicios',
     'Contact' => 'Contacto',
-    'News' => 'Noticias',
+    'News' => 'Artículos',
     'Contact Us' => 'Contáctenos',
     'Privacy Policy' => 'Política de privacidad',
     'Terms of Service' => 'Términos de servicio',
