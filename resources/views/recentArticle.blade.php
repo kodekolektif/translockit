@@ -33,10 +33,20 @@
                     const thumbnailUrl = "{{ Storage::url('') }}" + article.thumbnail;
 
                     // Format date 'd M' (e.g., 21 Nov)
-                    const publishedDate = new Date(article.published_at);
-                    const day = publishedDate.getDate();
-                    const month = publishedDate.toLocaleString('default', { month: 'short' });
-                    const formattedDate = `${day} ${month}`;
+                 const publishedDate = new Date(article.published_at);
+
+                // Ambil bagian tanggal
+                const day = publishedDate.getDate();
+                const month = publishedDate.toLocaleString('default', { month: 'short' });
+                const year = publishedDate.getFullYear();
+
+                // Ambil bagian waktu (HH:MM)
+                const hours = String(publishedDate.getHours()).padStart(2, '0');
+                const minutes = String(publishedDate.getMinutes()).padStart(2, '0');
+
+                // Format akhir
+                const formattedDate = `${day} ${month} ${year}`;
+
 
                     const articleHtml = `
                         <li class="d-flex align-items-center mb-20">
@@ -47,7 +57,7 @@
                             </div>
                             <div class="rc-text">
                                 <h6><a href="${articleUrl}">${article.title}</a></h6>
-                                <span class="rc-meta"><i class="fal fa-clock"></i>Publish At: ${formattedDate}</span>
+                                <span class="rc-meta"><i class="fal fa-clock"></i> Publish At: ${formattedDate}</span>
                             </div>
                         </li>
                     `;
