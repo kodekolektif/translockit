@@ -139,4 +139,36 @@ class ArticleController extends Controller
         return view('news-detail', $data);
     }
 
+    public function recentArticle(Request $request)
+    {
+        $readArticles = $request->input('read_articles', []);
+        $lang = app()->getLocale();
+
+        if (empty($readArticles)) {
+            return response()->json([]);
+        }
+
+        // Balik array supaya yang paling terakhir dibaca muncul paling atas
+        $readArticles = array_reverse($readArticles);
+
+        // Build CASE WHEN
+        $orderCases = [];
+        foreach ($readArticles as $index => $slug) {
+            $orderCases[] = "WHEN slug = '$slug' THEN $index";
+        }
+
+        $orderSql = "CASE " . implode(' ', $orderCases) . " END";
+
+        $latestArticle = Article::with('category')
+            ->where('lang', $lang)
+            ->whereNotNull('published_at')
+            ->whereIn('slug', $readArticles)
+            ->orderByRaw($orderSql)
+            ->limit(5)
+            ->get();
+
+        return response()->json($latestArticle);
+    }
+
+
 }

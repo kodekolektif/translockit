@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\OrderController;
 use App\Http\Middleware\SetLocale;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -27,6 +28,7 @@ Route::prefix('{locale}')
 
         Route::get('/article', [ArticleController::class, 'index'])->name('article.list');
         Route::get('/article/{slug}',[ArticleController::class,'getDetailArticle'])->name('article.detail');
+        Route::post('/recent-article',[ArticleController::class,'recentArticle'])->name('article.recent');
 
         Route::get('/about', [AboutController::class, 'index'])->name('about');
         Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');

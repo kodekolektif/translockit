@@ -254,34 +254,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="sidebar__widget sidebar__widget-padding mb-75 wow fadeInUp grey-bg"
-                            data-wow-delay=".4s">
-                            <div class="sidebar__widget-title mb-25">
-                                <h4>{{ __('landing.recent_article') }}</h4>
-                            </div>
-                            <div class="sidebar__widget-content">
-                                <div class="rc-post">
-                                    <ul>
-                                        @foreach ($latest_article as $latest)
-                                        <li class="d-flex align-items-center mb-20">
-                                            <div class="rc-thumb mr-15">
-                                                <a
-                                                    href="{{ route('article.detail', ['locale' => app()->getLocale(), 'slug' => $latest->slug]) }}"><img
-                                                        src="{{ Storage::url($latest->thumbnail) }}" alt="rc-post"></a>
-                                            </div>
-                                            <div class="rc-text">
-                                                <h6><a
-                                                        href="{{ route('article.detail', ['locale' => app()->getLocale(), 'slug' => $article->slug]) }}">{{
-                                                        $latest->title }}</a></h6>
-                                                <span class="rc-meta"><i class="fal fa-clock"></i> {{ date('d
-                                                    M',strtotime($latest->published_at)) }}</span>
-                                            </div>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
+                        @include('recentArticle')
+
                         <div class="sidebar__widget sidebar__widget-padding mb-75 wow fadeInUp grey-bg"
                             data-wow-delay=".6s">
                             <div class="sidebar__widget-title mb-25">
@@ -367,3 +342,16 @@
 </main>
 
 @endsection
+@push('scripts')
+    <script>
+         $(document).ready(function() {
+            const currentArticleSlug = '{{ $article->slug }}';
+            let readArticles = JSON.parse(localStorage.getItem('read_articles')) || [];
+
+            if (!readArticles.includes(currentArticleSlug)) {
+                readArticles.push(currentArticleSlug);
+                localStorage.setItem('read_articles', JSON.stringify(readArticles));
+            }
+        })
+    </script>
+@endpush
