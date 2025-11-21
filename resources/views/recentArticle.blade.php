@@ -47,7 +47,7 @@
                             </div>
                             <div class="rc-text">
                                 <h6><a href="${articleUrl}">${article.title}</a></h6>
-                                <span class="rc-meta"><i class="fal fa-clock"></i> ${formattedDate}</span>
+                                <span class="rc-meta"><i class="fal fa-clock"></i>Publish At: ${formattedDate}</span>
                             </div>
                         </li>
                     `;
