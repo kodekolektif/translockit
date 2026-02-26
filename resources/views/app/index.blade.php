@@ -42,6 +42,16 @@
     <meta name="twitter:description" content="{{ $seo['description'] ?? '' }}" />
     <meta name="twitter:image" content="{{ $seo['image'] }}" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M64R7DGXD4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M64R7DGXD4');
+    </script>
+
     <!-- CSS here -->
     <link rel="stylesheet" href="{{ asset('assets/css/preloader.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
