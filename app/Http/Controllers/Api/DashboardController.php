@@ -38,37 +38,64 @@ class DashboardController extends Controller
     }
     public function analytics(): JsonResponse
     {
-        // Mengambil data traffic (Total Visitors & Page Views) 7 hari terakhir
-        $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
+        try {
+            // 1. Ambil data dari GA4
+            $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
+            $topBrowsers = Analytics::fetchTopBrowsers(Period::days(7));
+            $topByCountry = Analytics::get(Period::months(1), ['activeUsers'], ['country'], 10);
 
-        // Mengambil data browser yang paling banyak digunakan
-        $topBrowsers = Analytics::fetchTopBrowsers(Period::days(7));
-        $topByCountry = Analytics::get(
-        Period::months(1),
-        ['activeUsers'], // Metric
-        ['country'],     // Dimension
-        10,
-    );
+            // 2. Cek apakah ada data. Jika total visitors adalah 0, kita anggap data belum ada
+            if ($analyticsData->isEmpty() || $analyticsData->sum('visitors') == 0) {
+                return response()->json($this->getDummyData("Data belum tersedia di GA4"));
+            }
 
-        // Contoh respons dummy (ganti dengan data nyata dari GA4)
-        return response()->json([
+            // 3. Jika ada data, kembalikan data asli
+            return response()->json([
+                'success' => true,
+                'message' => 'Real-time data dari Google Analytics',
+                'data' => [
+                    'total_visitors' => $analyticsData->sum('visitors'),
+                    'page_views' => $analyticsData->sum('pageViews'),
+                    'top_browsers' => $topBrowsers->map(fn($b) => [
+                        'browser' => $b['browser'],
+                        'sessions' => $b['sessions']
+                    ]),
+                    'top_countries' => $topByCountry->map(fn($c) => [
+                        'country' => $c['country'],
+                        'active_users' => $c['activeUsers']
+                    ]),
+                ],
+            ]);
+
+        } catch (\Exception $e) {
+            // Jika API Error (misal: Property ID salah/Auth Error), tampilkan dummy
+            return response()->json($this->getDummyData("Menampilkan data simulasi (API Error)"));
+        }
+    }
+
+    /**
+     * Helper untuk menyediakan data dummy dengan filter negara spesifik
+     */
+    private function getDummyData(string $message): array
+    {
+        return [
             'success' => true,
+            'message' => $message,
+            'is_dummy' => true,
             'data' => [
-                'total_visitors' => $analyticsData->sum('visitors'),
-                'page_views' => $analyticsData->sum('pageViews'),
-                'top_browsers' => $topBrowsers->map(function ($browser) {
-                    return [
-                        'browser' => $browser['browser'],
-                        'sessions' => $browser['sessions'],
-                    ];
-                }),
-                'top_countries' => $topByCountry->map(function ($country) {
-                    return [
-                        'country' => $country['country'],
-                        'active_users' => $country['activeUsers'],
-                    ];
-                }),
+                'total_visitors' => 75, // Total di bawah 200
+                'page_views' => 92,
+                'top_browsers' => [
+                    ['browser' => 'Chrome', 'sessions' => 20],
+                    ['browser' => 'Safari', 'sessions' => 4],
+                    ['browser' => 'Others', 'sessions' => 5],
+                ],
+                'top_countries' => [
+                    ['country' => 'Spain', 'active_users' => 40],     // Mayoritas
+                    ['country' => 'Indonesia', 'active_users' => 10], // Data Indonesia
+                    ['country' => 'Italy', 'active_users' => 15],     // Data Italia
+                ],
             ],
-        ]);
+        ];
     }
 }
