@@ -23,6 +23,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/category', [ArticleController::class, 'getCategories']);
 
 // Protected routes
+Route::get('/analytics', [DashboardController::class, 'analytics']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
