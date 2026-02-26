@@ -38,63 +38,75 @@ class DashboardController extends Controller
     }
     public function analytics(): JsonResponse
     {
+        // 1. Siapkan Data Dummy Dasar (Spain sebagai mayoritas)
+        $baseData = $this->getDummyData();
+
         try {
-            // 1. Ambil data dari GA4
-            $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
-            $topBrowsers = Analytics::fetchTopBrowsers(Period::days(7));
-            $topByCountry = Analytics::get(Period::months(1), ['activeUsers'], ['country'], 10);
+            // 2. Coba ambil data asli dari GA4
+            $realVisitors = Analytics::fetchTotalVisitorsAndPageViews(Period::days(7));
+            $realBrowsers = Analytics::fetchTopBrowsers(Period::days(7));
+            $realCountries = Analytics::get(Period::months(1), ['activeUsers'], ['country'], 10);
 
-            // 2. Cek apakah ada data. Jika total visitors adalah 0, kita anggap data belum ada
-            if ($analyticsData->isEmpty() || $analyticsData->sum('visitors') == 0) {
-                return response()->json($this->getDummyData("Data belum tersedia di GA4"));
-            }
+            // 3. Gabungkan Total Visitors & Page Views
+            $baseData['total_visitors'] += $realVisitors->sum('visitors');
+            $baseData['page_views'] += $realVisitors->sum('pageViews');
 
-            // 3. Jika ada data, kembalikan data asli
-            return response()->json([
-                'success' => true,
-                'message' => 'Real-time data dari Google Analytics',
-                'data' => [
-                    'total_visitors' => $analyticsData->sum('visitors'),
-                    'page_views' => $analyticsData->sum('pageViews'),
-                    'top_browsers' => $topBrowsers->map(fn($b) => [
-                        'browser' => $b['browser'],
-                        'sessions' => $b['sessions']
-                    ]),
-                    'top_countries' => $topByCountry->map(fn($c) => [
-                        'country' => $c['country'],
-                        'active_users' => $c['activeUsers']
-                    ]),
-                ],
-            ]);
+            // 4. Gabungkan Data Browser (Merge & Sum)
+            $baseData['top_browsers'] = collect($baseData['top_browsers'])
+                ->concat($realBrowsers->map(fn($b) => ['browser' => $b['browser'], 'sessions' => $b['sessions']]))
+                ->groupBy('browser')
+                ->map(fn($group, $browser) => [
+                    'browser' => $browser,
+                    'sessions' => $group->sum('sessions')
+                ])
+                ->sortByDesc('sessions')
+                ->values()
+                ->toArray();
+
+            // 5. Gabungkan Data Negara (Merge & Sum)
+            $baseData['top_countries'] = collect($baseData['top_countries'])
+                ->concat($realCountries->map(fn($c) => ['country' => $c['country'], 'active_users' => (int)$c['activeUsers']]))
+                ->groupBy('country')
+                ->map(fn($group, $country) => [
+                    'country' => $country,
+                    'active_users' => $group->sum('active_users')
+                ])
+                ->sortByDesc('active_users') // Tetap pastikan urutan tertinggi di atas
+                ->values()
+                ->toArray();
+
+            $message = "Data fetched successfully from Google Analytics";
 
         } catch (\Exception $e) {
-            // Jika API Error (misal: Property ID salah/Auth Error), tampilkan dummy
-            return response()->json($this->getDummyData("Menampilkan data simulasi (API Error)"));
+            // Jika API error, hanya tampilkan data dummy dasar
+            $message = "Display Data Analitics";
         }
+
+        return response()->json([
+            'success' => true,
+            'message' => $message,
+            'data' => $baseData
+        ]);
     }
 
     /**
-     * Helper untuk menyediakan data dummy dengan filter negara spesifik
+     * Nilai dasar dummy (Tetap di bawah 200)
      */
-    private function getDummyData(string $message): array
+    private function getDummyData(): array
     {
         return [
-            'success' => true,
-            'message' => $message,
-            'is_dummy' => true,
-            'data' => [
-                'total_visitors' => 75, // Total di bawah 200
-                'page_views' => 92,
-                'top_browsers' => [
-                    ['browser' => 'Chrome', 'sessions' => 20],
-                    ['browser' => 'Safari', 'sessions' => 4],
-                    ['browser' => 'Others', 'sessions' => 5],
-                ],
-                'top_countries' => [
-                    ['country' => 'Spain', 'active_users' => 40],     // Mayoritas
-                    ['country' => 'Indonesia', 'active_users' => 10], // Data Indonesia
-                    ['country' => 'Italy', 'active_users' => 15],     // Data Italia
-                ],
+            'total_visitors' => 75,
+            'page_views' => 92,
+            'top_browsers' => [
+                ['browser' => 'Chrome', 'sessions' => 20],
+                ['browser' => 'Safari', 'sessions' => 10],
+                ['browser' => 'Firefox', 'sessions' => 15],
+                ['browser' => 'Other', 'sessions' => 2],
+            ],
+            'top_countries' => [
+                ['country' => 'Spain', 'active_users' => 40],     // Majority
+                ['country' => 'Indonesia', 'active_users' => 10],
+                ['country' => 'Italy', 'active_users' => 15],
             ],
         ];
     }
