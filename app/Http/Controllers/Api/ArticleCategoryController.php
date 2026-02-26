@@ -20,14 +20,13 @@ class ArticleCategoryController extends Controller
     public function index(): JsonResponse
     {
         $categories = ArticleCategory::where('lang', 'en')
-            ->with('sibling')
             ->orderBy('created_at', 'desc')
             ->get()
             ->map(function ($category) {
                 return [
                     'id' => $category->unique_id,
                     'name' => $category->name,
-                    'is_active' => (bool) $category->is_active,
+                    'is_active' => true,
                     'lang' => $category->lang,
                     'created_at' => $category->created_at,
                     'updated_at' => $category->updated_at,
@@ -49,23 +48,42 @@ class ArticleCategoryController extends Controller
 
         $uniqueId = Str::uuid()->toString();
 
-        $category = ArticleCategory::create([
+        // Handle both nested {name: {en: '', es: ''}} and flat {name[en]: '', name[es]: ''} formats
+        $nameData = $validated['name'];
+        if (!is_array($nameData)) {
+            $nameData = [
+                'en' => $request->input('name.en') ?? $request->input('name[en]', ''),
+                'es' => $request->input('name.es') ?? $request->input('name[es]', ''),
+            ];
+        }
+
+        // Create English version
+        $categoryEn = ArticleCategory::create([
             'unique_id' => $uniqueId,
-            'name' => $validated['name'],
-            'is_active' => $validated['is_active'] ?? true,
-            'lang' => $validated['lang'] ?? 'en',
+            'name' => $nameData['en'] ?? '',
+            'lang' => 'en',
+        ]);
+
+        // Create Spanish version
+        $categoryEs = ArticleCategory::create([
+            'unique_id' => $uniqueId,
+            'name' => $nameData['es'] ?? $nameData['en'] ?? '',
+            'lang' => 'es',
         ]);
 
         return response()->json([
             'success' => true,
             'message' => 'Category created successfully',
             'data' => [
-                'id' => $category->unique_id,
-                'name' => $category->name,
-                'is_active' => (bool) $category->is_active,
-                'lang' => $category->lang,
-                'created_at' => $category->created_at,
-                'updated_at' => $category->updated_at,
+                'id' => $categoryEn->unique_id,
+                'name' => [
+                    'en' => $categoryEn->name,
+                    'es' => $categoryEs->name,
+                ],
+                'is_active' => true,
+                'lang' => $categoryEn->lang,
+                'created_at' => $categoryEn->created_at,
+                'updated_at' => $categoryEn->updated_at,
             ],
         ], 201);
     }
@@ -75,19 +93,21 @@ class ArticleCategoryController extends Controller
      */
     public function show(string $uniqueId): JsonResponse
     {
-        $category = ArticleCategory::where('unique_id', $uniqueId)
-            ->with('sibling')
-            ->firstOrFail();
+        $categoryEn = ArticleCategory::where('unique_id', $uniqueId)->where('lang', 'en')->firstOrFail();
+        $categoryEs = ArticleCategory::where('unique_id', $uniqueId)->where('lang', 'es')->first();
 
         return response()->json([
             'success' => true,
             'data' => [
-                'id' => $category->unique_id,
-                'name' => $category->name,
-                'is_active' => (bool) $category->is_active,
-                'lang' => $category->lang,
-                'created_at' => $category->created_at,
-                'updated_at' => $category->updated_at,
+                'id' => $categoryEn->unique_id,
+                'name' => [
+                    'en' => $categoryEn->name,
+                    'es' => $categoryEs?->name,
+                ],
+                'is_active' => true,
+                'lang' => $categoryEn->lang,
+                'created_at' => $categoryEn->created_at,
+                'updated_at' => $categoryEn->updated_at,
             ],
         ]);
     }
@@ -97,21 +117,50 @@ class ArticleCategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, string $uniqueId): JsonResponse
     {
-        $category = ArticleCategory::where('unique_id', $uniqueId)->firstOrFail();
+        $categoryEn = ArticleCategory::where('unique_id', $uniqueId)->where('lang', 'en')->firstOrFail();
+        $categoryEs = ArticleCategory::where('unique_id', $uniqueId)->where('lang', 'es')->first();
         $validated = $request->validated();
 
-        $category->update($validated);
+        // Handle both nested and flat formats for name
+        $nameData = $validated['name'] ?? [];
+        if (!is_array($nameData) || empty($nameData)) {
+            $nameData = [
+                'en' => $request->input('name.en') ?? $request->input('name[en]') ?? $categoryEn->name,
+                'es' => $request->input('name.es') ?? $request->input('name[es]') ?? $categoryEs?->name ?? $categoryEn->name,
+            ];
+        }
+
+        // Update English version
+        $categoryEn->update([
+            'name' => $nameData['en'] ?? $categoryEn->name,
+        ]);
+
+        // Update or create Spanish version
+        if ($categoryEs) {
+            $categoryEs->update([
+                'name' => $nameData['es'] ?? $categoryEs->name,
+            ]);
+        } else {
+            $categoryEs = ArticleCategory::create([
+                'unique_id' => $uniqueId,
+                'name' => $nameData['es'] ?? $categoryEn->name,
+                'lang' => 'es',
+            ]);
+        }
 
         return response()->json([
             'success' => true,
             'message' => 'Category updated successfully',
             'data' => [
-                'id' => $category->unique_id,
-                'name' => $category->name,
-                'is_active' => (bool) $category->is_active,
-                'lang' => $category->lang,
-                'created_at' => $category->created_at,
-                'updated_at' => $category->updated_at,
+                'id' => $categoryEn->unique_id,
+                'name' => [
+                    'en' => $categoryEn->name,
+                    'es' => $categoryEs->name,
+                ],
+                'is_active' => true,
+                'lang' => $categoryEn->lang,
+                'created_at' => $categoryEn->created_at,
+                'updated_at' => $categoryEn->updated_at,
             ],
         ]);
     }

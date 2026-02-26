@@ -24,17 +24,17 @@ class StoreAuthorRequest extends FormRequest
         return [
             'profile' => ['nullable', 'image', 'max:2048'],
             'name' => ['required', 'string', 'max:255'],
-            'title' => ['required', 'array'],
+            'title' => ['nullable', 'array'],
             'title.en' => ['nullable', 'string', 'max:255'],
             'title.es' => ['nullable', 'string', 'max:255'],
-            'description' => ['required', 'array'],
+            'description' => ['nullable', 'array'],
             'description.en' => ['nullable', 'string'],
             'description.es' => ['nullable', 'string'],
             'social_links' => ['nullable', 'array'],
-            'social_links.facebook' => ['nullable', 'url'],
-            'social_links.twitter' => ['nullable', 'url'],
-            'social_links.linkedin' => ['nullable', 'url'],
-            'social_links.instagram' => ['nullable', 'url'],
+            'social_facebook' => ['nullable', 'url'],
+            'social_twitter' => ['nullable', 'url'],
+            'social_linkedin' => ['nullable', 'url'],
+            'social_instagram' => ['nullable', 'url'],
             'lang' => ['string', 'in:en,es'],
         ];
     }

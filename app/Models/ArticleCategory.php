@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArticleCategory extends Model
 {
-
     protected $guarded = [];
 
     public $timestamps = true;
@@ -16,6 +15,7 @@ class ArticleCategory extends Model
     {
         return 'unique_id';
     }
+
     public function sibling()
     {
         return $this->hasOne(ArticleCategory::class, 'unique_id', 'unique_id')

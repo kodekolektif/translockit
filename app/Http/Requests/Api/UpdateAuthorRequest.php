@@ -31,10 +31,10 @@ class UpdateAuthorRequest extends FormRequest
             'description.en' => ['nullable', 'string'],
             'description.es' => ['nullable', 'string'],
             'social_links' => ['nullable', 'array'],
-            'social_links.facebook' => ['nullable', 'url'],
-            'social_links.twitter' => ['nullable', 'url'],
-            'social_links.linkedin' => ['nullable', 'url'],
-            'social_links.instagram' => ['nullable', 'url'],
+            'social_facebook' => ['nullable', 'url'],
+            'social_twitter' => ['nullable', 'url'],
+            'social_linkedin' => ['nullable', 'url'],
+            'social_instagram' => ['nullable', 'url'],
             'lang' => ['string', 'in:en,es'],
         ];
     }

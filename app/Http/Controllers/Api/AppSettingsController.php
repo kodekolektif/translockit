@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\UpdateAppSettingsRequest;
 use App\Settings\AppSettings;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -25,15 +26,15 @@ class AppSettingsController extends Controller
                 'title' => $this->settings->title,
                 'description' => $this->settings->description,
                 'keywords' => $this->settings->keywords,
-                'favicon' => $this->settings->favicon ? Storage::url($this->settings->favicon) : null,
-                'logo' => $this->settings->logo ? Storage::url($this->settings->logo) : null,
-                'logo_dark' => $this->settings->logo_dark ? Storage::url($this->settings->logo_dark) : null,
+                'favicon' => $this->settings->favicon ? asset('storage/'.$this->settings->favicon) : null,
+                'logo' => $this->settings->logo ? asset('storage/'.$this->settings->logo) : null,
+                'logo_dark' => $this->settings->logo_dark ? asset('storage/'.$this->settings->logo_dark) : null,
                 'default_language' => $this->settings->default_language,
                 'default_target_language' => $this->settings->default_target_language,
                 'translation_ai_service' => $this->settings->translation_ai_service,
-                'gemini_api_key' => $this->settings->gemini_api_key,
+                'gemini_api_key' => Hash::make($this->settings->gemini_api_key),
                 'gemini_api_url' => $this->settings->gemini_api_url,
-                'openai_api_key' => $this->settings->openai_api_key,
+                'openai_api_key' => Hash::make($this->settings->openai_api_key),
                 'openai_api_url' => $this->settings->openai_api_url,
             ],
         ]);

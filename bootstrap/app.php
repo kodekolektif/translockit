@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\APILogger;
 use App\Http\Middleware\SetLocale;
 use App\Providers\ScrambleServiceProvider;
 use Illuminate\Foundation\Application;
@@ -15,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(SetLocale::class);
+
+        // Register API logger middleware for API routes
+        $middleware->group('api', [
+            APILogger::class,
+        ]);
     })
     ->withProviders([
         ScrambleServiceProvider::class,

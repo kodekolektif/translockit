@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
@@ -28,15 +30,39 @@ class Article extends Model
         );
     }
 
-    public function category() {
-        return $this->belongsTo(ArticleCategory::class, 'category_id', 'unique_id');
+    public function category(): HasOne
+    {
+        return $this->hasOne(ArticleCategory::class, 'unique_id', 'category_id')->where('lang', 'en');
     }
-    public function author() {
-        return $this->belongsTo(Author::class, 'author_id', 'unique_id');
+
+    public function author(): HasOne
+    {
+        return $this->hasOne(Author::class, 'unique_id', 'author_id')->where('lang', 'en');
     }
+
     public function getLocalizedCategory()
     {
         return $this->category()->where('lang', app()->getLocale())->first();
+    }
+
+    protected function englishCategory(): Attribute
+    {
+        return Attribute::get(function () {
+            return DB::table('article_categories')
+                ->where('unique_id', $this->category_id)
+                ->where('lang', 'en')
+                ->first();
+        });
+    }
+
+    protected function englishAuthor(): Attribute
+    {
+        return Attribute::get(function () {
+            return DB::table('authors')
+                ->where('unique_id', $this->author_id)
+                ->where('lang', 'en')
+                ->first();
+        });
     }
 
 }
