@@ -39,7 +39,7 @@
                             </div>
                         <div class="blog-details blog-details-2">
                             <ul class="blog-meta">
-                                <li><a href="#"><i class="fal fa-clock"></i>{{ $article->published_at->diffForHumans() }}</a></li>
+                                <li><a href="#"><i class="fal fa-clock"></i>{{ $article->created_at->diffForHumans() }}</a></li>
                                 {{-- <li><a href="#"><i class="fal fa-user-circle"></i> Tania</a></li>
                                 <li><a href="#"><i class="fal fa-comments"></i> 2 Comments</a></li> --}}
                             </ul>

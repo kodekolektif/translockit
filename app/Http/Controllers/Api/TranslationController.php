@@ -13,49 +13,21 @@ use Illuminate\Http\JsonResponse;
 class TranslationController extends Controller
 {
     /**
-     * Translate text to a target language.
+     * Translate multiple texts at once.
      */
     public function translate(TranslateRequest $request): JsonResponse
     {
         $validated = $request->validated();
-        $text = $validated['text'];
-        $targetLanguage = $validated['target_language'];
-
-        try {
-            $translatedText = TranslationService::translate($text, $targetLanguage);
-
-            return response()->json([
-                'success' => true,
-                'data' => [
-                    'original_text' => $text,
-                    'translated_text' => $translatedText,
-                    'target_language' => $targetLanguage,
-                ],
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Translation failed: ' . $e->getMessage(),
-            ], 500);
-        }
-    }
-
-    /**
-     * Translate multiple texts at once.
-     */
-    public function batchTranslate(TranslateRequest $request): JsonResponse
-    {
-        $validated = $request->validated();
-        $texts = $validated['texts'];
-        $targetLanguage = $validated['target_language'];
+        $targetLanguage = $validated['target_lang'];
 
         $translations = [];
 
         try {
-            foreach ($texts as $text) {
+            foreach ($validated['data'] as $item) {
                 $translations[] = [
-                    'original_text' => $text,
-                    'translated_text' => TranslationService::translate($text, $targetLanguage),
+                    'key' => $item['key'],
+                    'original_text' => $item['value'],
+                    'translated_text' => TranslationService::translate($item['value'], $targetLanguage),
                 ];
             }
 
@@ -63,7 +35,7 @@ class TranslationController extends Controller
                 'success' => true,
                 'data' => [
                     'translations' => $translations,
-                    'target_language' => $targetLanguage,
+                    'target_lang' => $targetLanguage,
                 ],
             ]);
         } catch (\Exception $e) {

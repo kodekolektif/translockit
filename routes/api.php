@@ -73,5 +73,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Translation
     Route::post('/translate', [TranslationController::class, 'translate']);
-    Route::post('/translate/batch', [TranslationController::class, 'batchTranslate']);
 });

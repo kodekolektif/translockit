@@ -22,7 +22,7 @@ class ArticleController extends Controller
 
         $query = Article::with('category')
             ->where('lang', $lang)
-            ->whereNotNull('published_at');
+            ->where('is_published', true);
 
         if (!empty($category)) {
             $query->where('category_id', $category);
@@ -38,22 +38,18 @@ class ArticleController extends Controller
         }
 
         // ✅ cache latest articles 1 day
-        $data['latest_article'] = Cache::remember("latest_article_$lang", now()->addDay(), function () use ($lang) {
-            return Article::with('category')
+        $data['latest_article'] =  Article::with('category')
                 ->where('lang', $lang)
-                ->whereNotNull('published_at')
-                ->orderBy('published_at','desc')
+                ->where('is_published', true)
+                ->orderBy('created_at','desc')
                 ->limit(5)
                 ->get();
-        });
 
         // ✅ cached categories 1 day
-        $data['categories'] = Cache::remember("article_categories_$lang", now()->addDay(), function () use ($lang) {
-            return ArticleCategory::where('lang', $lang)->get();
-        });
+        $data['categories'] = ArticleCategory::where('lang', $lang)->get();
 
         // ⚠️ articles list (search/filter) → sebaiknya tidak dicache
-        $data['articles'] = $query->orderBy('published_at', 'desc')->paginate(10);
+        $data['articles'] = $query->orderBy('created_at', 'desc')->paginate(10);
         $seo['tags'] = "it company";
         $seo['description'] = "With high specialization in the development of customized technology services, Artificial Intelligence (AI), comprehensive IT software solutions and customized mobile applications.";
         $seo['image'] = asset('assets/img/about/About-TranslockIt_1.jpg');
@@ -64,9 +60,7 @@ class ArticleController extends Controller
     public function getDetailArticle($lang, $slug)
     {
         // ✅ cache detail article 1 day
-        $article = Cache::remember("article_detail_{$lang}_{$slug}", now()->addDay(), function () use ($slug) {
-            return Article::where("slug", $slug)->with(['category'])->first();
-        });
+        $article =  Article::where("slug", $slug)->with(['category'])->first();
 
         if (!$article) {
             abort(404); // jika tidak ditemukan
@@ -76,19 +70,15 @@ class ArticleController extends Controller
         $data['article'] = $article;
 
         // ✅ cache latest article 1 day
-        $data['latest_article'] = Cache::remember("latest_article_$lang", now()->addDay(), function () use ($lang) {
-            return Article::with('category')
+        $data['latest_article'] = Article::with('category')
                 ->where('lang', $lang)
                 ->whereNotNull('published_at')
                 ->orderBy('published_at','desc')
                 ->limit(5)
                 ->get();
-        });
 
         // ✅ cache categories 1 day
-        $data['categories'] = Cache::remember("article_categories_$lang", now()->addDay(), function () use ($lang) {
-            return ArticleCategory::where('lang', $lang)->get();
-        });
+        $data['categories'] =  ArticleCategory::where('lang', $lang)->get();
         $data['hideloading'] = true;
 
         if ($article->thumbnail) {

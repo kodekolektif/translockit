@@ -196,7 +196,7 @@ class ArticleController extends Controller
             'category_id' => $categoryId,
             'author_id' => $authorId,
             'is_published' => $validated['is_published'] ?? false,
-            'published_at' => $validated['published_at'] ?? null,
+            'published_at' => $validated['is_published'] ? now() : null,
             'lang' => 'en',
         ]);
 
@@ -211,7 +211,7 @@ class ArticleController extends Controller
             'category_id' => $categoryId,
             'author_id' => $authorId,
             'is_published' => $validated['is_published'] ?? false,
-            'published_at' => $validated['published_at'] ?? null,
+            'published_at' => $validated['is_published'] ? now() : null,
             'lang' => 'es',
         ]);
 
@@ -334,6 +334,9 @@ class ArticleController extends Controller
         if (isset($validated['author_id']) && is_array($validated['author_id'])) {
             $lang = $validated['lang'] ?? $article->lang ?? 'en';
             $validated['author_id'] = $validated['author_id'][$lang] ?? $validated['author_id']['en'] ?? null;
+        }
+        if(isset($validated['is_published'])) {
+            $validated['published_at'] = $validated['is_published'] ? now() : null;
         }
 
         $article->update($validated);

@@ -134,6 +134,19 @@ return [
             'days' => env('LOG_DAILY_DAYS', 30),
             'replace_placeholders' => true,
         ],
+        'gemini' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/gemini/gemini.log'),
+            'level' => 'info',
+            'days' => 14,
+        ],
+        'openai' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/open-ai/gemini.log'),
+            'level' => 'info',
+            'days' => 14,
+        ],
+
 
     ],
 

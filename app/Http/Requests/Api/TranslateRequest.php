@@ -22,10 +22,12 @@ class TranslateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'text' => ['required_without:texts', 'string'],
-            'texts' => ['required_without:text', 'array'],
-            'texts.*' => ['string'],
-            'target_language' => ['required', 'string', 'in:en,es,fr,de,it,pt,zh,ja,ko,ru,ar'],
+            // Structured batch translation (array of key-value pairs)
+            'data' => ['required_without:text,texts', 'array'],
+            'data.*.key' => ['required', 'string'],
+            'data.*.value' => ['required', 'string'],
+            // Target language
+            'target_lang' => ['required', 'string', 'in:en,es,fr,de,it,pt,zh,ja,ko,ru,ar'],
         ];
     }
 }
