@@ -37,13 +37,13 @@
                                     style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                             <div class="blog-details blog-details-2">
-                                <ul class="blog-meta">
+                                {{-- <ul class="blog-meta">
                                     <li>
                                         <a href="#"><i class="fal fa-clock"></i>
 -
                                         </a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                                 <h3 class="blog-title">
                                     <a href="#">{{ $article->title }}</a>
                                 </h3>
