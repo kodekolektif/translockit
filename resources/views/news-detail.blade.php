@@ -40,7 +40,7 @@
                                 <ul class="blog-meta">
                                     <li>
                                         <a href="#"><i class="fal fa-clock"></i>
-                                            {{ $article->created_at ? $article->created_at?->diffForHumans() : '-' }}
+                                            {{-- {{ $article->created_at ? $article->created_at?->diffForHumans() : '-' }} --}}
                                         </a>
                                     </li>
                                 </ul>
