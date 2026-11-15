@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.mobile_app') }}</h2>
+                    <h1 style="overflow: hidden; white-space: nowrap;">{{ __('landing.mobile_app') }}</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
@@ -28,7 +28,7 @@
             @if ($i % 2 == 0)
             {{-- Gambar di kiri --}}
             <div class="col-xxl-5 col-xl-6 col-lg-6">
-                <img src="{{ Storage::url($item->image) }}" alt="image" width="100%">
+                <img src="{{ Storage::url($item->image) }}" alt="{{ $item->title ?? $item->name }}" width="100%">
             </div>
             <div class="col-xxl-7 col-xl-6 col-lg-6">
                 <div class="plan-content">
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="col-xxl-5 col-xl-6 col-lg-6">
-                <img src="{{ Storage::url($item->image) }}" alt="image" style="width: 100%;">
+                <img src="{{ Storage::url($item->image) }}" alt="{{ $item->title ?? $item->name }}" style="width: 100%;">
             </div>
             @endif
         </div>
@@ -83,7 +83,7 @@
                 <div class="tportfolio mb-30">
                     <div class="tportfolio__img">
                         <a class="popup-image" href="{{ Storage::url($item->logo) }}" data-fancybox="gallery">
-                            <img src="{{ Storage::url($item->logo) }}" alt="" />
+                            <img src="{{ Storage::url($item->logo) }}" alt="{{ $item->title }}" />
                         </a>
                         <div class="tportfolio__text tportfolio__text-2">
                             <h3 class="tportfolio-title"><a href="portfolio-details.html">{{ $item->title }}</a></h3>

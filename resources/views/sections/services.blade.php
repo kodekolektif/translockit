@@ -28,7 +28,7 @@
                             data-description="{{ $service->description }}"
                             data-image="{{ Storage::url($service->image) }}"
                         >
-                            <img src="{{ Storage::url($service->image) }}" alt="{{ $service->title }}"
+                            <img src="{{ Storage::url($service->image) }}" alt="{{ $service->name }}"
                                 style="width:100%; height:370px; object-fit:cover;" />
                             <div class="tportfolio__text tportfolio__text-2">
                                 <h3 class="tportfolio-title">

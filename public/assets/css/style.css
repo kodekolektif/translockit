@@ -3422,6 +3422,7 @@ p {
   position: relative;
   z-index: 1;
 }
+.page__title-content h1,
 .page__title-content h2 {
   text-transform: uppercase;
   font-size: 60px;
@@ -3429,11 +3430,13 @@ p {
   font-weight: 600;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
+  .page__title-content h1,
   .page__title-content h2 {
     font-size: 50px;
   }
 }
 @media (max-width: 575px) {
+  .page__title-content h1,
   .page__title-content h2 {
     font-size: 30px;
   }

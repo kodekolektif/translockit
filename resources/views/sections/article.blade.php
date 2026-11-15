@@ -13,7 +13,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="latest-blog latest-blog-2 mb-30">
                     <div class="latest-blog-img pos-rel">
-                        <img src="{{ Storage::url($article->thumbnail) }}" alt="">
+                        <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}">
                         <div class="top-date top-date-2">
                             <a href="#">{{ $article->published_at->diffforhumans() }}</a>
                         </div>

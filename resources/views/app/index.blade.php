@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     @php
@@ -11,36 +11,11 @@
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $APPtitle ?? ''}} {{ isset($title) ? ' - '.$title:'' }}</title>
-    <meta name="description" content="{{ $description??$settings->description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url($favicon) }}">
 
-   <meta name="keywords"
-        content="{{ ($seo['tags'] ? $seo['tags'] . ', ' : '') . 'translock it, translock it consulting, software solutions, mobile applications, transportation solutions, cyber security, employee transportation software, school transportation software, freight transport system, car rental software, ai for accident claims, fleet consultancy, app development, cloud migration, cybersecurity logistics, logistics technology consulting, transport management software, fleet management solutions, mobility technology, logistics digital transformation, transport it consulting, logistics tech europe, transport software indonesia, fleet management indonesia, school bus management indonesia, custom mobile apps transportation, ai logistics solutions, cloud migration logistics, cybersecurity fleet management, car rental solution provider' }}" />
-
-    {{-- <meta name="author" content="{{ env('APP_URL') }}" />
-    <meta name="og:title" content="{{ $APPtitle ?? ''}} {{ isset($title) ? ' - '.$title:'' }}" />
-    <meta name="og:description"
-        content="{{ $seo['description'] ??'' }}" />
-    <meta name="og:image" content="{{ $seo['image'] }}" />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta name="og:site_name" content="Translockit" />
-    <meta name="og:type" content="website" /> --}}
-
-    <meta property="og:title" content="{{ $seo['title'] ?? $title }}" />
-    <meta property="og:description" content="{{ $seo['description'] ?? '' }}" />
-    <meta property="og:image" content="{{ $seo['image'] }}" />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:site_name" content="Translockit" />
-    <meta property="og:type" content="website" />
-
-    <!-- ✅ Twitter Card tags (optional, but good practice) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ $seo['title'] ?? $title }}" />
-    <meta name="twitter:description" content="{{ $seo['description'] ?? '' }}" />
-    <meta name="twitter:image" content="{{ $seo['image'] }}" />
+    @include('app.seo')
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M64R7DGXD4"></script>

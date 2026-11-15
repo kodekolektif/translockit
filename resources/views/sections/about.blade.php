@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="abs-img img-filter mb-30">
-                                <img src="{{ asset('assets/img/about/About-TranslockIt_1.jpg') }}" alt=""
+                                <img src="{{ asset('assets/img/about/About-TranslockIt_1.jpg') }}" alt="Translock IT team"
                                     style="width: 100%; height: auto;">
                             </div>
                         </div>

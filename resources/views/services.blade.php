@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.services.services') }}</h2>
+                    <h1 style="overflow: hidden; white-space: nowrap;">{{ __('landing.services.services') }}</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
@@ -51,7 +51,7 @@
                 <div class="tportfolio mb-30 row">
                     <div class="tportfolio__img col-lg-4 col-md-4 col-sm-12" style="margin-bottom: 30px !important">
                         <a class="popup-image" href="{{ Storage::url($project->image) }}" data-fancybox="gallery">
-                            <img src="{{ Storage::url($project->image) }}" alt=""
+                            <img src="{{ Storage::url($project->image) }}" alt="{{ $project->name }}"
                                 style="width:100%; height:370px; object-fit:cover;" />
                         </a>
                     </div>

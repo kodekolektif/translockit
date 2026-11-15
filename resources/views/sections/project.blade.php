@@ -37,7 +37,7 @@
                     <div class="tportfolio__img">
                         <a class="popup-image" href="{{ Storage::url($project->image) }}"
                             data-fancybox="gallery">
-                            <img src="{{ Storage::url($project->image) }}" alt=""
+                            <img src="{{ Storage::url($project->image) }}" alt="{{ $project->name }}"
                                 style="width:100%; height:370px; object-fit:cover;" />
                         </a>
                         <div class="tportfolio__text tportfolio__text-2">

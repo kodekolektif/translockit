@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="page__title-content mt-100 text-center">
-                        <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.articles') }}</h2>
+                        <h1 style="overflow: hidden; white-space: nowrap;">{{ __('landing.articles') }}</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>
@@ -34,7 +34,7 @@
                     @forelse ($articles as $article)
                         <div class="blog-wrap blog-item mb-50">
                             <div style="width: 100%; max-width: 770px; aspect-ratio: 16 / 9; overflow: hidden; margin: 0 auto;">
-                                <img src="{{ Storage::url($article->thumbnail) }}" alt="blog"
+                                <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}"
                                      style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                         <div class="blog-details blog-details-2">

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page__title-content mt-100 text-center">
-                    <h2 style="overflow: hidden; white-space: nowrap;">{{ __('landing.Contact') }}</h2>
+                    <h1 style="overflow: hidden; white-space: nowrap;">{{ __('landing.Contact') }}</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('landing.Home') }}</a></li>

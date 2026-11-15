@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.send');
 
+Route::get('/sitemap.xml', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
 
 // Grup untuk semua halaman yang memiliki prefix bahasa
 Route::prefix('{locale}')

@@ -1,0 +1,31 @@
+# Translock IT
+
+> Translock IT is a technology consulting firm with over a decade of experience. It develops customized technology services, Artificial Intelligence (AI) solutions, comprehensive IT software and customized mobile applications, with a focus on transport and mobility companies.
+
+The website is available in English (/en) and Spanish (/es). Contact: info@translockit.com
+
+## Main pages
+
+- [Home](https://www.translockit.com/en): Overview of Translock IT, its services and projects
+- [Services](https://www.translockit.com/en/services): IT consulting, custom software, AI, mobile apps, cloud migration and cybersecurity
+- [Software](https://www.translockit.com/en/software): Software products for transport and mobility operators
+- [Mobile apps](https://www.translockit.com/en/mobile-app): Custom mobile application development
+- [About](https://www.translockit.com/en/about): Company background and expertise
+- [Articles](https://www.translockit.com/en/article): News and insights on technology, AI and mobility
+- [Contact](https://www.translockit.com/en/contact): Contact form and company details
+
+## Spanish version
+
+- [Inicio](https://www.translockit.com/es)
+- [Servicios](https://www.translockit.com/es/services)
+- [Software](https://www.translockit.com/es/software)
+- [Aplicaciones móviles](https://www.translockit.com/es/mobile-app)
+- [Sobre nosotros](https://www.translockit.com/es/about)
+- [Artículos](https://www.translockit.com/es/article)
+- [Contacto](https://www.translockit.com/es/contact)
+
+## Optional
+
+- [Sitemap](https://www.translockit.com/sitemap.xml)
+- [Legal notice](https://www.translockit.com/en/legal-notice)
+- [Privacy policy](https://www.translockit.com/en/privacy-policy)

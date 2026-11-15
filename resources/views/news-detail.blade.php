@@ -33,7 +33,7 @@
                         <div class="blog-wrap blog-item mb-50">
                             <div
                                 style="width: 100%; max-width: 770px; aspect-ratio: 16 / 9; overflow: hidden; margin: 0 auto;">
-                                <img src="{{ Storage::url($article->thumbnail) }}" alt="blog"
+                                <img src="{{ Storage::url($article->thumbnail) }}" alt="{{ $article->title }}"
                                     style="width: 100%; height: 100%; object-fit: cover; display: block;">
                             </div>
                             <div class="blog-details blog-details-2">
@@ -44,9 +44,9 @@
                                         </a>
                                     </li>
                                 </ul> --}}
-                                <h3 class="blog-title">
+                                <h1 class="blog-title">
                                     <a href="#">{{ $article->title }}</a>
-                                </h3>
+                                </h1>
                                 <div class="blog-text">
                                     {!! $article->content !!}
 

@@ -12,9 +12,9 @@
                             <div class="slider-circle-shape slider-circle-shape-2"></div>
                             <div class="slider-text slider-text-2 z-index">
                                 <span class="slider-sub-title" data-animation="fadeInUp" data-delay="0.3s">{{ __('landing.welcome to translock it') }}</span>
-                                <h2 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">
+                                <h1 class="slider-title" data-animation="fadeInUp" data-delay="0.5s">
                                     {!! __('landing.moving forward technologies') !!}
-                                </h2>
+                                </h1>
                                 {{-- <div class="slide-btn mt-30 d-flex align-items-center" data-animation="fadeInUp"
                                     data-delay="0.7s">
                                     <a href="about.html" class="tp-btn">Discover More</a>
