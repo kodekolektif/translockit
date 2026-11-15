@@ -8,6 +8,13 @@
     $seoIsArticle = $seoRouteName === 'article.detail' && isset($article);
     $seoBrand = $APPtitle ?: 'Translock IT';
 
+    // Error pages (404, 500...) get a plain title, no canonical/hreflang and noindex.
+    $seoErrorCode = isset($exception) && method_exists($exception, 'getStatusCode') ? $exception->getStatusCode() : (isset($exception) ? 500 : null);
+    if ($seoErrorCode) {
+        $seoRouteName = null;
+        $seo = ['title' => \Illuminate\Support\Facades\Lang::has("errors.$seoErrorCode.title") ? __("errors.$seoErrorCode.title") : (string) $seoErrorCode, 'description' => __('errors.404.text')];
+    }
+
     // Static pages take their title and description from lang/{locale}/seo.php.
     $seoHasCopy = ! $seoIsArticle && $seoRouteName && \Illuminate\Support\Facades\Lang::has("seo.$seoRouteName.title");
     $seoTitle = $seoHasCopy ? __("seo.$seoRouteName.title") : trim((string) ($seo['title'] ?? $title ?? ''));
@@ -90,14 +97,16 @@
 @endphp
     <title>{{ $seoFullTitle }}</title>
     <meta name="description" content="{{ $seoDescription }}">
+@unless ($seoErrorCode)
     <link rel="canonical" href="{{ $seoCanonical }}">
+@endunless
 @foreach ($seoAlternates as $loc => $href)
     <link rel="alternate" hreflang="{{ $loc }}" href="{{ $href }}">
 @endforeach
 @if (count($seoAlternates) > 1 && isset($seoAlternates[$seoLocales[0]]))
     <link rel="alternate" hreflang="x-default" href="{{ $seoAlternates[$seoLocales[0]] }}">
 @endif
-    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="robots" content="{{ $seoErrorCode ? 'noindex, follow' : 'index, follow, max-image-preview:large' }}">
 
     <meta property="og:title" content="{{ $seoTitle ?: $seoBrand }}">
     <meta property="og:description" content="{{ $seoDescription }}">
